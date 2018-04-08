@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1475682132 source:c:\users\annel\desktop\fsi\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+
+1475682132 source:c:\users\annel\downloads\programação\linguagem c\fsi\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+
