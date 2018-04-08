@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1463505059 source:c:\users\annel\downloads\c\questão 68\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+
