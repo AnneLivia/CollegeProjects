@@ -1,0 +1,16 @@
+n1<-as.double(readline("Digite o 1º número: "))
+n2<-as.double(readline("Digite o 2º número: "))
+n3<-as.double(readline("Digite o 3º número: "))
+n4<-as.double(readline("Digite o 4º número: "))
+soma<-n1+n2+n3+n4
+media<-soma/4
+perc1<-((n1*100)/soma)
+perc2<-((n2*100)/soma)
+perc3<-((n3*100)/soma)
+perc4<-((n4*100)/soma)
+cat("\nO somatorio é: ",soma)
+cat("\nA média é: ",media)
+cat("\nO percentual do número",n1,"em relação ao somatório é",perc1)
+cat("\nO percentual do número",n2,"em relação ao somatório é",perc2)
+cat("\nO percentual do número",n3,"em relação ao somatório é",perc3)
+cat("\nO percentual do número",n4,"em relação ao somatório é",perc4)
