@@ -62,7 +62,7 @@ int main() {
         cout << "Digite aqui: ";
         cin >> sair;
         system("cls");
-    } while (sair != "SAIR");
+    } while (sair != "SAIR" || sair != "sair");
     cout << "------- L A N C H O N E T E -------\n";
     if(valor == 0)
         cout << "Nenhum pedido foi realizado.\n";

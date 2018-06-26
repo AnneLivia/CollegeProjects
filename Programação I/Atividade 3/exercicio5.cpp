@@ -20,8 +20,10 @@ int main() {
     system("cls");
     cout << "\n Quadrado de lado: " << ladoQuadrado << endl;
     cout << "\n\n";
-    for ( int i = 0; i < ladoQuadrado; i++) {
-        for(int j = 0; j < ladoQuadrado; j++) {
+    int i = 0, j;
+    while ( i < ladoQuadrado) {
+        j = 0;
+        while( j < ladoQuadrado) {
             if(j == 0)
                 cout << "         [";
             if(i == 0 || i == ladoQuadrado - 1)
@@ -30,7 +32,9 @@ int main() {
                 cout << "  ";
             if (j == ladoQuadrado - 1)
                 cout << "]\n";
+            j++;
         }
+        i++;
     }
 
     return 0;
