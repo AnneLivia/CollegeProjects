@@ -5,7 +5,7 @@
 using namespace std;
 
 /*
-    Setw() - serve para manipular stream. define a largura, que padrão é 0
+    Setw() - serve para manipular stream. define a largura, o padrão é 0
 */
 int main() {
 
@@ -18,6 +18,14 @@ int main() {
             cin >> mat[i][j];
         }
         system("cls");
+    }
+
+    cout << "\n\n Matriz \n\n";
+    for ( int i = 0; i < 3; i++) {
+        for ( int j = 0; j < 3; j++) {
+            cout << setw(6) << mat[i][j];
+        }
+        cout << endl;
     }
 
     cout << "\n\n Matriz Ordem Inversa\n\n";
