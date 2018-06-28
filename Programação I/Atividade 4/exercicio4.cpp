@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <clocale>
+#include <cstdlib>
 #define TAM 4
 
 using namespace std;
