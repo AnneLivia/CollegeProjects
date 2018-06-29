@@ -13,7 +13,7 @@ int main() {
 
     for ( int i = 0; i < 10; i++) {
         cout << "Entre com a matricula, nota da 1ª avaliação e nota da 2ª avaliação: \n";
-        cout << "Digite a matricula: ";
+        cout << "Digite a " << i + 1 << "ª matricula: ";
         cin >> matriz[i][0];
         cout << "Digite a nota da 1ª avaliação: ";
         cin >> matriz[i][1];
@@ -38,7 +38,7 @@ int main() {
     }
 
     somaMedia/=10;
-    cout << "\n\n      Media aritmetica das notas finais: " << somaMedia << endl;
+    cout << "\n\n      Media aritmética das notas finais: " << somaMedia << endl;
 
 
 

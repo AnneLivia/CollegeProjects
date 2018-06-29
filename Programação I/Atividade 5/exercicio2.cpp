@@ -8,7 +8,8 @@ using namespace std;
 int main() {
     setlocale(LC_ALL, "Portuguese");
     int tipoCombustivel;
-    float valor = 0, qtdLitros;
+    string nomeCombustivel;
+    float valor = 0, qtdLitros, valorComDesconto, desconto = 0;
 
     cout << "----------- P O S T O ------------\n\n";
     cout << "1 - Gasolina Comum: R$ 4.30\n";
@@ -22,34 +23,49 @@ int main() {
 
     switch(tipoCombustivel) {
     case 1 :
-        cout << "Gasolina Comum\n";
+        nomeCombustivel = "Gasolina Comum";
         valor = qtdLitros * 4.30;
         if(qtdLitros >= 10 && qtdLitros <= 20) {
-            valor -= (valor*0.02);
-        } else if (qtdLitros > 20)
-            valor -= (valor*0.05);
-
+            desconto = valor*0.02;
+        } else if (qtdLitros > 20) {
+            desconto = valor*0.05;
+        }
+        valorComDesconto = valor - desconto;
         break;
     case 2:
-        cout << "Gasolina Aditivada\n";
+        nomeCombustivel = "Gasolina Aditivada";
         valor = qtdLitros * 4.70;
         if(qtdLitros >= 10 && qtdLitros <= 20) {
-            valor -= (valor*0.03);
+            desconto = valor*0.03;
         } else if (qtdLitros > 20)
-            valor -= (valor*0.06);
+            desconto = valor*0.06;
+        valorComDesconto = valor - desconto;
         break;
     case 3:
-        cout << "Etanol\n";
+        nomeCombustivel = "Etanol";
         valor = qtdLitros * 3.79;
         if(qtdLitros >= 10 && qtdLitros <= 20) {
-            valor -= (valor*0.04);
+            desconto = valor*0.04;
         } else if (qtdLitros > 20)
-            valor -= (valor*0.07);
+            desconto = valor*0.07;
+        valorComDesconto = valor - desconto;
         break;
     }
 
     system("cls");
+
+    // Essas duas linhas de códigos servem para deixar um valor com somente dois números após o ponto
+
+    cout.precision(2);
+    cout.setf(ios::fixed);
+
     cout << "----------- P O S T O ------------\n";
-    cout << "\nValor a pagar: R$ " << valor << endl;
+    cout << "\nCombustível comprado: " << nomeCombustivel << endl;
+    cout << "\nValor total: R$ " << valor << endl;
+    if(valorComDesconto != valor) {
+        cout << "Desconto: R$ " << desconto << endl;
+        cout << "Valor com desconto: R$ " << valorComDesconto << endl;
+    } else
+        cout << "Não houve desconto\n";
     return 0;
 }

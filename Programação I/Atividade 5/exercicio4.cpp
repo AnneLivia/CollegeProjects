@@ -16,7 +16,7 @@ bool busca(int vet[], int t, int num) {
 int main() {
     setlocale(LC_ALL, "Portuguese");
 
-    int vetA[10], vetB[10], vetC[10], cont = 0, iteradorC = 0;
+    int vetA[10], vetB[10], vetC[10], iteradorC = 0;
 
     cout << "Digite os valores do vetor A: \n";
     for ( int i = 0; i < 10; i++) {
