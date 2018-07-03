@@ -14,7 +14,7 @@ int main() {
     cout << "Digite o valor 3: ";
     cin >> n3;
 
-    if((n1 < (n2 + n3)) || (n2 < (n1 + n3)) || (n3 < (n1 + n2))) {
+    if((n1 < (n2 + n3)) && (n2 < (n1 + n3)) && (n3 < (n1 + n2))) {
         cout << "É triângulo";
         if(n1 == n2 && n1 == n3)
             cout << " e equilátero\n";
