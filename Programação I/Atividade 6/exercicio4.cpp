@@ -7,7 +7,7 @@ using namespace std;
 int main() {
 
     setlocale(LC_ALL, "Portuguese");
-    int candidatos[4] = {0}, votoNulo, votoBranco, opcao;
+    int candidatos[4] = {0,0,0,0}, votoNulo, votoBranco, opcao;
     float totalVotos;
     votoBranco = votoNulo = totalVotos = 0;
 
