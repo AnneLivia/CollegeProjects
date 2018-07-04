@@ -128,7 +128,7 @@ int main() {
                     cin >> coluna;
                     system("cls");
                     if(jogoDaVelha[linha - 1][coluna - 1] == 'X' || jogoDaVelha[linha - 1][coluna - 1] == 'O' ||
-                       linha < 0 || linha > 3 || coluna < 0 || coluna > 3) {
+                       linha < 1 || linha > 3 || coluna < 1 || coluna > 3) {
                         showMensage();
                         cout << "\n                           JOGADA INVALIDA\n\n";
                         cout << "  Valores invalidos para linha/coluna ou o local já foi preenchido\n\n";
@@ -136,6 +136,15 @@ int main() {
                         continue; // Pular execução para não deixar o computador jogar
                     } else {
                         jogoDaVelha[linha - 1][coluna - 1] = jogador;
+                    }
+
+                    ganhador = existeGanhador(jogoDaVelha,jogador); // Verificar se o jogador ganhou
+                    if(ganhador) {
+                        showMensage();
+                        imprimirMatriz(jogoDaVelha);
+                        cout << "\n\n                          O JOGADOR GANHOU\n\n";
+                        system("pause");
+                        continue;
                     }
 
                     int achouEspaco = 0; // Para rodar o loop até que o computador ache um espaço vazio na matriz
@@ -147,21 +156,13 @@ int main() {
                             achouEspaco = 1;
                         }
                     }
-                    system("cls");
-                    ganhador = existeGanhador(jogoDaVelha,jogador); // Verificar se o jogador ganhou
+
+                    ganhador = existeGanhador(jogoDaVelha,computadorOUjogador2); // Verificar se o computador ganhou
                     if(ganhador) {
                         showMensage();
                         imprimirMatriz(jogoDaVelha);
-                        cout << "\n\n                          O JOGADOR GANHOU\n\n";
+                        cout << "\n\n                         O COMPUTADOR GANHOU\n\n";
                         system("pause");
-                    } else {
-                        ganhador = existeGanhador(jogoDaVelha,computadorOUjogador2); // Verificar se o computador ganhou
-                        if(ganhador) {
-                            showMensage();
-                            imprimirMatriz(jogoDaVelha);
-                            cout << "\n\n                         O COMPUTADOR GANHOU\n\n";
-                            system("pause");
-                        }
                     }
 
                     if(preencheu(jogoDaVelha) && !ganhador) {
@@ -200,7 +201,7 @@ int main() {
                         cin >> coluna;
                         system("cls");
                         if(jogoDaVelha[linha - 1][coluna - 1] == 'X' || jogoDaVelha[linha - 1][coluna - 1] == 'O' ||
-                           linha < 0 || linha > 3 || coluna < 0 || coluna > 3) {
+                           linha < 1 || linha > 3 || coluna < 1 || coluna > 3) {
                             showMensage();
                             cout << "\n                           JOGADA INVALIDA\n\n";
                             cout << "  Valores invalidos para linha/coluna ou o local já foi preenchido\n\n";
@@ -231,7 +232,7 @@ int main() {
                         cin >> coluna;
                         system("cls");
                         if(jogoDaVelha[linha - 1][coluna - 1] == 'X' || jogoDaVelha[linha - 1][coluna - 1] == 'O' ||
-                           linha < 0 || linha > 3 || coluna < 0 || coluna > 3) {
+                           linha < 1 || linha > 3 || coluna < 1 || coluna > 3) {
                             showMensage();
                             cout << "\n                           JOGADA INVALIDA\n\n";
                             cout << "  Valores invalidos para linha/coluna ou o local já foi preenchido\n\n";
