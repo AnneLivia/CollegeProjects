@@ -13,7 +13,7 @@ int main() {
 
     do {
       system("cls");
-      cout << " -------------------- E L E I Ç Ã O --------------------\n\n";
+      cout << " -------------------- E L E I C A O --------------------\n\n";
       cout << "1 - Candidato 1\n";
       cout << "2 - Candidato 2\n";
       cout << "3 - Candidato 3\n";
@@ -58,14 +58,14 @@ int main() {
             cout << "Programa finalizando...\n";
             break;
         default:
-            cout << "Opção invalida\n";
+            cout << "Opcao invalida\n";
       }
       system("pause");
     } while (opcao != 0);
 
     system("cls");
 
-    cout << " -------------------- E L E I Ç Ã O --------------------\n\n";
+    cout << " -------------------- E L E I C A O --------------------\n\n";
 
     cout << "Total de votos: " << totalVotos << endl;
     cout << "Candidato 1: " << candidatos[0] << endl;
@@ -79,5 +79,6 @@ int main() {
 
     return 0;
 }
+
 
 

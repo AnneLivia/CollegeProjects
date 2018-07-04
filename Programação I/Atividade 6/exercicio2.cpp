@@ -282,8 +282,6 @@ int main() {
                 cout << "\n                           JOGO FINALIZADO\n\n";
                 cout << "\n                     DESENVOLVIDO POR ANNE LIVIA\n\n";
                 break;
-            default:
-                cout << "Opção invalida.\n";
         }
     } while (opcao != 4);
     return 0;

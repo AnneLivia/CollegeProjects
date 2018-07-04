@@ -26,17 +26,18 @@ int main() {
 
     for ( int i = 0; i < TAM; i++) {
         for ( int j = 0; j < TAM; j++) {
-            if(mat[i][j] > maiorValor) {
+            if(mat[i][j] >= maiorValor) {
                 maiorValor = mat[i][j];
                 linha = i;
             }
         }
     }
 
+
     menorElemento = mat[linha][0];
 
     for ( int i = 0; i < TAM; i++) {
-        if(menorElemento > mat[linha][i]) {
+        if(menorElemento >= mat[linha][i]) {
             menorElemento = mat[linha][i];
             coluna = i;
         }
