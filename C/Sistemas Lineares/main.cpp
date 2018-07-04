@@ -4,9 +4,113 @@
 
 using namespace std;
 
-int determinanteOrdem2(int matriz[][100], int tam) {
-    int d = 1, aux;
-    int matAux[100][100];
+/**
+    Programa para solucionar um sistema linear NxN, sendo este de 2 a 4.
+    Sendo utilizado 3 funções para calcular o determinante, um para matriz 2x2, outro para 3x3 utilizando o método de sarrus e
+    outro para 4x4 utilizando laplace.
+    para solucionar o sistema linear está sendo usado o método de cramer.
+
+*/
+
+// Declarações das funções utilizadas no programa
+float determinanteOrdem2(float matriz[][5], int tam); // Função para calcular o determinante de matriz 2x2
+float determinanteOrdem3(float matriz[][5], int tam); // Função para calcular o determinante de matriz 3x3
+float fixMat(float matriz[][5], int tam, int l, int c); // Função para transformar a matriz 4x4 em 3x3 e retornar o determinante de matriz 3x3
+float determinanteLaplace(float matriz[][5], int tam); // Função para calcular o determinante de matriz 4x4 utilizando laplace
+void matrizSubstituida(float vet[][5], int tam, float coeficientes[], float matAux[][5], int c); // Função para substituir as respectivas colunas pelo valores independentes.
+void resolverSistemaCramer(float vet[][5], int tam, float coeficientes[], float *x, float *y, float *z, float *w, float det); // resolver os sistemas linear utilizando o regra de crammer
+
+int main()
+{
+    int ordem;
+    float matriz[5][5], coeficientes[5], d, x, y, z, w;
+
+    do {
+        cout << "Matriz Quadrada de ordem: ";
+        cin >> ordem;
+        system("cls");
+    } while(ordem < 2 || ordem > 4);
+    cout << "Insira os valores da Matriz de ordem " << ordem << ": " << endl;
+
+    for ( int i = 0; i < ordem; i++) {
+        for ( int j = 0; j < ordem; j++) {
+            cin >> matriz[i][j];
+        }
+    }
+    cout << "Insira os tempos independentes: " << endl;
+    for ( int i = 0; i < ordem; i++) {
+        cin >> coeficientes[i];
+    }
+
+    system("cls");
+
+    cout << "-------------------------     M A T R I Z   -----------------------\n\n";
+    for ( int i = 0; i < ordem; i++) {
+        cout << "                   ";
+        if(ordem == 2)
+            cout << "        ";
+        else if (ordem == 3)
+            cout << "    ";
+        for ( int j = 0; j < ordem; j++) {
+            cout << setw(6) << matriz[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    cout << endl << endl;
+
+    char c = 'x';
+    for ( int i = 0; i < ordem; i++) {
+        cout << " | ";
+        for ( int j = 0; j < ordem; j++) {
+            if(matriz[i][j] >= 0 && j != 0)
+                cout << "+";
+            if(c == '{')
+                c = 'w';
+            cout << matriz[i][j] << c++;
+
+        }
+        cout << " = " << coeficientes[i] << endl;
+        c = 'x';
+    }
+
+    cout << endl;
+
+    if(ordem == 2) {
+        d = determinanteOrdem2(matriz,ordem);
+    } else if (ordem == 3) {
+        d = determinanteOrdem3(matriz,ordem);
+    } else if (ordem > 3) {
+        d = determinanteLaplace(matriz,ordem);
+    }
+    cout << " Determinante: " << d << endl;
+
+    resolverSistemaCramer(matriz, ordem, coeficientes, &x, &y, &z, &w, d);
+
+    if(d != 0) { // Se o determinante for diferente de 0 é porque existe somente uma solução para o sistema
+        cout << " SPD - Sistema Possivel e Determinado\n";
+        if(ordem == 2)
+            cout << " X = " << x << "\n Y = " << y << endl;
+        else if (ordem == 3)
+            cout << " X = " << x << "\n Y = " << y << "\n Z = " << z << endl;
+        else if (ordem == 4)
+            cout << " X = " << x << "\n Y = " << y << "\n Z = " << z << "\n W = " << w << endl;
+
+    } else { // Se o determinante for diferente igual a 0 é porque ele pode ser ou SI ou SPI
+        if((ordem == 2 && x != 0 || y != 0) ||
+           (ordem == 3 && x != 0 || y != 0 || z != 0) ||
+           (ordem == 4 && x != 0 || y != 0 || z != 0 || w != 0)) // Se pelo menos uma das icognitas forem diferente de 0, ele é um SI
+            cout << " SI - Sistema Impossivel\n";
+        else
+            cout << " SPI - Sistema Possivel Indeterminando\n";
+    }
+    return 0;
+}
+
+// Implementações das funções
+
+float determinanteOrdem2(float matriz[][5], int tam) {
+    float d = 1, aux;
     for ( int i = 0; i < tam; i++) {
         d*=matriz[i][i];
     }
@@ -19,9 +123,9 @@ int determinanteOrdem2(int matriz[][100], int tam) {
     return (aux - d);
 }
 
-int determinanteOrdem3(int matriz[][100], int tam) {
-    int d = 1, p1, p2, p3, c;
-    int matAux[100][100];
+float determinanteOrdem3(float matriz[][5], int tam) {
+    float d = 1, p1, p2, p3, matAux[5][5];
+    int c;
 
     for(int i = 0; i < tam; i++) {
         for(int j = 0; j < tam; j++) {
@@ -56,8 +160,8 @@ int determinanteOrdem3(int matriz[][100], int tam) {
     return d;
 }
 
-int fixMat(int matriz[][100], int tam, int l, int c){
-    int matAux[100][100];
+float fixMat(float matriz[][5], int tam, int l, int c){
+    float matAux[5][5];
     int p = 0, q = 0;
     for ( int i = 0; i < tam; i++) {
         for ( int j = 0; j < tam; j++) {
@@ -71,20 +175,13 @@ int fixMat(int matriz[][100], int tam, int l, int c){
         }
     }
 
-    for ( int i = 0; i < tam - 1; i++) {
-        for ( int j = 0; j < tam - 1; j++) {
-            cout << matAux[i][j] << " ";
-        }
-        cout << endl;
-    }
-
-
     return determinanteOrdem3(matAux,tam - 1);
 }
 
-int determinanteLaplace(int matriz[][100], int tam) {
-    int d = 1, sum = 0, tAux = tam;
-    int c = 0, l = 0;
+float determinanteLaplace(float matriz[][5], int tam) {
+    int tAux = tam;
+    float sum = 0;
+
     if(tam >= 5)
         tAux = 1;
     for ( int i = 0; i < 1; i++) {
@@ -96,7 +193,7 @@ int determinanteLaplace(int matriz[][100], int tam) {
     return sum;
 }
 
-void matrizSubstituida(int vet[][100], int tam, int coeficientes[], int matAux[][100], int c) {
+void matrizSubstituida(float vet[][5], int tam, float coeficientes[], float matAux[][5], int c) {
     if(c == 1) {
         for ( int i = 0; i < tam; i++) {
             for ( int j = 0; j < tam; j++) {
@@ -124,20 +221,31 @@ void matrizSubstituida(int vet[][100], int tam, int coeficientes[], int matAux[]
                     matAux[j][i] = vet[j][i];
             }
         }
+    } else if (c == 4) {
+        for ( int i = 0; i < tam; i++) {
+            for ( int j = 0; j < tam; j++) {
+                if(i == 3)
+                    matAux[j][i] = coeficientes[j];
+                else
+                    matAux[j][i] = vet[j][i];
+            }
+        }
     }
 }
 
-void resolverSistemaCramer(int vet[][100], int tam, int coeficientes[], int *x, int *y, int *z, int det) {
+void resolverSistemaCramer(float vet[][5], int tam, float coeficientes[], float *x, float *y, float *z, float *w, float det) {
 
-    int matAux[tam][100];
+    float matAux[tam][5];
 
     if(tam == 2) {
         matrizSubstituida(vet,tam,coeficientes,matAux,1);
         *x = determinanteOrdem2(matAux,tam);
         matrizSubstituida(vet,tam,coeficientes,matAux,2);
         *y = determinanteOrdem2(matAux,tam);
-        *x/=det;
-        *y/=det;
+        if(det != 0) {
+            *x/=det;
+            *y/=det;
+        }
     } else if (tam == 3) {
         matrizSubstituida(vet,tam,coeficientes,matAux,1);
         *x = determinanteOrdem3(matAux,tam);
@@ -145,81 +253,29 @@ void resolverSistemaCramer(int vet[][100], int tam, int coeficientes[], int *x, 
         *y = determinanteOrdem3(matAux,tam);
         matrizSubstituida(vet,tam,coeficientes,matAux,3);
         *z = determinanteOrdem3(matAux,tam);
-        *x/=det;
-        *y/=det;
-        *z/=det;
-    }
-}
+        if(det != 0) {
+            *x/=det;
+            *y/=det;
+            *z/=det;
+        }
+    } else if (tam == 4) {
+        matrizSubstituida(vet,tam,coeficientes,matAux,1);
+        *x = determinanteLaplace(matAux,tam);
 
-int main()
-{
-    int ordem, matriz[100][100], coeficientes[100], d, x, y, z;
-    cout << "Matriz Quadrada de ordem: ";
-    cin >> ordem;
+        matrizSubstituida(vet,tam,coeficientes,matAux,2);
+        *y = determinanteLaplace(matAux,tam);
 
-    cout << "Insira os valores da Matriz de ordem " << ordem << ": " << endl;
+        matrizSubstituida(vet,tam,coeficientes,matAux,3);
+        *z = determinanteLaplace(matAux,tam);
 
-    for ( int i = 0; i < ordem; i++) {
-        for ( int j = 0; j < ordem; j++) {
-            cin >> matriz[i][j];
+        matrizSubstituida(vet,tam,coeficientes,matAux,4);
+        *w = determinanteLaplace(matAux,tam);
+
+        if(det != 0) {
+            *x/=det;
+            *y/=det;
+            *z/=det;
+            *w/=det;
         }
     }
-    cout << "Insira os tempos independentes: " << endl;
-    for ( int i = 0; i < ordem; i++) {
-        cin >> coeficientes[i];
-    }
-
-    system("cls");
-
-    cout << "-------------------------     M A T R I Z   -----------------------\n\n";
-    for ( int i = 0; i < ordem; i++) {
-        cout << "                       ";
-        for ( int j = 0; j < ordem; j++) {
-            cout << setw(6) << matriz[i][j] << " ";
-        }
-        cout << endl;
-    }
-
-    cout << endl << endl;
-
-    char c = 'x';
-    for ( int i = 0; i < ordem; i++) {
-        cout << " | ";
-        for ( int j = 0; j < ordem; j++) {
-            if(matriz[i][j] >= 0 && j != 0)
-                cout << "+";
-            cout << matriz[i][j] << c++;
-        }
-        cout << " = " << coeficientes[i] << endl;
-        c = 'x';
-    }
-
-    cout << endl;
-
-    if(ordem == 2) {
-        d = determinanteOrdem2(matriz,ordem);
-    } else if (ordem == 3) {
-        d = determinanteOrdem3(matriz,ordem);
-    } else if (ordem > 3) {
-        d = determinanteLaplace(matriz,ordem);
-    }
-    cout << " Determinante: " << d << endl;
-
-    resolverSistemaCramer(matriz, ordem, coeficientes, &x, &y, &z, d);
-    if(d != 0) {
-        cout << " SPD - Sistema Possivel e Determinado\n";
-        if(ordem == 2)
-            cout << " X = " << x << "\n Y = " << y << endl;
-        else if (ordem == 3)
-            cout << " X = " << x << "\n Y = " << y << "\n Z = " << z << endl;
-        else
-            cout << " X = " << x << "\n Y = " << y << endl;
-
-    } else {
-        if(x == 0 && y == 0)
-            cout << "SI - Sistema Impossivel\n";
-        else
-            cout << "SPI - Sistema Impossivel Indeterminando\n";
-    }
-    return 0;
 }
