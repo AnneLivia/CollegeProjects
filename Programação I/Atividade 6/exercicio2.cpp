@@ -6,6 +6,10 @@
 #include <cstring>
 #define TAM 3
 
+/*
+    Developed by Anne Livia da Fonseca Macedo
+*/
+
 using namespace std;
 
 void imprimirMatriz(char mat[][TAM]) {
