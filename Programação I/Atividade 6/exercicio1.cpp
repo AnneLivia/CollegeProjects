@@ -2,6 +2,10 @@
 #include <clocale>
 #include <cstdlib>
 
+/*
+    Developed by Anne Livia da Fonseca Macedo
+*/
+
 using namespace std;
 
 bool busca(int vet[], int t, int num) {
