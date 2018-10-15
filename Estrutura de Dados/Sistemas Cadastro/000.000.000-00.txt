@@ -1,0 +1,27 @@
+Nome da Pessoa
+(00)0000-0000
+(00)00000-0000
+000.000.000-00
+00000-00
+00000-00
+00/00/0000
+Feminino
+Solteiro (a)
+Profissão da Pessoa
+Nome da Mãe da Pessoa
+Nome do Pai da pessoa
+Amarelo (a)
+Rua da pessoa
+Complemento da rua da pessoa
+00000
+Bairro da pessoa
+Cidade da pessoa
+00000-00
+Pará
+00/00/0000
+Medico 1
+medico 2
+sangue
+Outros
+O+
+Nada a observar
