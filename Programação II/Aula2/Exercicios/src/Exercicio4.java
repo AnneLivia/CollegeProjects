@@ -16,7 +16,7 @@ public class Exercicio4 {
 		name2 = ip.next();
 		age2 = ip.nextInt();
 		
-		meanAge = (age1 + age2) / 2.0;
+		meanAge = (double)(age1 + age2) / 2;
 		
 		System.out.printf("A idade média de %s e %s é de %.1f%n",name1,name2,meanAge);
 		
