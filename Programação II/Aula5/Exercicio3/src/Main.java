@@ -32,5 +32,7 @@ public class Main {
 		porc16 = (double) (qtdMenos16 * 100) / n;
 		System.out.printf("Altura média: %.2f%n", mediaAlt);
 		System.out.printf("Pessoas com menos de 16 anos: %.2f%%%n", porc16);
+		
+		ip.close();
 	}
 }
