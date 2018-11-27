@@ -1,6 +1,5 @@
 package Casa2;
 
-import Casa1.Sogra;
 import Casa1.Sogro;
 
 public class Genro {
@@ -16,6 +15,6 @@ public class Genro {
 		System.out.println(sograo.gostoDeCerveja);
 		
 		//Sogra sogrinha = new Sogra();
-		//System.out.println(mamae.segredoDeFamilia);
+		//System.out.println(sogrinha.segredoDeFamilia);
 	}
 }
