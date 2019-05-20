@@ -1,0 +1,93 @@
+/* Configuration of the full site*/
+* {
+    box-sizing: border-box;
+    color: rgb(3, 3, 3);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* changing the color of the background*/ 
+body {
+    background-color: rgba(211, 211, 211, 0.315);
+}
+
+/* class to certer text */
+.content_center {
+    text-align: center;
+    max-width: 500px;
+    min-width: 350px;
+}
+
+/* Configuration of the main body*/
+#main {
+    overflow:auto;
+    height:480px;
+    width: 600px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 20px;
+    margin: 2% auto;
+    padding: 50px;
+    background-color: rgb(252, 252, 252);
+    box-shadow: 10px 10px 20px rgba(82, 82, 82, 0.6);
+}
+
+/* Configuration of the header*/
+h1  {
+    color: gray;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2.5em;
+    margin: 5px auto 10px;
+}
+
+.listaTarefas {
+    list-style: none;
+    padding: 0;
+    margin-top: -20px;
+}
+
+.listaTarefas li {
+    padding: 10px;
+    border-bottom: 1px solid #CCC;
+}
+
+.listaTarefas li input {
+    /* initial makes it occupies only the space the checkbox should occupie*/
+    width: initial;   
+    margin-right: 10px;
+}
+
+.listaTarefas li.complete {
+    text-decoration: line-through;
+    color: #999;
+    cursor: not-allowed;
+}
+
+.listaTarefas li button#delete, .listaTarefas li button#edit {
+    width: 40px;
+    height: 25px;
+    margin-right: 4px;
+    border: none;
+    background-color: rgb(252, 252, 252);
+    cursor: pointer;
+    font-weight: bold;    
+    float: right;
+    border: 1px solid rgb(231, 231, 231);
+}
+
+.listaTarefas li button#delete {
+    color: rgb(255, 81, 81);
+}
+
+#novaTarefa {
+    background-color: rgb(252, 252, 252);
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #CCC;
+    font-size: 1.1em;
+}
+
+.listaTarefas span {
+    color: rgb(131, 131, 131);
+    font-size: 14px;
+}
