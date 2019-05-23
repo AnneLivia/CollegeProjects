@@ -70,17 +70,17 @@ function listarTarefas() {
             // é a mensagem da caixa de dialogo e o segundo parametro é o valor padrão inserido no input
             // que neste caso será o titulo da tarefa
             let updateTask = prompt('Editar tarefa: ', titulo);
-            let updateDate = prompt('Atualizar data: ', date);
-            let updateHour = prompt('Atualizar hora: ', hour);
+            let updateDate = prompt('Atualizar data (## / ## / ####): ', date);
+            let updateHour = prompt('Atualizar hora: (## : ## : ##)', hour);
             let updateLocal = prompt('Atualizar cidade: ', local);
             dados.forEach( task => {
                 // updating text if possible
                 if(task.id == idd) {
                     if(updateTask != "" && updateTask != null)
                         task.titulo = updateTask;
-                    if(updateDate != "" && updateDate != null)
+                    if(updateDate != "" && updateDate != null && isValidDate(updateDate))
                         task.date = updateDate;
-                    if(updateHour != "" && updateHour != null)
+                    if(updateHour != "" && updateHour != null && isValidHour(updateHour))
                         task.hour = updateHour;
                     if(updateLocal != "" && updateLocal != null)
                         task.local = updateLocal;
@@ -93,6 +93,32 @@ function listarTarefas() {
         document.querySelector('.listaTarefas').append(li);
     });
 }
+
+function isValidDate(updateDate) {
+    copyStr = '';
+    for(let i = 0; i < updateDate.length; i++) {
+        if(updateDate[i] != '/') {
+            copyStr+='0';
+        } else {
+            copyStr+='/';
+        }
+    }
+
+    return (copyStr === "00/0/0000" || copyStr === "00/00/0000");
+}
+
+function isValidHour(updateHour) {
+    copyStr = '';
+    for(let i = 0; i < updateHour.length; i++) {
+        if(updateHour[i] != ':')
+            copyStr+='0';
+        else
+            copyStr+=':';
+    }
+
+    return (copyStr == "00:00:00" || copyStr == "00:0:00");
+}
+
 
 function isEmpty(str) {
     for(let i = 0; i < str.length; i++) {
