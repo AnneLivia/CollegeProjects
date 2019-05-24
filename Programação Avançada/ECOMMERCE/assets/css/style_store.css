@@ -1,0 +1,147 @@
+@font-face {
+    font-family: "Orbitron";
+    src: url("../font/Raleway-Regular.ttf") format('truetype');
+}
+
+/* Configuration of the full site*/
+* {
+    
+    box-sizing: border-box;
+    color: rgb(5, 5, 5);
+    font-family: 'Raleway', sans-serif;
+}
+
+/* changing the color of the background*/ 
+body {
+    min-width: 1320px;
+    background-image: url('../image/background2.jpg');
+}
+
+/* class to certer text */
+.content_center {
+    text-align: center;
+    max-width: 500px;
+    min-width: 350px;
+}
+
+/* Configuration of the main body*/
+#main {
+    width: 100%;
+    height: 100%;
+    margin: -8px auto;
+    padding: 50px;
+}
+
+/* Configuration of the nav*/
+#menu nav  {
+    float: right;
+    margin: -58px -58px 0 0;
+    padding: 10px;
+}
+
+#menu nav a {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    transition: 1s;
+    font-size: 20px;
+    box-sizing: border-box;
+}
+
+#menu nav a:hover {
+    background-color: white;
+    color: black;
+}
+
+#menu nav a:focus {
+    background-color: rgb(143, 143, 143);
+}
+
+#menu nav img {
+    right: 2px;
+    top: 6px;
+    position: relative;
+    width: 25px;
+    border-radius: 250px;
+}
+
+/* configuration of the items*/
+
+#items {
+    clear: both;
+    margin: 50px 0 0 8%; 
+}
+
+#items p {
+    text-align: center;
+    margin-top: -1px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#items form .books{
+    float: left;
+    margin: -50px 6px 40px 6px;
+    color: rgba(255, 255, 255, 0.445);
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 2px 2px rgba(41, 41, 41, 0.445);
+    width: 200px;
+    height: 200px;
+}
+
+#items form .down{
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+#items form .books img {
+    margin: 1px 14%;
+    border: none;
+    width: 150px;
+    height: 140px;
+}
+
+#items form .books input {
+    font-weight: bold;
+    font-size: 16px;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #7b84ff1f;
+}
+
+#btnSubmit {
+    margin-left: 83%;
+    font-weight: bold;
+    background-color: #ffffff;
+    width: 100px;
+    padding: 10px;
+    text-transform: uppercase;
+    background-origin: padding-box;
+    transition: 0.5s;
+    border: none;
+}
+
+#btnSubmit:hover {
+    background-color: rgba(147, 163, 255, 0.329);
+}
+
+#btnSubmit:focus {
+    border-bottom: 4px solid rgb(147, 135, 255);
+}
+
+#btnSubmit:hover {
+    color: white;
+    background-color: #6655ff;;
+    cursor: pointer;
+}
+
+#btnSubmit:active {
+    background-color: #9359ff;
+}
+
+footer {
+    margin-top: 60px;
+    text-align: center;
+    font-size: 0.7em;
+}
