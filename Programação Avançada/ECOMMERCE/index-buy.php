@@ -1,4 +1,10 @@
 <?php
+    session_start();
+    if(isset($_SESSION['email'])) {
+        $email = $_SESSION['email'];
+    } else {
+        header('location: index.php');
+    }
 
     $price_book = array(78.90, 80.00, 100.00, 25.50, 20.24, 200.20, 200.30, 500.00, 1008.90, 78.90);
 
@@ -26,8 +32,8 @@
         <div id="main">
             <div id="menu">
                 <nav>
-                    <a href="index.html" ><img src="assets/image/image.jpg" alt="A imagem contem uma pessoa" title="perfil"/> LOG OUT</a>
-                    <a href="ecommerce.html" > RETURN </a>
+                <img src="assets/image/image.jpg" alt="A imagem contem uma pessoa" title="perfil"/><?php echo $email?> <a href="index.php" >LOG OUT</a>
+                    <a href="ecommerce.php" > RETURN </a>
                 </nav>
             </div>
             <p class="content_center"> 
