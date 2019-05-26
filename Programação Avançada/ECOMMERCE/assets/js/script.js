@@ -1,6 +1,6 @@
 
 document.querySelector("#btnLogin").addEventListener("submit", e => {
-    // e.preventDefault();
+    e.preventDefault();
     let email = document.querySelector("#Uemail").value;
     let password = document.querySelector("#UPassword").value;
 

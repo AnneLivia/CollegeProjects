@@ -3,6 +3,8 @@
     if(isset($_SESSION['email'])) {
         unset($_SESSION['email']);
         unset($_SESSION['password']);
+        unset($_SESSION['car']);
+        unset($_SESSION['price']);
     }
 ?>
 

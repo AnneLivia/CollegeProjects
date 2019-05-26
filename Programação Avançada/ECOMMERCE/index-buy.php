@@ -2,6 +2,8 @@
     session_start();
     if(isset($_SESSION['email'])) {
         $email = $_SESSION['email'];
+        $qtsItems = $_SESSION['car'];
+        $price = $_SESSION['price'];
     } else {
         header('location: index.php');
     }
@@ -12,8 +14,14 @@
     for ($i = 1; $i <= 10; $i++) {
         $qtd+=$_POST['qtdb' . (string)$i];
         $total+=$_POST['qtdb' . (string)$i] * $price_book[$i - 1];
+
     }
-    
+
+    $_SESSION['car'] = (int)$qtsItems + $qtd;
+    $_SESSION['price'] = $total + (int)$price;
+
+    $price = $_SESSION['price'];
+    $qtd = $_SESSION['car'];
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +44,7 @@
                     <a href="ecommerce.php" > RETURN </a>
                 </nav>
             </div>
-            <p class="content_center"> 
+            <p id="content" class="content_center"> 
                 Total books: 
                 <?php
                     echo $qtd;
@@ -44,7 +52,7 @@
                 <br/><br/>
                 Price: R$
                 <?php
-                    echo $total;
+                    echo $price;
                 ?>
             </p>
         <div>

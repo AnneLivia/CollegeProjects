@@ -10,6 +10,8 @@
             session_start();
             $_SESSION['email'] = $email;
             $_SESSION['password'] = $senha;
+            $_SESSION['car'] = '0';
+            $_SESSION['price'] = '0.00';
             header('location: ecommerce.php');
         } else {
             header('location: index.php');
