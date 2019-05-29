@@ -3,7 +3,6 @@
     if(isset($_SESSION['email'])) {
         $email = $_SESSION['email'];
         $qtsItems = $_SESSION['car'];
-        $price = $_SESSION['price'];
     } else {
         header('location: index.php');
     }
@@ -12,14 +11,15 @@
 
     $qtd = $total = 0;
     for ($i = 1; $i <= 10; $i++) {
+        $_SESSION['qtdb'.(string)$i] = $_POST['qtdb' . (string)$i];
         $qtd+=$_POST['qtdb' . (string)$i];
         $total+=$_POST['qtdb' . (string)$i] * $price_book[$i - 1];
 
     }
 
-    $_SESSION['car'] = (int)$qtsItems + $qtd;
-    $_SESSION['price'] = $total + (int)$price;
-
+    $_SESSION['car'] = $qtd;
+    $_SESSION['price'] = $total;
+    
     $price = $_SESSION['price'];
     $qtd = $_SESSION['car'];
 ?>

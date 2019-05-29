@@ -1,4 +1,15 @@
-var wasAdded = [0,0,0,0,0,0,0,0,0,0];
+var wasAdded = [
+    parseInt(document.querySelector("#qtdb1").value),
+    parseInt(document.querySelector("#qtdb2").value),
+    parseInt(document.querySelector("#qtdb3").value),
+    parseInt(document.querySelector("#qtdb4").value),
+    parseInt(document.querySelector("#qtdb5").value),
+    parseInt(document.querySelector("#qtdb6").value),
+    parseInt(document.querySelector("#qtdb7").value),
+    parseInt(document.querySelector("#qtdb8").value),
+    parseInt(document.querySelector("#qtdb9").value),
+    parseInt(document.querySelector("#qtdb10").value)
+];
 
 document.querySelector("#addCar1").addEventListener('click', e => {
     e.preventDefault();

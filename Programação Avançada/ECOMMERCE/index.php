@@ -5,6 +5,10 @@
         unset($_SESSION['password']);
         unset($_SESSION['car']);
         unset($_SESSION['price']);
+        for($i = 1; $i <= 10; $i++) {
+            if(isset($_SESSION['qtdb'.$i]))
+                unset($_SESSION['qtdb'.$i]);
+        }
     }
 ?>
 
