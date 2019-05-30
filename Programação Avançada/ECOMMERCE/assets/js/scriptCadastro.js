@@ -1,5 +1,5 @@
 
-document.querySelector("#btnLogin").addEventListener("submit", e => {
+document.querySelector("#btnCadastro").addEventListener("submit", e => {
     e.preventDefault();
     let email = document.querySelector("#Uemail").value;
     let password = document.querySelector("#UPassword").value;
@@ -21,7 +21,7 @@ document.querySelector("#btnLogin").addEventListener("submit", e => {
 });
 
 
-document.querySelector("#btnCadastro").addEventListener("click", e => {
+document.querySelector("#btnReturn").addEventListener("click", e => {
     e.preventDefault();
-    window.location.replace("telaCadastro.php");
+    window.location.replace("index.php");
 });

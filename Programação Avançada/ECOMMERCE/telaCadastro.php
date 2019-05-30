@@ -1,20 +1,5 @@
-<?php
-    session_start();
-    if(isset($_SESSION['email'])) {
-        unset($_SESSION['email']);
-        unset($_SESSION['password']);
-        unset($_SESSION['car']);
-        unset($_SESSION['price']);
-        for($i = 1; $i <= 10; $i++) {
-            if(isset($_SESSION['qtdb'.$i]))
-                unset($_SESSION['qtdb'.$i]);
-        }
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
-
     <head>
         <meta charset="UTF-8">
         <!-- DEVICE-WIDTH IS THE WIDTH OF THE DEVICE THAT I AM USING-->
@@ -33,7 +18,7 @@
                 <div id="login">  
                     <div id="formLogin" class="logform content_center">
                         <p class="content_center">Sign In to GETBook.com</p>
-                        <form action="index-direct.php" method="POST">
+                        <form action="cadastro.php" method="POST">
                             <div>
                                 <input id="Uemail" name="UEmail" type="email" placeholder="Type your email." required>
                             </div>
@@ -41,12 +26,12 @@
                                 <input id="UPassword" name="UPassword" type="password" placeholder="Type your password." required>
                             </div>    
                             <div>
-                                <button id="btnLogin">Log In </button>
-                            </div>
-                            <div>
                                 <button id="btnCadastro">Cadastrar</button>
                             </div>
-                        </form>
+                            <div>
+                                <button id="btnReturn">Return</button>
+                            </div>
+                        </form> 
                     </div>
                 </div>
 
@@ -63,7 +48,6 @@
         </div>
     
         <!-- por questões de desempenho a inserção do javascript tem que ficar no fim do body -->
-        <script src="assets/js/script.js"></script>
-    
+        <script src="assets/js/scriptCadastro.js"></script>
     </body>
 </html>
