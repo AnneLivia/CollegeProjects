@@ -8,7 +8,7 @@
     }
 
     $price_book = array(78.90, 80.00, 100.00, 25.50, 20.24, 200.20, 200.30, 500.00, 1008.90, 78.90);
-
+    
     $qtd = $total = 0;
     for ($i = 1; $i <= 10; $i++) {
         $_SESSION['qtdb'.(string)$i] = $_POST['qtdb' . (string)$i];
@@ -22,6 +22,7 @@
     
     $price = $_SESSION['price'];
     $qtd = $_SESSION['car'];
+    $infoBooks = $_POST['all'];
 ?>
 
 <!DOCTYPE html>
@@ -40,21 +41,24 @@
         <div id="main">
             <div id="menu">
                 <nav>
+                <p id="totalBook">Total books:  <?php
+                    echo $qtd;
+                ?></p>
+                <p id="price"> Price: R$
+                    <?php
+                        echo $price;
+                    ?>
+                </p>
                 <img src="assets/image/image.jpg" alt="A imagem contem uma pessoa" title="perfil"/><?php echo $email?> <a href="index.php" >LOG OUT</a>
                     <a href="ecommerce.php" > RETURN </a>
                 </nav>
             </div>
-            <p id="content" class="content_center"> 
-                Total books: 
-                <?php
-                    echo $qtd;
-                ?>
-                <br/><br/>
-                Price: R$
-                <?php
-                    echo $price;
-                ?>
-            </p>
+            <div id="content">
+                <p id="content_center"> 
+                    <?php echo $infoBooks; ?>
+                </p>
+            </div>
         <div>
+        <script src="assets/js/script_buy.js"></script>
     <body>
 <html>

@@ -15,10 +15,6 @@ body {
     background-image: url('../image/background2.jpg');
 }
 
-/* class to certer text */
-.content_center {
-    text-align: center;
-}
 
 /* Configuration of the main body*/
 #main {
@@ -29,11 +25,6 @@ body {
     border-radius: 20px;
     margin: 8% auto;
     padding: 50px;
-}
-
-#main p{
-    font-size: 20px;
-    margin: 18% 0;
 }
 
 /* Configuration of the nav*/
@@ -53,6 +44,19 @@ body {
     box-sizing: border-box;
 }
 
+#menu nav p {
+    font-weight: bold;
+    font-size: 16px;
+    float: left;
+    margin-top: 10px;
+}
+
+#menu nav #price {
+    
+    margin-right: 68px; 
+    margin-left: 13px;
+}
+
 #menu nav a:hover {
     border-top-right-radius: 20px;
     background-color: rgba(167, 112, 255, 0.5);
@@ -70,3 +74,11 @@ body {
     width: 25px;
     border-radius: 250px;
 }
+
+/* class to certer text */
+#content_center, #content {
+    margin-top: 12%;
+    font-weight: bold;
+    text-align: center;
+}
+  
