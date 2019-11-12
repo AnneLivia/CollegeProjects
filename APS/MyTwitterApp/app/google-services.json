@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "665626173441",
+    "firebase_url": "https://myapp-ee06a.firebaseio.com",
+    "project_id": "myapp-ee06a",
+    "storage_bucket": "myapp-ee06a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665626173441:android:d4daf274d0ec3dc1bd2000",
+        "android_client_info": {
+          "package_name": "com.anne.mytwitterapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "665626173441-oocblbe2ptl6v6uhptkq97uudngqj4he.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anne.mytwitterapp",
+            "certificate_hash": "129185a23b9504a66317814fd705e84eaa2e96ee"
+          }
+        },
+        {
+          "client_id": "665626173441-n2gfam9g27a9j4r7hlqnt56vmhdglvih.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCa_ceepQkJm0s9ji9RjGBgMLsKm-ZANL4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "665626173441-n2gfam9g27a9j4r7hlqnt56vmhdglvih.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
