@@ -250,6 +250,7 @@ public class MeuFeed extends AppCompatActivity {
         int id = item.getItemId();
         if(id == R.id.inicio) {
             finish();
+            MeuFeed.this.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
 
         return super.onOptionsItemSelected(item);
@@ -259,6 +260,8 @@ public class MeuFeed extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        MeuFeed.this.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user == null) {

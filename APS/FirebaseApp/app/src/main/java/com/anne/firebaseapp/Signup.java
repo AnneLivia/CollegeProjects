@@ -30,6 +30,8 @@ public class Signup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        Signup.this.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
         btvoltar = (Button) findViewById(R.id.btreturn);
 
         btvoltar.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +40,7 @@ public class Signup extends AppCompatActivity {
                 Intent i = new Intent(Signup.this, MainActivity.class);
                 startActivity(i);
                 finish();
+                Signup.this.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
 
@@ -58,6 +61,7 @@ public class Signup extends AppCompatActivity {
                     Log.d("MeuLog", "Usuário conectado: " + user.getUid());
                     Intent i = new Intent(getApplicationContext(), SegundaTela.class);
                     startActivity(i);
+                    Signup.this.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 } else {
                     Log.d("MeuLog", "Sem usuários conectados");
                 }
@@ -82,28 +86,36 @@ public class Signup extends AppCompatActivity {
     }
 
     public void ClicaCriarUsuario(View view){
-        MinhaAuth.createUserWithEmailAndPassword(CampoEmail.getText().toString(), CampoSenha.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (!task.isSuccessful()){
-                    Log.d("MeuLog", "Falha no cadastro. Causa: " + task.getException().getMessage());
-                    Toast.makeText(Signup.this, "Email já existente.", Toast.LENGTH_SHORT);
-                } else{
-                    //criar o firebase database
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    //cria uma referencia chamada 'usuarios'
-                    //FirebaseAuth.getInstance() cria um id para essa autenticação
-                    //cria uma nova referencia dentro do campo 'usuarios' e o filho
-                    //dele vai criar um objeto com id (getUid) dele
-                    DatabaseReference ref = database.getReference("usuarios").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                    //dentro desse objeto vamos salvar o nome do usuario
-                    ref.child("nome").setValue(CampoNome.getText().toString());
-                    //e o user id sera utilizado para Login do usuario
-                    ref.child("uid").setValue(FirebaseAuth.getInstance().getUid());
+        if(!CampoEmail.getText().toString().isEmpty() &&
+                !CampoNome.getText().toString().isEmpty() && !CampoSenha.getText().toString().isEmpty()) {
+            MinhaAuth.createUserWithEmailAndPassword(CampoEmail.getText().toString(), CampoSenha.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (!task.isSuccessful()) {
+                        Toast.makeText(Signup.this, "Email já existente.", Toast.LENGTH_SHORT).show();
+                        Log.d("MeuLog", "Falha no cadastro. Causa: " + task.getException().getMessage());
+                    } else {
+                        //criar o firebase database
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        //cria uma referencia chamada 'usuarios'
+                        //FirebaseAuth.getInstance() cria um id para essa autenticação
+                        //cria uma nova referencia dentro do campo 'usuarios' e o filho
+                        //dele vai criar um objeto com id (getUid) dele
+                        DatabaseReference ref = database.getReference("usuarios").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        //dentro desse objeto vamos salvar o nome do usuario
+                        ref.child("nome").setValue(CampoNome.getText().toString());
+                        //e o user id sera utilizado para Login do usuario
+                        ref.child("uid").setValue(FirebaseAuth.getInstance().getUid());
 
-                    Toast.makeText(Signup.this, "Cadastro efetuado com sucesso!", Toast.LENGTH_SHORT);
+                        Intent i = new Intent(getApplicationContext(), SegundaTela.class);
+                        startActivity(i);
+                        Signup.this.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        Toast.makeText(Signup.this, "Cadastro efetuado com sucesso!", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            Toast.makeText(Signup.this, "Preencher todos os campo para efetuar o login.", Toast.LENGTH_SHORT).show();
+        }
     }
 }

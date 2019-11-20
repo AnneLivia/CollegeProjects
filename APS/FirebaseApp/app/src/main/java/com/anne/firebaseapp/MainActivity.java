@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(MainActivity.this, Login.class);
                 startActivity(i);
                 finish();
+                MainActivity.this.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(MainActivity.this, Signup.class);
                 startActivity(i);
                 finish();
+                MainActivity.this.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
     }

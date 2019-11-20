@@ -73,6 +73,8 @@ public class SegundaTela extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_segunda_tela);
 
+        SegundaTela.this.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
         // inicializar objetos
         seguindo = new ArrayList<>();
         usuarios = new ArrayList<>(); // atraves do eventlistener obtem o objeto (usuario) do firebase
@@ -142,6 +144,7 @@ public class SegundaTela extends AppCompatActivity {
             intent.putStringArrayListExtra("seguindo", seguindo);
             SegundaTela.this.startActivity(intent);
             finish();
+            SegundaTela.this.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         } else if(id == R.id.tweet){
             AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.DialogThemeOne);
             builder.setTitle("Fazer um tweet");
@@ -217,7 +220,10 @@ public class SegundaTela extends AppCompatActivity {
 
         } else if (id == R.id.sair){
             FirebaseAuth.getInstance().signOut();
+            Intent t = new Intent(SegundaTela.this, MainActivity.class);
+            SegundaTela.this.startActivity(t);
             finish();
+            SegundaTela.this.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
 
         return super.onOptionsItemSelected(item);
@@ -327,10 +333,4 @@ public class SegundaTela extends AppCompatActivity {
         }
     }
 
-    public void changeColorOfSelectedItem(View view) {
-        if(view.isSelected())
-            view.setBackgroundColor(Color.BLUE);
-        else
-            view.setBackgroundColor(Color.BLACK);
-    }
 }

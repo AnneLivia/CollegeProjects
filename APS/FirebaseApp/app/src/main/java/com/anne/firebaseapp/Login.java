@@ -29,6 +29,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        Login.this.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
         btvoltar = (Button) findViewById(R.id.btreturn);
 
         btvoltar.setOnClickListener(new View.OnClickListener() {
@@ -37,8 +39,10 @@ public class Login extends AppCompatActivity {
                 Intent i = new Intent(Login.this, MainActivity.class);
                 startActivity(i);
                 finish();
+                Login.this.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
+
         MinhaAuth = FirebaseAuth.getInstance();
 
         //inicializar objetos de interface
@@ -79,16 +83,21 @@ public class Login extends AppCompatActivity {
     }
 
     public void ClicaLogin(View view){
-        MinhaAuth.signInWithEmailAndPassword(CampoEmail.getText().toString(), CampoSenha.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(!task.isSuccessful()) {
-                    Log.d("MeuLog", "Falha na autenticação");
-                } else {
-                    Toast.makeText(Login.this, "Bem vindo(a)", Toast.LENGTH_SHORT);
+        if(!CampoEmail.getText().toString().isEmpty() && !CampoSenha.getText().toString().isEmpty()) {
+            MinhaAuth.signInWithEmailAndPassword(CampoEmail.getText().toString(), CampoSenha.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (!task.isSuccessful()) {
+                        Toast.makeText(getApplicationContext(), "Senha e/ou Email incorreto.", Toast.LENGTH_SHORT).show();
+                        Log.d("MeuLog", "Falha na autenticação");
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Bem vindo(a)", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            Toast.makeText(getApplicationContext(), "Preencher todos os campos!", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }
