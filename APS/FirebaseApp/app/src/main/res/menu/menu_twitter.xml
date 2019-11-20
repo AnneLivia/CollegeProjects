@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    xlmns:app="http://schemas.android.com/apk/res-auto"
+    xlmns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.meuappfirebase"
+    <item
+        android:id="@+id/tweet"
+        android:fontFamily="@font/kite_one"
+        android:icon="@drawable/twitter"
+        android:title="Tweet" />
+    <item
+        android:id="@+id/feed"
+        android:fontFamily="@font/kite_one"
+        android:icon="@drawable/feed"
+        android:title="Feed" />
+    <item
+        android:id="@+id/sair"
+        android:fontFamily="@font/kite_one"
+        android:icon="@drawable/logout"
+        android:title="Logout" />
+</menu>
