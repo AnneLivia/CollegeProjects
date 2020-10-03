@@ -46,8 +46,11 @@ entity Entregador {
   linkFoto String
 }
 
-relationship OneToMany { 
-	Pedido to Produto,
-    Entregador to Pedido
-    Cliente to Pedido
+relationship OneToMany {     
+    Entregador to Pedido{entregador}
+    Cliente to Pedido{cliente}
 } 
+
+relationship ManyToMany{
+     Produto{pedidos} to Pedido{produtos(nome)}
+}
