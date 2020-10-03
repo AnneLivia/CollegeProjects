@@ -1,0 +1,53 @@
+entity Produto {
+  nome String,
+  descricao String,
+  preco Double,
+  linkFoto String,
+  dataCadastro ZonedDateTime,
+  disponivel Boolean,
+  totalEstoque Integer
+}
+
+entity Cliente {
+  nome String,
+  telefone String,
+  email String,
+  login String,
+  senha String,
+  cep String,
+  logradouro String,
+  bairro String,
+  cidade String
+}
+
+enum Pagamento {
+	DINHEIRO, CARTAO
+}
+
+enum StatusPedido {
+	PEDIDO, EM_TRANSITO, ENTREGUE
+}
+
+entity Pedido {
+  dataCadastro ZonedDateTime,
+  formaPagamento Pagamento,
+  precoTotal Double,
+  valorTotalTroco Double,
+  status StatusPedido,
+  observacoesDeEntrega String
+}
+
+entity Entregador {
+  nome String,
+  placaMoto String,
+  latitudeAtual Double,
+  longitudeAtual Double,
+  cpf String,
+  linkFoto String
+}
+
+relationship OneToMany { 
+	Pedido to Produto,
+    Entregador to Pedido
+    Cliente to Pedido
+} 
