@@ -5,10 +5,10 @@ module.exports = app => {
 					[
 						{idPessoa:1, logradouro:"xxx",numero:"xxxx", complemento:"xxxx", bairro:"xxxx",
             cidade:"xxxx", estado:"xxxx", 
-            tipoDeEndereco:"casa"},
+            tipoDeEndereco:"casa", cep:"00000000", idEndereco:1},
 						{idPessoa:2, logradouro:"xxx",numero:"xxxx", complemento:"xxxx", bairro:"xxxx",
             cidade:"xxxx", estado:"xxxx", 
-            tipoDeEndereco:"apt"},
+            tipoDeEndereco:"apt", cep:"00000000", idEndereco:2},
 					]
 				)				
 			}

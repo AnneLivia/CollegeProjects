@@ -3,7 +3,9 @@ const req = require('request')
 const bodyParser = require('body-parser')
 module.exports = app => {
 	const Enderecos = app.models.enderecos;
-	
+
+  app.use(bodyParser.urlencoded({ extended: true }));
+
 	app.get("/enderecos", (req, res) => {
 			Enderecos.findAll({},(retorno)=>
 							{res.json({enderecos: retorno})});
@@ -28,6 +30,7 @@ module.exports = app => {
 	app.post("/enderecos", jsonParser, function(req, res) {
 		
  			var idPessoa = req.body.idPessoa;
+      var idEndereco = req.body.idEndereco;
       var logradouro = req.body.logradouro;
       var numero = req.body.numero;
       var complemento = req.body.complemento;
@@ -35,7 +38,10 @@ module.exports = app => {
       var cidade = req.body.cidade;
       var estado = req.body.estado;
       var tipoDeEndereco = req.body.tipoDeEndereco;
+      var cep = req.body.cep;
 
+      console.log(req.body);
+      
 			res.json(
 				{
 					idPessoaRecebido: idPessoa,
@@ -46,6 +52,8 @@ module.exports = app => {
           cidadeRecebido: cidade,
           estadoRecebido: estado,
           tipoDeEnderecoRecebido: tipoDeEndereco,
+          cepRecebido: cep,
+          idEnderecoRecebido: idEndereco,
 				}
 			)
 	});
