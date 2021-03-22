@@ -52,7 +52,7 @@
                     <input type="email" name="uEmail" placeholder="Insira seu email" class="uEmail form-control" required />
                     <input type="password" name="uSenha" placeholder="Digite sua senha" class="uSenha form-control" required />
                     <button class="btn text-muted text-center btn-success btnLogin">Log In</button>
-                    <button class="btn text-muted text-center btn-warning btnCadastrar" type="submit">Registrar</button>
+                    <button class="btn text-muted text-center btn-default btnCadastrar" type="submit">Registrar</button>
                 </form>
             </div>
             <footer>

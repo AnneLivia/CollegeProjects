@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <button class="btn text-muted text-center btn-success btnRegistrar" type="submit">Registrar</button>
-                    <button class="btn text-muted text-center btn-warning btnVoltar">Voltar</button>
+                    <button class="btn text-muted text-center btn-default btnVoltar">Voltar</button>
                 </form>
             </div>
             <footer>
