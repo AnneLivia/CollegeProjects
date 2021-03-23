@@ -34,12 +34,11 @@
                 id int(100) NOT NULL AUTO_INCREMENT,
                 email varchar(200) NOT NULL,
                 senha varchar(30) NOT NULL,
-                genero varchar(30) NOT NULL,
+                genero varchar(20) NOT NULL,
                 cpf varchar(30) NOT NULL,
                 nomeCompleto varchar(200) NOT NULL,
                 PRIMARY KEY(id)
             ) DEFAULT CHARSET=utf8";
-
 
             $createTable = mysqli_query($conexao, $table);
             
@@ -77,3 +76,4 @@
         mysqli_close($conexao);
     }
 ?>
+

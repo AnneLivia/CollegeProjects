@@ -34,7 +34,7 @@ $email = $_SESSION['email'];
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.php"><img src="assets/img/icon_hospital_nav.png" id="iconHopNav"/> &nbsp;HOSPITAL MANAGEMENT SYSTEM</a>
+                    <a class="navbar-brand" href="index.php"><img src="assets/img/icon_hospital_nav.png" id="iconHopNav" /> &nbsp;HOSPITAL MANAGEMENT SYSTEM</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -44,90 +44,71 @@ $email = $_SESSION['email'];
                 </div>
             </div>
         </div>
-       <!-- /. NAV TOP  -->
-       <nav class="navbar-default navbar-side" role="navigation">
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="text-center user-image-back">
                         <?php
-                            $address = "";
+                        $address = "";
 
-                            $conexao = mysqli_connect('localhost', 'root', '') or die("Erro de conexao com o servidor" . mysqli_connect_error());
-    
-                            $bd = mysqli_select_db($conexao, "hospital_management");
-    
-                            if (empty($bd)) {
-                                die("Banco de dados não encontrado");
-                            }
-    
-                            $query = "SELECT genero FROM adm WHERE email = '$email'";
-                            $select = mysqli_query($conexao, $query);
-    
-                            if ($select) {
-                                $genero = mysqli_fetch_array($select)['genero'];
-                                if ($genero == "feminino") {
-                                    echo "<img src='assets/img/female.png' class='userImg img-responsive'/>";
-                                } else {
-                                    echo "<img src='assets/img/male.png' class='userImg img-responsive'/>";
-                                }
-                            }
-    
-                            $query = "SELECT nomeCompleto FROM adm WHERE email = '$email'";
-                            $select = mysqli_query($conexao, $query);
-                            if($select) {
-                                $nome = mysqli_fetch_array($select)['nomeCompleto'];
-                            }
+                        $conexao = mysqli_connect('localhost', 'root', '') or die("Erro de conexao com o servidor" . mysqli_connect_error());
 
-                            $query = "SELECT cpf FROM adm WHERE email = '$email'";
-                            $select = mysqli_query($conexao, $query);
-                            if($select) {
-                                $cpf = mysqli_fetch_array($select)['cpf'];
+                        $bd = mysqli_select_db($conexao, "hospital_management");
+
+                        if (empty($bd)) {
+                            die("Banco de dados não encontrado");
+                        }
+
+                        $query = "SELECT genero FROM adm WHERE email = '$email'";
+                        $select = mysqli_query($conexao, $query);
+
+                        if ($select) {
+                            $genero = mysqli_fetch_array($select)['genero'];
+                            if ($genero == "feminino") {
+                                echo "<img src='assets/img/female.png' class='userImg img-responsive'/>";
+                            } else {
+                                echo "<img src='assets/img/male.png' class='userImg img-responsive'/>";
                             }
-                            
-                            ?>
-                           
-                            <p id="userNome"><?php echo $nome; ?></p> 
+                        }
+
+                        $query = "SELECT nomeCompleto FROM adm WHERE email = '$email'";
+                        $select = mysqli_query($conexao, $query);
+                        if ($select) {
+                            $nome = mysqli_fetch_array($select)['nomeCompleto'];
+                        }
+
+                        $query = "SELECT cpf FROM adm WHERE email = '$email'";
+                        $select = mysqli_query($conexao, $query);
+                        if ($select) {
+                            $cpf = mysqli_fetch_array($select)['cpf'];
+                        }
+
+                        ?>
+
+
+                        ?>
+
+                        <p id="userNome"><?php echo $nome; ?></p>
                     </li>
                     <li>
-                        <a href="index.php"><i class="fa fa-desktop "></i>Inicio</a>
+                        <a href="index.php"><img src="assets/img/home_menu.png" class="iconMenu" /> Inicio</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-edit "></i>Gerênciamento<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">Alunos<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="alunos_ativos.php">Alunos Ativos</a>
-                                    </li>
-                                    <li>
-                                        <a href="cadastrar_alunos.php">Cadastrar Aluno</a>
-                                    </li>
-                                    <li>
-                                        <a href="avaliacao.php">Avaliação</a>
-                                    </li>
-                                    <li>
-                                        <a href="treinos.php">Treinos</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">Instrutores<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="instrutores_ativos.php">Instrutores Ativos</a>
-                                    </li>
-                                    <li>
-                                        <a href="cadastrar_instrutor.php">Cadastrar Instrutores</a>
-                                    </li>
-                                    <li>
-                                        <a href="aulas.php">Aulas</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <a href="pacientes_ativos.php"><img src="assets/img/icon_patient_menu.png" class="iconMenu" /> Pacientes Ativos</a>
                     </li>
-                    
+                    <li>
+                        <a href="cadastrar_pacientes.php"><img src="assets/img/icon_patient_add_menu.png" class="iconMenu" /> Cadastrar Paciente</a>
+                    </li>
+                    <li>
+                        <a href="avaliacao.php"><img src="assets/img/medical_appointment_menu.png" class="iconMenu" /> Consultas</a>
+                    </li>
+                    <li>
+                        <a href="medicos_ativos.php"><img src="assets/img/icon_doctor_menu.png" class="iconMenu" /> Médicos Ativos</a>
+                    </li>
+                    <li>
+                        <a href="cadastrar_medicos.php"><img src="assets/img/icon_doctor_add_menu.png" class="iconMenu" /> Cadastrar Médicos</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -139,22 +120,22 @@ $email = $_SESSION['email'];
                         <!-- Form Elements -->
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                            <?php     
-                            
+                                <?php
+
                                 if ($genero == "feminino") {
                                     echo "Informações da Administradora";
                                 } else {
                                     echo "Informações do Administrador";
                                 }
-                                
-                            ?>
-                                
+
+                                ?>
+
                             </div>
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-6 information_settings">
                                         <p>Email: <?php echo $email ?></p>
-                                        <p>Genêro: <?php echo $genero?></p>
+                                        <p>Genêro: <?php echo $genero ?></p>
                                         <p>Nome: <?php echo $nome ?></p>
                                         <p>CPF: <?php echo $cpf ?></p>
                                         <button class="btn-remover btn btn-danger">Remover Conta</button>
@@ -179,17 +160,17 @@ $email = $_SESSION['email'];
         </footer>
     </div>
 
-     <!-- /. WRAPPER  -->
-        <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-        <!-- JQUERY SCRIPTS -->
-        <script src="assets/js/jquery-1.10.2.js"></script>
-        <!-- BOOTSTRAP SCRIPTS -->
-        <script src="assets/js/bootstrap.min.js"></script>
-        <!-- METISMENU SCRIPTS -->
-        <script src="assets/js/jquery.metisMenu.js"></script>
-        <!-- CUSTOM SCRIPTS -->
-        <script src="assets/js/custom.js"></script>
-        <script src="assets/js/settings.js"></script>
+    <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+    <!-- CUSTOM SCRIPTS -->
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/settings.js"></script>
 </body>
 
 </html>

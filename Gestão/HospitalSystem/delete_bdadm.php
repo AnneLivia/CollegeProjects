@@ -4,7 +4,7 @@
     // se sessão está setada, então existe tabela ADM
     if(isset($_SESSION['email'])) {
         $email = $_SESSION['email'];
-        $conexao = mysqli_connect("localhost","root","") or die("Erro de conexão".mysql_connect_error());
+        $conexao = mysqli_connect('localhost', 'root', '') or die('Erro de conexão'.mysqli_connect_error());
         
         $bd = mysqli_select_db($conexao, "hospital_management");
 

@@ -3,26 +3,37 @@
     src: url("../fonts/Quicksand-Regular.ttf") format('truetype');
 }
 
+
 body {
     font-family: 'Quicksand', sans-serif;
+    background-color: #f3f3f3;
+}
+
+#graph_image {
+    width: 100%;
+}
+
+.painel-graph {
+    border: none;
 }
 
 #wrapper {
     width: 100%;
     margin-top: 50px;
+    background-color: #f3f3f3;;
 }
 
 #page-wrapper {
     padding: 15px 15px;
     min-height: 600px;
-    background: #F3F3F3;
+    background: rgb(236, 236, 236);
 }
 
 #page-inner {
     width: 100%;
-    margin: 10px 20px 10px 0px;
+    margin: 10px 1px 10px 1px;
     background-color: #fff!important;
-    padding: 10px;
+    padding: 30px;
     min-height: 1200px;
 }
 
@@ -33,9 +44,9 @@ body {
 
 .table_ativos th,
 td,
-.table-index-alunoativo th,
+.table-index-pacienteativo th,
 td,
-.table-index-instrutorativo th,
+.table-index-medicoativo th,
 td .table_avaliacao th,
 td {
     word-break: break-word;
@@ -44,9 +55,27 @@ td {
     /*set min-width as needed*/
 }
 
+.table_paciente, .table_medico {
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+}
+
+.med_pat_title_table {
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: -10px;
+} 
+
+footer {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
 #userNome {
     color: white;
     margin-top: 10px;
+    font-size: 16px;
 }
 
 .text-center {
@@ -61,6 +90,13 @@ td {
     width: 130px;
     margin: auto;
     margin-top: 14px;
+}
+
+.iconMenu {
+    width: 25px;
+    margin-top: -4px;
+    margin-left: -2px;
+    margin-right: 2px;
 }
 
 h5,
@@ -116,23 +152,26 @@ h5,
 }
 
 .sidebar-collapse .nav>li>a {
-    background: #FFFFFF;
+    background: #f3f3f3;
     text-shadow: none;
-    color: #0000FF;
+    color: #000000;
     font-weight: bold;
+    font-size: 16px;
+    transition: 0.7s;
 }
 
 .sidebar-collapse>.nav>li>a {
-    padding: 15px 10px;
+    padding: 18px 15px;
 }
 
 .sidebar-collapse>.nav>li {
-    border-bottom: 1px solid rgba(240, 240, 240, 1) !important;
+    border-bottom: 1px solid rgb(219, 219, 219) !important;
 }
 
 .sidebar-collapse .nav>li>a:hover,
 .sidebar-collapse .nav>li>a:focus {
-    background: #F3F3F3;
+    background: #333333;
+    color: #FFF;
     outline: 0;
 }
 
@@ -162,7 +201,7 @@ h5,
 
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-    background-color: #B40101;
+    background-color: #f3f3f3;
 }
 
 .navbar-default .navbar-toggle {

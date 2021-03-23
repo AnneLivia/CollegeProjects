@@ -4,18 +4,11 @@ if (!isset($_SESSION['email'])) {
     header("location: login.php");
 }
 
-
-if(!isset($_SESSION['nome_Paciente'])) {
-    header("location: avaliacao.php");
-}
-
 $email = $_SESSION['email'];
-$nome_Paciente = $_SESSION['nome_Paciente'];
-$email_Paciente = $_SESSION['email_Paciente'];
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8" />
@@ -41,7 +34,7 @@ $email_Paciente = $_SESSION['email_Paciente'];
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><i class="fa fa-square-o "></i>&nbsp;Hospital Management System</a>
+                    <a class="navbar-brand" href="index.php"><img src="assets/img/icon_hospital_nav.png" id="iconHopNav"/> &nbsp;HOSPITAL MANAGEMENT SYSTEM</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -53,7 +46,7 @@ $email_Paciente = $_SESSION['email_Paciente'];
         </div>
         <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
-            <div class="sidebar-collapse">
+        <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="text-center user-image-back">
                         <?php
@@ -118,60 +111,79 @@ $email_Paciente = $_SESSION['email_Paciente'];
                         <!-- Form Elements -->
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Avaliação dos Pacientes
+                                Cadastrar médicos no sistema
                             </div>
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <h3>Informações Básicas</h3>
-                                        <form method="POST" action="create_bdAvaliacao.php">
+                                        <form method="POST" action="create_bdMedico.php">
+                                            <div class="form-group">
+                                                <label>Nome Completo</label>
+                                                <input class="form-control" id="Medico_nome" name="Medico_nome" placeholder="Nome" required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>CPF</label>
+                                                <input type="text" class="form-control" placeholder="Digite o CPF" name="Medico_cpf" required />
+                                                <p class="help-block">000.000.000-00</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Data de Nascimento</label>
+                                                <input type="date" class="form-control" name="Medico_nascimento" required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Sexo</label>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="Medico_sexo" id="optionsRadios1" value="feminino" checked />Feminino
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="Medico_sexo" id="optionsRadios2" value="masculino" /> Masculino
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <h3> Dados para contato </h3>
                                             <div class="form-group">
                                                 <label>Email</label>
-                                                <input type="text" class="form-control" value="<?php echo $email_Paciente ?>" name="Paciente_email" readonly />
+                                                <input type="email" class="form-control" placeholder="Digite o email" name="Medico_email" required />
                                             </div>
                                             <div class="form-group">
-                                                <label>Nome</label>
-                                                <input type="text" class="form-control" value="<?php echo $nome_Paciente ?>" name="Paciente_nome" readonly />
+                                                <label>Telefone</label>
+                                                <input type="text" class="form-control" placeholder="Digite o número do telefone" name="Medico_telefone" required />
+                                            </div>
+                                            <h3>Endereço</h3>
+                                            <div class="form-group">
+                                                <label>Cidade</label>
+                                                <input type="text" class="form-control" placeholder="Digite o nome da cidade" name="Medico_cidade" required />
                                             </div>
                                             <div class="form-group">
-                                                <label>Data da Avaliação</label>
-                                                <input type="date" class="form-control" name="data_avaliacao" />
+                                                <label>Bairro</label>
+                                                <input type="text" class="form-control" placeholder="Digite o nome do bairro" name="Medico_bairro" required />
                                             </div>
                                             <div class="form-group">
-                                                <label>Possui deficiência? Qual?</label>
-                                                <input type="text" class="form-control" name="Paciente_deficiencia" required />
+                                                <label>CEP</label>
+                                                <input type="text" class="form-control" placeholder="Digite o CEP onde reside" name="Medico_cep" required />
                                             </div>
                                             <div class="form-group">
-                                                <label>Massa corporal (kg) </label>
-                                                <input type="text" class="form-control" name="Paciente_massaCorporal" required />
+                                                <label>Número da casa</label>
+                                                <input type="text" class="form-control" placeholder="Digite o número da casa" name="Medico_ncasa" required />
                                             </div>
                                             <div class="form-group">
-                                                <label>Envergadura</label>
-                                                <input type="text" class="form-control" name="Paciente_envergadura" required />
+                                                <label>Complemento</label>
+                                                <input type="text" class="form-control" placeholder="Digite um ponto de referência" name="Medico_complemento" required />
+                                            </div>
+
+                                            <h3> Função </h3>
+                                            <div class="form-group">
+                                                <label>Tipo de treinamento</label>
+                                                <input class="form-control" id="Medico_treinamento" name="Medico_treinamento" placeholder="Administrará qual treinamento com o corpo" required />
                                             </div>
                                             <div class="form-group">
-                                                <label>Perímetro da cintura</label>
-                                                <input type="text" class="form-control" name="Paciente_cintura" required />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Abdominal</label>
-                                                <input type="text" class="form-control" name="Paciente_abdominal" required />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Corrida de 20 metros (segundos)</label>
-                                                <input type="text" class="form-control" placeholder="Digite a altura do Paciente" name="Paciente_corrida" required />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Salto em distância (metros)</label>
-                                                <input type="text" class="form-control" name="Paciente_salto" required />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Triceps (milimetros)</label>
-                                                <input type="text" class="form-control" name="Paciente_triceps" required />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Coxa (milimetros)</label>
-                                                <input type="text" class="form-control" name="Paciente_coxa" required />
+                                                <label>Dias disponíveis</label><br>
+                                                <input class="form-control" id="Medico_days" name="Medico_days" placeholder="Dias que estará dispónível..." required />
+                                                <p class="help-block">Segunda, Terça, Quarta, ...</p>
                                             </div>
                                             <button type="submit" class="btn-cadastrar btn btn-primary">Cadastrar</button>
                                         </form>
@@ -183,19 +195,18 @@ $email_Paciente = $_SESSION['email_Paciente'];
                     <!-- End Form Elements -->
                 </div>
             </div>
-            <!-- /. ROW  -->
+            <footer>
+                <p class="text-center">
+                    Developed by <a href="https://github.com/AnneLivia" target="u_black">Anne Livia</a>
+                    and <a href="https://github.com/Marcos-Fernando" target="u_black">Marcos Fernando</a><br />
+                    © All Rights Reserved.
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>
+                </p>
+            </footer>
         </div>
-        <footer>
-            <p class="text-center">
-                Developed by <a href="https://github.com/AnneLivia" target="u_black">Anne Livia</a><br />
-                © All Rights Reserved.
-                <script>
-                    document.write(new Date().getFullYear())
-                </script>
-            </p>
-        </footer>
     </div>
-
     <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->

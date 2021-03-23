@@ -4,14 +4,7 @@ if (!isset($_SESSION['email'])) {
     header("location: login.php");
 }
 
-
-if(!isset($_SESSION['nome_Paciente'])) {
-    header("location: avaliacao.php");
-}
-
 $email = $_SESSION['email'];
-$nome_Paciente = $_SESSION['nome_Paciente'];
-$email_Paciente = $_SESSION['email_Paciente'];
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +34,7 @@ $email_Paciente = $_SESSION['email_Paciente'];
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><i class="fa fa-square-o "></i>&nbsp;Hospital Management System</a>
+                    <a class="navbar-brand" href="index.php"><img src="assets/img/icon_hospital_nav.png" id="iconHopNav"/> &nbsp;HOSPITAL MANAGEMENT SYSTEM</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -53,7 +46,7 @@ $email_Paciente = $_SESSION['email_Paciente'];
         </div>
         <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
-            <div class="sidebar-collapse">
+        <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="text-center user-image-back">
                         <?php
@@ -118,60 +111,75 @@ $email_Paciente = $_SESSION['email_Paciente'];
                         <!-- Form Elements -->
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Avaliação dos Pacientes
+                                Cadastrar paciente no sistema
                             </div>
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <h3>Informações Básicas</h3>
-                                        <form method="POST" action="create_bdAvaliacao.php">
+                                        <form method="POST" action="create_bdPaciente.php">
+                                            <div class="form-group">
+                                                <label>Nome Completo</label>
+                                                <input class="form-control" id="Paciente_nome" name="Paciente_nome" placeholder="Nome do Paciente" required />
+                                            </div>
                                             <div class="form-group">
                                                 <label>Email</label>
-                                                <input type="text" class="form-control" value="<?php echo $email_Paciente ?>" name="Paciente_email" readonly />
+                                                <input type="email" class="form-control" placeholder="Digite o email do Paciente" name="Paciente_email" required />
                                             </div>
                                             <div class="form-group">
-                                                <label>Nome</label>
-                                                <input type="text" class="form-control" value="<?php echo $nome_Paciente ?>" name="Paciente_nome" readonly />
+                                                <label>CPF</label>
+                                                <input type="text" class="form-control" placeholder="Digite o CPF do Paciente" name="Paciente_cpf" required />
+                                                <p class="help-block">000.000.000-00</p>
                                             </div>
                                             <div class="form-group">
-                                                <label>Data da Avaliação</label>
-                                                <input type="date" class="form-control" name="data_avaliacao" />
+                                                <label>Data de Nascimento</label>
+                                                <input type="date" class="form-control" name="Paciente_nascimento" />
                                             </div>
                                             <div class="form-group">
-                                                <label>Possui deficiência? Qual?</label>
-                                                <input type="text" class="form-control" name="Paciente_deficiencia" required />
+                                                <label>Telefone</label>
+                                                <input type="text" class="form-control" placeholder="Digite o número do telefone do Paciente" name="Paciente_telefone" required />
                                             </div>
                                             <div class="form-group">
-                                                <label>Massa corporal (kg) </label>
-                                                <input type="text" class="form-control" name="Paciente_massaCorporal" required />
+                                                <label>Sexo</label>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="Paciente_sexo" id="optionsRadios1" value="feminino" checked />Feminino
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="Paciente_sexo" id="optionsRadios2" value="masculino" /> Masculino
+                                                    </label>
+                                                </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Envergadura</label>
-                                                <input type="text" class="form-control" name="Paciente_envergadura" required />
+                                                <label>PESO</label>
+                                                <input type="text" class="form-control" name="Paciente_peso" required />
                                             </div>
                                             <div class="form-group">
-                                                <label>Perímetro da cintura</label>
-                                                <input type="text" class="form-control" name="Paciente_cintura" required />
+                                                <label>Altura</label>
+                                                <input type="text" class="form-control" placeholder="Digite a altura do Paciente" name="Paciente_altura" required />
+                                            </div>
+                                            <h3>Endereço</h3>
+                                            <div class="form-group">
+                                                <label>Cidade</label>
+                                                <input type="text" class="form-control" placeholder="Digite o nome da cidade onde o Paciente mora" name="Paciente_cidade" required />
                                             </div>
                                             <div class="form-group">
-                                                <label>Abdominal</label>
-                                                <input type="text" class="form-control" name="Paciente_abdominal" required />
+                                                <label>Bairro</label>
+                                                <input type="text" class="form-control" placeholder="Digite o nome do bairro onde o Paciente mora" name="Paciente_bairro" required />
                                             </div>
                                             <div class="form-group">
-                                                <label>Corrida de 20 metros (segundos)</label>
-                                                <input type="text" class="form-control" placeholder="Digite a altura do Paciente" name="Paciente_corrida" required />
+                                                <label>CEP</label>
+                                                <input type="text" class="form-control" placeholder="Digite o CEP do lugar onde o Paciente mora" name="Paciente_cep" required />
                                             </div>
                                             <div class="form-group">
-                                                <label>Salto em distância (metros)</label>
-                                                <input type="text" class="form-control" name="Paciente_salto" required />
+                                                <label>Número da casa</label>
+                                                <input type="text" class="form-control" placeholder="Digite o número da casa onde o Paciente mora" name="Paciente_ncasa" required />
                                             </div>
                                             <div class="form-group">
-                                                <label>Triceps (milimetros)</label>
-                                                <input type="text" class="form-control" name="Paciente_triceps" required />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Coxa (milimetros)</label>
-                                                <input type="text" class="form-control" name="Paciente_coxa" required />
+                                                <label>Complemento</label>
+                                                <input type="text" class="form-control" placeholder="Digite o número da casa onde o Paciente mora" name="Paciente_complemento" required />
                                             </div>
                                             <button type="submit" class="btn-cadastrar btn btn-primary">Cadastrar</button>
                                         </form>

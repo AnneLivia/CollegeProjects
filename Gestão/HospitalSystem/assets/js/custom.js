@@ -37,25 +37,25 @@
 
 }(jQuery));
 
-// method Jquery para remover aluno de tabela
-$(".table_ativos").on('click', '.deleteAluno', function() {
-    if (confirm("Tem certeza que deseja remover o cadastro desse aluno?")) {
+// method Jquery para remover Paciente de tabela
+$(".table_ativos").on('click', '.deletePaciente', function() {
+    if (confirm("Tem certeza que deseja remover o cadastro desse paciente?")) {
         var id = $(this).closest('tr').attr('id');
         $(this).closest('tr').remove();
-        window.location.href = "delete_bdaluno.php?id=" + id;
+        window.location.href = "delete_bdPaciente.php?id=" + id;
     }
 });
 
-$(".table_ativos").on('click', '.deleteInstrutor', function() {
-    if (confirm("Tem certeza que deseja remover o cadastro desse Instrutor?")) {
+$(".table_ativos").on('click', '.deleteMedico', function() {
+    if (confirm("Tem certeza que deseja remover o cadastro desse médico?")) {
         var id = $(this).closest('tr').attr('id');
         $(this).closest('tr').remove();
-        window.location.href = "delete_bdInstrutor.php?id=" + id;
+        window.location.href = "delete_bdMedico.php?id=" + id;
     }
 });
 
 $(".table_ativos").on('click', '.delete_avaliacao', function() {
-    if (confirm("Tem certeza que deseja remover a avaliação desse aluno?")) {
+    if (confirm("Tem certeza que deseja remover a avaliação desse paciente?")) {
         var id = $(this).closest('tr').attr('id');
         $(this).closest('tr').remove();
         window.location.href = "delete_bdavaliacao.php?id=" + id;

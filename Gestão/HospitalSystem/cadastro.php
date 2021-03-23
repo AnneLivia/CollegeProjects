@@ -30,7 +30,7 @@
                     <input id="uNomeCompleto" name="uNomeCompleto" type="text" placeholder="Insira seu nome completo" class="form-control" required />  
                     <input id="uEmail" name="uEmail" type="email" placeholder="Insira seu email" class="form-control" required />
                     <input id="uSenha" name="uSenha" type="password" placeholder="Digite sua senha" class="form-control" required />
-                    <input id="uCpf" name="uCpf" type="text" placeholder="Digite seu CPF" class="form-control" required />
+                    <input id="uCpf" name="uCpf" type="text" placeholder="000.000.000-00" class="form-control" required />
                     <div class="form-group">
                         <label id="label_gen">Gênero: </label>
                         <div class="radio">

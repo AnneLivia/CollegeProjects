@@ -1,10 +1,10 @@
-<?php 
-    session_start();
-    if(!isset($_SESSION['email'])) {
-        header("location: login.php");
-    } 
+<?php
+session_start();
+if (!isset($_SESSION['email'])) {
+    header('location: login.php');
+}
 
-    $email = $_SESSION['email'];
+$email = $_SESSION['email'];
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +34,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><i class="fa fa-square-o "></i>&nbsp;Hospital Management System</a>
+                    <a class="navbar-brand" href="index.php"><img src="assets/img/icon_hospital_nav.png" id="iconHopNav"/> &nbsp;HOSPITAL MANAGEMENT SYSTEM</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -108,10 +108,10 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>Avaliação dos Pacientes</h2>
+                        <h2>Médicos cadastrados no sistema</h2>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-md-6">
                         <table class="table_ativos table table-striped table-bordered table-hover">
@@ -119,95 +119,96 @@
                                 <tr>
                                     <th>Nome</th>
                                     <th>Email</th>
-                                    <th>Data</th>
-                                    <th>Possui deficiência? Qual?</th>
-                                    <th>Massa Corporal</th>
-                                    <th>Envergadura</th>
-                                    <th>Perímetro da cintura</th>
-                                    <th>Abdominal</th>
-                                    <th>Corrida de 20 metros</th>
-                                    <th>Salto em distância</th>
-                                    <th>Triceps</th>
-                                    <th>Coxa</th>
+                                    <th>CPF</th>
+                                    <th>Nasc.</th>
+                                    <th>Sexo</th>
+                                    <th>Cidade</th>
+                                    <th>Bairro</th>
+                                    <th>CEP</th>
+                                    <th>N/Casa</th>
+                                    <th>Complemento</th>
+                                    <th>Celular</th>
+                                    <th>Treinamento</th>
+                                    <th>Dias</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                
                                 <?php
-                                
-                                    $conexao = mysqli_connect('localhost','root', '') or die("Erro de conexao ".mysqli_connect_error());
-                                        
-                                    $bd = mysqli_select_db($conexao, "hospital_management");
-                                    if(empty($bd)) {
-                                        $criaBD = mysqli_query($conexao, "CREATE DATABASE hospital_management DEFAULT CHARSET=utf8");
-                                        if(!$criaBD) {
-                                            die("Erro ao criar banco de dados");
-                                        }
+
+                                $conexao = mysqli_connect('localhost', 'root', '') or die("Erro de conexao " . mysqli_connect_error());
+
+                                $bd = mysqli_select_db($conexao, "hospital_management");
+                                if (empty($bd)) {
+                                    $criaBD = mysqli_query($conexao, "CREATE DATABASE hospital_management DEFAULT CHARSET=utf8");
+                                    if (!$criaBD) {
+                                        die("Erro ao criar banco de dados");
                                     }
-                                
-                                
-                                    if(mysqli_query($conexao, "SELECT * FROM Avaliacao")) {
-                                    
-                                        $getTodosPacientes = "SELECT * FROM Avaliacao";
-                                    
-                                        $select = mysqli_query($conexao, $getTodosPacientes);
-                                        
-                                        if(mysqli_num_rows($select) != 0 ) {
-                                            $i = 0;
-                                            while($info = mysqli_fetch_array($select)) {
-                                                $id = $info['id'];
-                                                $name = $info['nome'];
-                                                $email = $info['email'];
-                                                $data = $info['data_avaliacao'];
-                                                $deficiencia = $info['deficiencia'];
-                                                $massa = $info['massa'];
-                                                $envergadura = $info['envergadura'];
-                                                $cintura = $info['perimetro_cintura'];
-                                                $abdominal = $info['abdominal'];
-                                                $corrida = $info['corrida'];
-                                                $salto = $info['salto'];
-                                                $triceps = $info['triceps'];
-                                                $coxa = $info['coxa'];
-                                                echo "<tr id='$id'>
+                                }
+
+
+                                if (mysqli_query($conexao, "SELECT * FROM medicos")) {
+
+                                    $getTodosMedicos = "SELECT * FROM medicos";
+
+                                    $select = mysqli_query($conexao, $getTodosMedicos);
+
+                                    if (mysqli_num_rows($select) != 0) {
+                                        $i = 0;
+                                        while ($info = mysqli_fetch_array($select)) {
+                                            $id = $info['id'];
+                                            $name = $info['nome'];
+                                            $email = $info['email'];
+                                            $cpf = $info['cpf'];
+                                            $nasc = $info['nascimento'];
+                                            $sexo = $info['sexo'];
+                                            $cidade = $info['cidade'];
+                                            $bairro = $info['bairro'];
+                                            $cep = $info['cep'];
+                                            $ncasa = $info['ncasa'];
+                                            $complemento = $info['complemento'];
+                                            $telefone = $info['telefone'];
+                                            $treinamento = $info['treinamento'];
+                                            $dias = $info['dias'];
+                                            echo "<tr id='$id'>
                                                         <td>$name</td>
                                                         <td>$email</td>
-                                                        <td>$data</td>
-                                                        <td>$deficiencia</td>
-                                                        <td>$massa</td>
-                                                        <td>$envergadura</td>
-                                                        <td>$cintura</td>
-                                                        <td>$abdominal</td>
-                                                        <td>$corrida</td>
-                                                        <td>$salto</td>
-                                                        <td>$triceps</td>
-                                                        <td>$coxa</td>
-                                                        <td><button class='delete_avaliacao btn btn-danger'>Delete</button></td>
+                                                        <td>$cpf</td>
+                                                        <td>$nasc</td>
+                                                        <td>$sexo</td>
+                                                        <td>$cidade</td>
+                                                        <td>$bairro</td>
+                                                        <td>$cep</td>
+                                                        <td>$ncasa</td>
+                                                        <td>$complemento</td>
+                                                        <td>$telefone</td>
+														<td>$treinamento</td>
+                                                        <td>$dias</td>
+                                                        <td><button class='deleteMedico btn btn-danger'>Delete</button></td>
                                                 </tr>";
-                                            }
-                                            $i++;
                                         }
+                                        $i++;
                                     }
-                                    
-                                    mysqli_close($conexao);
+                                }
+
+                                mysqli_close($conexao);
                                 ?>
-                            
                             </tbody>
                         </table>
-                        <button class="btn-addAvalicao btn btn-primary" onclick="window.location.href = 'email_avaliacao.php'";>Adicionar nova avaliação</button>
                     </div>
                 </div>
             </div>
             <footer>
                 <p class="text-center">
-                    Developed by <a href="https://github.com/AnneLivia" target="u_black">Anne Livia</a> 
-                    and <a href="https://github.com/Marcos-Fernando" target="u_black">Marcos Fernando</a><br/>
+                    Developed by <a href="https://github.com/AnneLivia" target="u_black">Anne Livia</a>
+                    <br />
                     © All Rights Reserved.
-                    <script>document.write(new Date().getFullYear())</script>
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>
                 </p>
             </footer>
         </div>
-        
         <!-- /. WRAPPER  -->
         <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
         <!-- JQUERY SCRIPTS -->

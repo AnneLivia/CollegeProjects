@@ -46,7 +46,7 @@ $email = $_SESSION['email'];
         </div>
         <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
-            <div class="sidebar-collapse">
+        <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="text-center user-image-back">
                         <?php
@@ -60,60 +60,46 @@ $email = $_SESSION['email'];
                             die("Banco de dados não encontrado");
                         }
 
-                        $query = "SELECT sexo FROM adm WHERE email = '$email'";
+                        $query = "SELECT genero FROM adm WHERE email = '$email'";
                         $select = mysqli_query($conexao, $query);
 
                         if ($select) {
-                            $genero = mysqli_fetch_array($select)['sexo'];
+                            $genero = mysqli_fetch_array($select)['genero'];
                             if ($genero == "feminino") {
                                 echo "<img src='assets/img/female.png' class='userImg img-responsive'/>";
                             } else {
                                 echo "<img src='assets/img/male.png' class='userImg img-responsive'/>";
                             }
                         }
+
+                        $query = "SELECT nomeCompleto FROM adm WHERE email = '$email'";
+                        $select = mysqli_query($conexao, $query);
+                        if ($select) {
+                            $nome = mysqli_fetch_array($select)['nomeCompleto'];
+                        }
+
                         ?>
-                        <p id="userEmail"><?php echo $email; ?></p>
+
+                        <p id="userNome"><?php echo $nome; ?></p>
                     </li>
                     <li>
-                        <a href="index.php"><i class="fa fa-desktop "></i>Inicio</a>
+                        <a href="index.php"><img src="assets/img/home_menu.png" class="iconMenu"/> Inicio</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-edit "></i>Gerênciamento<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">Alunos<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="alunos_ativos.php">Alunos Ativos</a>
-                                    </li>
-                                    <li>
-                                        <a href="cadastrar_alunos.php">Cadastrar Aluno</a>
-                                    </li>
-                                    <li>
-                                        <a href="avaliacao.php">Avaliação</a>
-                                    </li>
-                                    <li>
-                                        <a href="treinos.php">Treinos</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">Instrutores<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="instrutores_ativos.php">Instrutores Ativos</a>
-                                    </li>
-                                    <li>
-                                        <a href="cadastrar_instrutor.php">Cadastrar Instrutores</a>
-                                    </li>
-                                    <li>
-                                        <a href="aulas.php">Aulas</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <a href="pacientes_ativos.php"><img src="assets/img/icon_patient_menu.png" class="iconMenu"/> Pacientes Ativos</a>
                     </li>
-                  
+                    <li>
+                        <a href="cadastrar_pacientes.php"><img src="assets/img/icon_patient_add_menu.png" class="iconMenu"/> Cadastrar Paciente</a>
+                    </li>
+                    <li>
+                        <a href="avaliacao.php"><img src="assets/img/medical_appointment_menu.png" class="iconMenu"/> Consultas</a>
+                    </li>
+                    <li>
+                        <a href="medicos_ativos.php"><img src="assets/img/icon_doctor_menu.png" class="iconMenu"/>  Médicos Ativos</a>
+                    </li>
+                    <li>
+                        <a href="cadastrar_medicos.php"><img src="assets/img/icon_doctor_add_menu.png" class="iconMenu"/> Cadastrar Médicos</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -133,7 +119,7 @@ $email = $_SESSION['email'];
                                         <form method="POST" action="validar_email_avaliacao.php">
                                             <div class="form-group">
                                                 <label>Email do estudante</label>
-                                                <input type="email" class="form-control" placeholder="Digite o email do aluno" name="aluno_email" required />
+                                                <input type="email" class="form-control" placeholder="Digite o email do Paciente" name="Paciente_email" required />
                                             </div>
                                             <button type="submit" class="btn-cadastrar btn btn-primary">Prosseguir</button>
                                         </form>

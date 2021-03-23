@@ -17,3 +17,7 @@ document.querySelector('.btnCadastrar').addEventListener('click', e => {
     e.preventDefault();
     window.location.href = "cadastro.php";
 });
+
+$('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+});

@@ -96,7 +96,7 @@ body {
 }
 
 .btnLogin, .btnCadastrar, .btnRegistrar, .btnVoltar {
-    width: 408px;
+    width: 100%;
     margin-bottom: 1px;
     margin-top: 5px;
     padding: 12px;

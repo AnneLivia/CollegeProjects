@@ -34,7 +34,7 @@ $email = $_SESSION['email'];
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.php"><img src="assets/img/icon_hospital_nav.png" id="iconHopNav"/> &nbsp;HOSPITAL MANAGEMENT SYSTEM</a>
+                    <a class="navbar-brand" href="index.php"><img src="assets/img/icon_hospital_nav.png" id="iconHopNav" /> &nbsp;HOSPITAL MANAGEMENT SYSTEM</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -74,54 +74,32 @@ $email = $_SESSION['email'];
 
                         $query = "SELECT nomeCompleto FROM adm WHERE email = '$email'";
                         $select = mysqli_query($conexao, $query);
-                        if($select) {
+                        if ($select) {
                             $nome = mysqli_fetch_array($select)['nomeCompleto'];
                         }
 
                         ?>
-                       
-                        <p id="userNome"><?php echo $nome; ?></p>                        
+
+                        <p id="userNome"><?php echo $nome; ?></p>
                     </li>
                     <li>
-                        <a href="index.php"><i class="fa fa-desktop "></i>Inicio</a>
+                        <a href="index.php"><img src="assets/img/home_menu.png" class="iconMenu" /> Inicio</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-edit "></i>Gerênciamento<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">Alunos<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="alunos_ativos.php">Alunos Ativos</a>
-                                    </li>
-                                    <li>
-                                        <a href="cadastrar_alunos.php">Cadastrar Aluno</a>
-                                    </li>
-                                    <li>
-                                        <a href="avaliacao.php">Avaliação</a>
-                                    </li>
-                                    <li>
-                                        <a href="treinos.php">Treinos</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">Instrutores<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="instrutores_ativos.php">Instrutores Ativos</a>
-                                    </li>
-                                    <li>
-                                        <a href="cadastrar_instrutor.php">Cadastrar Instrutores</a>
-                                    </li>
-                                    <li>
-                                        <a href="aulas.php">Aulas</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <a href="pacientes_ativos.php"><img src="assets/img/icon_patient_menu.png" class="iconMenu" /> Pacientes Ativos</a>
                     </li>
-                    
+                    <li>
+                        <a href="cadastrar_pacientes.php"><img src="assets/img/icon_patient_add_menu.png" class="iconMenu" /> Cadastrar Paciente</a>
+                    </li>
+                    <li>
+                        <a href="avaliacao.php"><img src="assets/img/medical_appointment_menu.png" class="iconMenu" /> Consultas</a>
+                    </li>
+                    <li>
+                        <a href="medicos_ativos.php"><img src="assets/img/icon_doctor_menu.png" class="iconMenu" /> Médicos Ativos</a>
+                    </li>
+                    <li>
+                        <a href="cadastrar_medicos.php"><img src="assets/img/icon_doctor_add_menu.png" class="iconMenu" /> Cadastrar Médicos</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -130,16 +108,16 @@ $email = $_SESSION['email'];
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>Painel do Administrador</h2>
+                        <h3>Informações gerais </h3>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <h5>Alunos Ativo</h5>
+                        <h5 class="med_pat_title_table">Pacientes</h5>
                         <div class="table-responsive">
-                            <table class="table table-index-alunoativo">
+                            <table class="table table-index-pacienteativo">
                                 <thead>
-                                    <tr class="info">
+                                    <tr class="table_paciente">
                                         <th>Nome</th>
                                         <th>Email</th>
                                     </tr>
@@ -158,11 +136,11 @@ $email = $_SESSION['email'];
                                     }
 
 
-                                    if (mysqli_query($conexao, "SELECT * FROM alunos")) {
+                                    if (mysqli_query($conexao, "SELECT * FROM pacientes")) {
 
-                                        $getTodosAlunos = "SELECT * FROM alunos";
+                                        $getTodosPacientes = "SELECT * FROM pacientes";
 
-                                        $select = mysqli_query($conexao, $getTodosAlunos);
+                                        $select = mysqli_query($conexao, $getTodosPacientes);
 
                                         if (mysqli_num_rows($select) != 0) {
                                             while ($info = mysqli_fetch_array($select)) {
@@ -183,13 +161,13 @@ $email = $_SESSION['email'];
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h5>Instrutor Ativo</h5>
+                        <h5 class="med_pat_title_table">Médicos</h5>
                         <div class="table-responsive">
-                            <table class="table table-index-instrutorativo">
+                            <table class="table table-index-medicoativo">
                                 <thead>
-                                    <tr class="success">
+                                    <tr class="table_medico">
                                         <th>Nome</th>
-                                        <th>Email</th>
+                                        <th>Especialidade</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -206,19 +184,19 @@ $email = $_SESSION['email'];
                                     }
 
 
-                                    if (mysqli_query($conexao, "SELECT * FROM instrutores")) {
+                                    if (mysqli_query($conexao, "SELECT * FROM medicos")) {
 
-                                        $getTodosInstrutores = "SELECT * FROM instrutores";
+                                        $getTodosMedicos = "SELECT * FROM medicos";
 
-                                        $select = mysqli_query($conexao, $getTodosInstrutores);
+                                        $select = mysqli_query($conexao, $getTodosMedicos);
 
                                         if (mysqli_num_rows($select) != 0) {
                                             while ($info = mysqli_fetch_array($select)) {
                                                 $name = $info['nome'];
-                                                $email = $info['email'];
+                                                $especialidade = $info['especialidade'];
                                                 echo "<tr>
                                                     <th>$name</th>
-                                                    <th>$email</th>
+                                                    <th>$especialidade</th>
                                                 </tr>";
                                             }
                                         }
@@ -231,28 +209,71 @@ $email = $_SESSION['email'];
                         </div>
                     </div>
                 </div>
+                <hr />
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="med_pat_title_table center">Índices de acesso do sistema</h5>
+                        <div class="panel panel-primary painel-graph">
+                            <div class="panel-body">
+                                <img id="graph_image" src="assets/img/graph_painel.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="med_pat_title_table center">Índices das consultas</h5>
+                        <div class="panel panel-primary painel-graph">
+                            <div class="panel-body">
+                                <img id="graph_image" src="assets/img/graph_painel1.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="med_pat_title_table center">Estatísticas dos atendimentos</h5>
+                        <div class="panel panel-primary painel-graph">
+                            <div class="panel-body">
+                                <img id="graph_image" src="assets/img/graph_painel2.png" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5 class="med_pat_title_table center">Estatísticas de médicos</h5>
+                            <div class="panel panel-primary painel-graph">
+                                <div class="panel-body">
+                                    <img id="graph_image" src="assets/img/graph_painel3.png" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <footer>
+                <p class="text-center footer">
+                    Developed by <a href="https://github.com/AnneLivia" target="u_black">Anne Livia</a><br />
+                    © All Rights Reserved.
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>
+                </p>
+            </footer>
         </div>
-        <footer>
-            <p class="text-center">
-                Developed by <a href="https://github.com/AnneLivia" target="u_black">Anne Livia</a><br />
-                © All Rights Reserved.
-                <script>
-                    document.write(new Date().getFullYear())
-                </script>
-            </p>
-        </footer>
-    </div>
-    <!-- /. WRAPPER  -->
-    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-    <!-- JQUERY SCRIPTS -->
-    <script src="assets/js/jquery-1.10.2.js"></script>
-    <!-- BOOTSTRAP SCRIPTS -->
-    <script src="assets/js/bootstrap.min.js"></script>
-    <!-- METISMENU SCRIPTS -->
-    <script src="assets/js/jquery.metisMenu.js"></script>
-    <!-- CUSTOM SCRIPTS -->
-    <script src="assets/js/custom.js"></script>
+        <!-- /. WRAPPER  -->
+        <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+        <!-- JQUERY SCRIPTS -->
+        <script src="assets/js/jquery-1.10.2.js"></script>
+        <!-- BOOTSTRAP SCRIPTS -->
+        <script src="assets/js/bootstrap.min.js"></script>
+        <!-- METISMENU SCRIPTS -->
+        <script src="assets/js/jquery.metisMenu.js"></script>
+        <!-- CUSTOM SCRIPTS -->
+        <script src="assets/js/custom.js"></script>
 </body>
 
 </html>

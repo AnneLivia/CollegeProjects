@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(isset($_SESSION['email_aluno'])) {
+    if(isset($_SESSION['email_Paciente'])) {
         $conexao = mysqli_connect('localhost','root', '') or die("Erro de conexao ".mysqli_connect_error());
             
         $bd = mysqli_select_db($conexao, "hospital_management");
@@ -35,18 +35,18 @@
             } 
         }
 
-        $email = $_POST['aluno_email'];         
-        $nome = $_POST['aluno_nome'];
+        $email = $_POST['Paciente_email'];         
+        $nome = $_POST['Paciente_nome'];
         $data = date("d/m/Y", strtotime($_POST['data_avaliacao']));
-        $deficiencia = $_POST['aluno_deficiencia'];
-        $massa = $_POST['aluno_massaCorporal'];
-        $envergadura = $_POST['aluno_envergadura'];
-        $cintura = $_POST['aluno_cintura'];
-        $abdominal = $_POST['aluno_abdominal'];
-        $corrida = $_POST['aluno_corrida'];
-        $salto = $_POST['aluno_salto'];
-        $triceps = $_POST['aluno_triceps'];
-        $coxa = $_POST['aluno_coxa'];
+        $deficiencia = $_POST['Paciente_deficiencia'];
+        $massa = $_POST['Paciente_massaCorporal'];
+        $envergadura = $_POST['Paciente_envergadura'];
+        $cintura = $_POST['Paciente_cintura'];
+        $abdominal = $_POST['Paciente_abdominal'];
+        $corrida = $_POST['Paciente_corrida'];
+        $salto = $_POST['Paciente_salto'];
+        $triceps = $_POST['Paciente_triceps'];
+        $coxa = $_POST['Paciente_coxa'];
 
         // verificar se ainda não existe
         $getEmail = "SELECT * FROM avaliacao WHERE email = '$email'";
@@ -73,10 +73,10 @@
             if(!$insert) {
                 echo "<script>alert('Erro no cadastro')</script>";
             } else {
-                echo "<script>alert('Avaliação do aluno(a) $nome cadastrado com sucesso')</script>";
-                // unset as sessões para que outra avaliação de outro aluno possa ser inserida
-                unset($_SESSION['nome_aluno']);
-                unset($_SESSION['email_aluno']);
+                echo "<script>alert('Avaliação do Paciente(a) $nome cadastrado com sucesso')</script>";
+                // unset as sessões para que outra avaliação de outro Paciente possa ser inserida
+                unset($_SESSION['nome_Paciente']);
+                unset($_SESSION['email_Paciente']);
             }
         }
     } 
