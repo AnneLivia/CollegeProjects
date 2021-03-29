@@ -97,7 +97,16 @@ $email = $_SESSION['email'];
                             $receita = $info['receita'];
                         }
 
-                        $data = date("Y-d-m", strtotime($data));
+                        $auxDate = "";
+                        for ($i = 6; $i < 10; $i++)
+                            $auxDate .= $data[$i];
+                        $auxDate .= '-';
+                        for ($i = 3; $i < 5; $i++)
+                            $auxDate .= $data[$i];
+                        $auxDate .= '-';
+                        for ($i = 0; $i < 2; $i++)
+                            $auxDate .= $data[$i];
+                        $data = $auxDate;
 
                         ?>
 
@@ -120,6 +129,9 @@ $email = $_SESSION['email'];
                     </li>
                     <li>
                         <a href="cadastrar_medicos.php"><img src="assets/img/icon_doctor_add_menu.png" class="iconMenu" /> Cadastrar Médicos</a>
+                    </li>
+                    <li>
+                        <a href="agenda_medica.php"><img src="assets/img/icon_agenda_menu.png" class="iconMenu" /> Agenda Médica</a>
                     </li>
                 </ul>
             </div>
@@ -147,7 +159,7 @@ $email = $_SESSION['email'];
                                             </div>
                                             <div class="form-group">
                                                 <label>Nome do médico</label>
-                                                <input type="text" class="form-control" value="<?php echo $medico_nome ?>" name="Paciente_nome" readonly maxlength="300" />
+                                                <input type="text" class="form-control" value="<?php echo $medico_nome ?>" name="medico_nome" readonly maxlength="300" />
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-6">

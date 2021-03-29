@@ -64,7 +64,7 @@ if (!$insert) {
                 WHERE emailPaciente = '$atualEmail'";
         $insert = mysqli_query($conexao, $query);
         if (!$insert) {
-            echo "<script>alert('Erro na atualização')</script>";
+            echo "<script>alert('Erro na atualização da tabela consulta.')</script>";
         } else {
             echo "<script>alert('Dados do paciente(a) $nome foi atualizado com sucesso')</script>";
         }

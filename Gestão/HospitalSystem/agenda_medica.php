@@ -4,14 +4,7 @@ if (!isset($_SESSION['email'])) {
     header("location: login.php");
 }
 
-
-if (!isset($_SESSION['nome_Paciente'])) {
-    header("location: consulta.php");
-}
-
 $email = $_SESSION['email'];
-$nome_Paciente = $_SESSION['nome_Paciente'];
-$email_Paciente = $_SESSION['email_Paciente'];
 ?>
 
 <!DOCTYPE html>
@@ -118,39 +111,85 @@ $email_Paciente = $_SESSION['email_Paciente'];
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
+                        <img class="img-agenda-ativos center-block" src="assets/img/agenda_info.png" />
+                        <h2 class="title_ativos-agenda">Marcar data para atendimento médico</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         <!-- Form Elements -->
-                        <div class="panel panel-default painel_consulta_insert">
-                            <div class="panel-heading">
-                                Consulta do paciente
+                        <div class="panel panel-default painel_agenda_medica">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table_ativos table table-ativos-agenda table-striped table-borderless table-hover">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Médico</th>
+                                                    <th>Data</th>
+                                                    <th>Capacidade</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <?php
+
+                                                $conexao = mysqli_connect('localhost', 'root', '') or die("Erro de conexao " . mysqli_connect_error());
+
+                                                $bd = mysqli_select_db($conexao, "hospital_management");
+                                                if (empty($bd)) {
+                                                    $criaBD = mysqli_query($conexao, "CREATE DATABASE hospital_management DEFAULT CHARSET=utf8");
+                                                    if (!$criaBD) {
+                                                        die("Erro ao criar banco de dados");
+                                                    }
+                                                }
+
+
+                                                if (mysqli_query($conexao, "SELECT * FROM agenda")) {
+
+                                                    $getTodasConsultas = "SELECT * FROM agenda";
+
+                                                    $select = mysqli_query($conexao, $getTodasConsultas);
+
+                                                    if (mysqli_num_rows($select) != 0) {
+                                                        $i = 0;
+                                                        $ii = 0;
+                                                        while ($info = mysqli_fetch_array($select)) {
+                                                            $id = $info['id'];
+                                                            $name = $info['nome_medico'];
+                                                            $capacidade = $info['capacidade'];
+                                                            $data = $info['data'];
+                                                            $ii++;
+                                                            echo "<tr id='$id'>
+                                                        <td>$ii</td>
+                                                        <td>$name</td>
+                                                        <td>$data</td>
+                                                        <td>$capacidade</td>
+                                                        <td><button class='delete_agenda btn btn-danger rounded1'>X</button></td>
+                                                    </tr>";
+                                                        }
+                                                        $i++;
+                                                    }
+                                                }
+
+                                                mysqli_close($conexao);
+                                                ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <form method="POST" action="create_bdconsulta.php" id="consulta_insert_form">
-                                            <div class="form-group">
-                                                <label>Nome Completo</label>
-                                                <input type="text" class="form-control" value="<?php echo $nome_Paciente ?>" name="Paciente_nome" readonly maxlength="300" />
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col-6">
-                                                    <label>Data da consulta</label>
-                                                    <input type="date" class="form-control" name="data" />
-                                                </div>
-                                                <div class="col-3">
-                                                    <label>Peso (kg) </label>
-                                                    <input type="text" class="form-control" name="Paciente_peso" required maxlength="10" />
-                                                    <p class="help-block">Ex: 1,70</p>
-                                                </div>
-                                                <div class="col-3">
-                                                    <label>Altura (m) </label>
-                                                    <input type="text" class="form-control" name="Paciente_altura" required maxlength="10" />
-                                                    <p class="help-block">Ex: 69,2</p>
-                                                </div>
-                                            </div>
-                                            <div class="form-group div_medico_select">
-                                                <label>Nome do Médico</label><br />
-                                                <select class="form-control select_options" name="Medico_id" required>
-                                                    <option value=""> Selecione o nome médico </option>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form method="POST" action="create_bdagenda.php" id="agenda_form">
+                                        <div class="form-row">
+                                            <div class="col-4">
+                                                <label>Médico</label><br />
+                                                <select class="form-control select-agenda" name="Medico_id_agenda" required>
+                                                    <option value=""> Selecione o nome do médico </option>
                                                     <?php
 
                                                     $conexao = mysqli_connect('localhost', 'root', '') or die("Erro de conexao " . mysqli_connect_error());
@@ -185,36 +224,41 @@ $email_Paciente = $_SESSION['email_Paciente'];
                                                     ?>
                                                 </select>
                                             </div>
-                                            <div class="form-group">
-                                                <label>Receita</label>
-                                                <textarea type="text" class="form-control" name="Paciente_receita" required maxlength="500" /></textarea>
+                                            <div class="col-4">
+                                                <label>Data</label>
+                                                <input type="date" class="form-control data_agenda" placeholder="" name="data_agenda" required />
                                             </div>
-                                            <div class="form-group">
-                                                <label>Diagnóstico</label>
-                                                <textarea type="text" class="form-control" placeholder="" name="Paciente_diagnostico" required maxlength="500" /></textarea>
+                                            <div class="col-2">
+                                                <label>Capacidade</label>
+                                                <input type="number" class="form-control capacidade_agenda" placeholder="" min=0 name="capacidade_agenda" required />
                                             </div>
-                                            <button type="submit" class="btn-inserir-nova-consulta btn btn-success rounded1">Inserir nova consulta</button>
-                                        </form>
-                                    </div>
+                                            <div class="col-2">
+                                                <label class="hide_label">Email</label>
+                                                <button type="submit" class="btn-add-agenda btn btn-success rounded1">Adicionar</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- End Form Elements -->
                 </div>
             </div>
-            <footer>
-                <p class="text-center">
-                    Developed by <a href="https://github.com/AnneLivia" target="u_black">Anne Livia</a><br />
-                    © All Rights Reserved.
-                    <script>
-                        document.write(new Date().getFullYear())
-                    </script>
-                </p>
-            </footer>
+            <!-- End Form Elements -->
         </div>
+        <footer>
+            <p class="text-center">
+                Developed by <a href="https://github.com/AnneLivia" target="u_black">Anne Livia</a><br />
+                © All Rights Reserved.
+                <script>
+                    document.write(new Date().getFullYear())
+                </script>
+            </p>
+        </footer>
+    </div>
 
     </div>
+
 
     <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->

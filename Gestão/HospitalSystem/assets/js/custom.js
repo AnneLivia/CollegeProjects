@@ -54,9 +54,6 @@ $(".table-index-consultasativas thead").click(function () {
 });
 
 
-
-
-
 // method Jquery para atualizar medico na tabela
 $(".table-ativos-medicos tr").click(function () {
     var id = $(this).closest('tr').attr('id');
@@ -75,6 +72,18 @@ $(".table-ativos-pacientes tr").click(function () {
 $(".table-ativos-consultas tr").click(function () {
     var id = $(this).closest('tr').attr('id');
     window.location.href = "atualizar_consulta.php?id=" + id;
+});
+
+// method Jquery para atualizar Paciente na tabela
+$(".table-ativos-agenda tr").click(function () {
+    var id = $(this).closest('tr').attr('id');
+    window.location.href = "atualizar_agenda.php?id=" + id;
+});
+
+// method Jquery para atualizar Paciente na tabela
+$(".table-ativos-agendamento tr").click(function () {
+    var id = $(this).closest('tr').attr('id');
+    window.location.href = "atualizar_agendamento.php?id=" + id;
 });
 
 // method Jquery para remover Paciente de tabela
@@ -109,7 +118,44 @@ $(".table_ativos").on('click', '.delete_consulta', function () {
     }
 });
 
+$(".table_ativos").on('click', '.delete_agenda', function () {
+    if (confirm("Tem certeza que deseja remover essa agenda? Todos as consultas agendadas pelos pacientes também serão removidas.")) {
+        var id = $(this).closest('tr').attr('id');
+        $(this).closest('tr').remove();
+        window.location.href = "delete_bdagenda.php?id=" + id;
+    } else {
+        window.location.href = "agenda_medica.php";
+    }
+});
+
+
 document.querySelector("#Logout").addEventListener('click', e => {
     e.preventDefault();
     window.location.href = "login.php";
+});
+
+document.querySelector('.btn-add-agenda').addEventListener('click', e => {
+    e.preventDefault();
+    let date = document.querySelector(".data_agenda");
+    let capacidade = document.querySelector(".capacidade_agenda");
+
+
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+    // só deve permitir datas atuais
+    // se o valor escolhido for antes de hoje, não permitir
+    if (date.value < today) {
+        alert("Escolha uma data válida.");
+    } else {
+        if (capacidade.value < 0) {
+            alert("Capacidade não pode ser um valor negativo.");
+        } else {
+            document.querySelector('#agenda_form').submit();
+        }
+    }
+
 });

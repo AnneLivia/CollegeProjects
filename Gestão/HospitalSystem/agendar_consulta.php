@@ -112,23 +112,23 @@ $email = $_SESSION['email'];
                 <div class="row">
                     <div class="col-md-12">
                         <img class="img-agenda-ativos center-block" src="assets/img/agenda_info.png" />
-                        <h2 class="title_ativos-agenda">Marcar data para atendimento médico</h2>
+                        <h2 class="title_ativos-agendamento">Agendamento de consulta</h2>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <!-- Form Elements -->
-                        <div class="panel panel-default painel_agenda_medica">
+                        <div class="panel panel-default painel_agendamento">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="table-responsive">
-                                        <table class="table_ativos table table-ativos-agenda table-striped table-borderless table-hover">
+                                        <table class="table_ativos table table-ativos-agendamento table-striped table-borderless table-hover">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th>#</th>
+                                                    <th>Paciente</th>
                                                     <th>Médico</th>
                                                     <th>Data</th>
-                                                    <th>Capacidade</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
@@ -147,9 +147,9 @@ $email = $_SESSION['email'];
                                                 }
 
 
-                                                if (mysqli_query($conexao, "SELECT * FROM agenda")) {
+                                                if (mysqli_query($conexao, "SELECT * FROM agendamento")) {
 
-                                                    $getTodasConsultas = "SELECT * FROM agenda";
+                                                    $getTodasConsultas = "SELECT * FROM agendamento";
 
                                                     $select = mysqli_query($conexao, $getTodasConsultas);
 
@@ -158,16 +158,16 @@ $email = $_SESSION['email'];
                                                         $ii = 0;
                                                         while ($info = mysqli_fetch_array($select)) {
                                                             $id = $info['id'];
-                                                            $name = $info['nome_medico'];
-                                                            $capacidade = $info['capacidade'];
+                                                            $nameMedico = $info['nome_medico'];
+                                                            $Paciente = $info['nome_paciente'];
                                                             $data = $info['data'];
                                                             $ii++;
                                                             echo "<tr id='$id'>
                                                         <td>$ii</td>
-                                                        <td>$name</td>
+                                                        <td>$Paciente</td>
+                                                        <td>$nameMedico</td>
                                                         <td>$data</td>
-                                                        <td>$capacidade</td>
-                                                        <td><button class='delete_agenda btn btn-danger rounded1'>X</button></td>
+                                                        <td><button class='delete_agendamento btn btn-danger rounded1'>X</button></td>
                                                     </tr>";
                                                         }
                                                         $i++;
@@ -184,12 +184,12 @@ $email = $_SESSION['email'];
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form method="POST" action="createbd_agenda.php" id="agenda_form">
+                                    <form method="POST" action="create_bdagendamento.php" id="agendamento_form">
                                         <div class="form-row">
-                                            <div class="col-4">
-                                                <label>Médico</label><br />
-                                                <select class="form-control select-agenda" name="Medico_id_agenda" required>
-                                                    <option value=""> Selecione o nome médico </option>
+                                            <div class="col-5">
+                                                <label>Paciente</label><br />
+                                                <select class="form-control select-agendar-consulta" name="Paciente_id" required>
+                                                    <option value=""> Selecione o nome do paciente </option>
                                                     <?php
 
                                                     $conexao = mysqli_connect('localhost', 'root', '') or die("Erro de conexao " . mysqli_connect_error());
@@ -203,9 +203,9 @@ $email = $_SESSION['email'];
                                                     }
 
 
-                                                    if (mysqli_query($conexao, "SELECT * FROM medicos")) {
+                                                    if (mysqli_query($conexao, "SELECT * FROM pacientes")) {
 
-                                                        $getTodosMedicos = "SELECT * FROM medicos";
+                                                        $getTodosMedicos = "SELECT * FROM pacientes";
 
                                                         $select = mysqli_query($conexao, $getTodosMedicos);
 
@@ -224,17 +224,50 @@ $email = $_SESSION['email'];
                                                     ?>
                                                 </select>
                                             </div>
-                                            <div class="col-4">
-                                                <label>Data</label>
-                                                <input type="date" class="form-control data_agenda" placeholder="" name="data_agenda" required />
-                                            </div>
-                                            <div class="col-2">
-                                                <label>Capacidade</label>
-                                                <input type="number" class="form-control capacidade_agenda" placeholder="" min=0 name="capacidade_agenda" required />
+                                            <div class="col-5">
+                                                <label>Médicos e datas disponíveis</label><br />
+                                                <select class="form-control select-agendar-consulta" name="AgendaMedica_id" required>
+                                                    <option value=""> Selecione a opção de atendimento desejada</option>
+                                                    <?php
+
+                                                    $conexao = mysqli_connect('localhost', 'root', '') or die("Erro de conexao " . mysqli_connect_error());
+
+                                                    $bd = mysqli_select_db($conexao, "hospital_management");
+                                                    if (empty($bd)) {
+                                                        $criaBD = mysqli_query($conexao, "CREATE DATABASE hospital_management DEFAULT CHARSET=utf8");
+                                                        if (!$criaBD) {
+                                                            die("Erro ao criar banco de dados");
+                                                        }
+                                                    }
+
+
+                                                    if (mysqli_query($conexao, "SELECT * FROM agenda")) {
+
+                                                        $getTodasAgenda = "SELECT * FROM agenda";
+
+                                                        $select = mysqli_query($conexao, $getTodasAgenda);
+
+                                                        if (mysqli_num_rows($select) != 0) {
+                                                            $ii = 0;
+                                                            while ($info = mysqli_fetch_array($select)) {
+                                                                $nomeMedico = $info['nome_medico'];
+                                                                $dataAtendimento = $info['data'];
+                                                                $id = $info['id'];
+                                                                $ii++;
+                                                                if ($info['nPacientes'] < $info['capacidade']) {
+                                                                    echo "<option value='$id'>$nomeMedico - $dataAtendimento </option>";
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+
+                                                    mysqli_close($conexao);
+                                                    ?>
+                                                </select>
                                             </div>
                                             <div class="col-2">
                                                 <label class="hide_label">Email</label>
-                                                <button type="submit" class="btn-add-agenda btn btn-success rounded1">Adicionar</button>
+                                                <button type="submit" class="btn-agendar-consulta btn btn-success rounded1">Agendar</button>
                                             </div>
                                         </div>
                                     </form>

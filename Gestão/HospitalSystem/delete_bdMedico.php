@@ -16,7 +16,7 @@
         $query = "DELETE FROM Medicos WHERE id = '$id'";
         $delete = mysqli_query($conexao, $query);
         if($delete) {
-            echo "<script>alert('Medico removido com sucesso')</script>";
+            echo "<script>alert('Médico removido com sucesso')</script>";
         } 
     }
     header("refresh:0.5;url=medicos_ativos.php");

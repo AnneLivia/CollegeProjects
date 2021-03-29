@@ -100,6 +100,9 @@ $email = $_SESSION['email'];
                     <li>
                         <a href="cadastrar_medicos.php"><img src="assets/img/icon_doctor_add_menu.png" class="iconMenu" /> Cadastrar Médicos</a>
                     </li>
+                    <li>
+                        <a href="agenda_medica.php"><img src="assets/img/icon_agenda_menu.png" class="iconMenu" /> Agenda Médica</a>
+                    </li>
                 </ul>
             </div>
         </nav>

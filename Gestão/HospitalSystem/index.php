@@ -100,13 +100,34 @@ $email = $_SESSION['email'];
                     <li>
                         <a href="cadastrar_medicos.php"><img src="assets/img/icon_doctor_add_menu.png" class="iconMenu" /> Cadastrar Médicos</a>
                     </li>
+                    <li>
+                        <a href="agenda_medica.php"><img src="assets/img/icon_agenda_menu.png" class="iconMenu" /> Agenda Médica</a>
+                    </li>
+                    <li>
+                        <a href="agendar_consulta.php"><img src="assets/img/icon_calendar_menu.png" class="iconMenu" /> Agendar Consulta</a>
+                    </li>
                 </ul>
             </div>
         </nav>
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
             <div id="page-inner">
+
                 <div class="row">
+                    <div class="col-md-12 main-index-presentation">
+                        <h2 class="text-center"> SISTEMA DE GERÊNCIAMENTO DE HOSPITAIS </h2>
+                        <img src="assets/img/index_logo.jpg" />
+                        <h3 class="text-center">
+                            Este sistema possui vários recursos que permitem informatizar os principais procedimentos hospitalares,
+                            incluindo o controle e organização de informações sobre médicos e pacientes,
+                            marcação de consultas, relatórios e outros módulos importantes que proporcionam uma
+                            gestão eficiente e eficaz dos processos clínicos.
+                        </h3>
+                        <hr/>
+                        <h4 class="text-center"> Sistema desenvolvido pela <a href="https://www.github.com/annelivia" target="u_black">Anne Livia. </a></h4>
+                        <h4 class="text-center"> © Todos os direitos reservados. </h4>
+                        <hr/>
+                    </div>
                     <div class="col-md-12">
                         <h5 class="med_pat_title_table center"><img src="assets/img/icon_titles_emphasis.png" class="title_session" /> &nbsp; Informações Gerais</h5>
                     </div>

@@ -18,6 +18,7 @@
             id_medico int NOT NULL,
             capacidade int NOT NULL,
             data varchar(20) NOT NULL,
+            nPacientes int NOT NULL,
             PRIMARY KEY(id)
         )  DEFAULT CHARSET=utf8";
         $criaTabela = mysqli_query($conexao, $table);
@@ -53,8 +54,9 @@
             nome_medico, 
             id_medico,
             capacidade, 
-            data
-        ) VALUES ('$medico_nome', '$id_medico','$capacidade', '$date')";
+            data,
+            nPacientes
+        ) VALUES ('$medico_nome', '$id_medico','$capacidade', '$date', '0')";
         $insert = mysqli_query($conexao, $query);
         if(!$insert) {
             echo "<script>alert('Erro na inserção')</script>";
