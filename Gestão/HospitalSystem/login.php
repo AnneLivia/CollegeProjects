@@ -49,16 +49,16 @@ if (empty($bd)) {
             <div class="form-container form-cadastro sign-up-container">
                 <form action="create_bdadm.php" class="form-cadastro-form" method="POST">
                     <h1>Registre-se</h1>
-                    <input name="uNomeCompleto" type="text" placeholder="Nome completo" class="form-control uNomeCompleto" onkeypress="removeIncomplete('uNomeCompleto')" required />
+                    <input name="uNomeCompleto" autocomplete="off" type="text" placeholder="Nome completo" class="form-control uNomeCompleto" onkeypress="removeIncomplete('uNomeCompleto')" required />
                     <div class="form-row">
                         <div class="col">
-                            <input name="uEmail" type="email" placeholder="Email" class="form-control uEmailCadastro" onkeypress="removeIncomplete('uEmailCadastro')" required />
+                            <input name="uEmail" autocomplete="off" type="email" placeholder="Email" class="form-control uEmailCadastro" onkeypress="removeIncomplete('uEmailCadastro')" required />
                         </div>
                         <div class="col">
-                            <input name="uSenha" type="password" placeholder="Senha" class="form-control uSenhaCadastro" onkeypress="removeIncomplete('uSenhaCadastro')" required />
+                            <input name="uSenha" autocomplete="off" type="password" placeholder="Senha" class="form-control uSenhaCadastro" onkeypress="removeIncomplete('uSenhaCadastro')" required />
                         </div>
                     </div>
-                    <input name="uCpf" type="text" placeholder="CPF" class="form-control ucpf" onkeypress="removeIncomplete('ucpf')" required />
+                    <input name="uCpf" type="text" autocomplete="off" placeholder="CPF" class="form-control ucpf" onkeypress="removeIncomplete('ucpf')" required />
                     <div class="form-row radios">
                         <div class="col-6">
                             <label id="optionsradio_label1">
@@ -78,8 +78,8 @@ if (empty($bd)) {
             <div class="form-container sign-in-container">
                 <form action="validar_login.php" class="form-login-form" method="POST">
                     <h1>Log In</h1>
-                    <input type="email" name="uEmail" placeholder="Email" class="uEmail form-control" onkeypress="removeIncomplete('uEmail')" required />
-                    <input type="password" name="uSenha" placeholder="Senha" class="uSenha form-control" onkeypress="removeIncomplete('uSenha')" required />
+                    <input type="email" name="uEmail" autocomplete="off" placeholder="Email" class="uEmail form-control" onkeypress="removeIncomplete('uEmail')" required />
+                    <input type="password" name="uSenha" autocomplete="off" placeholder="Senha" class="uSenha form-control" onkeypress="removeIncomplete('uSenha')" required />
                     <a href="#">Forgot your password?</a>
                     <button type="submit" class="btnLogin btlogin-signup">Entrar</button>
                 </form>
