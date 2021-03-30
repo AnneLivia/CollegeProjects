@@ -137,6 +137,9 @@ $email = $_SESSION['email'];
                     <li>
                         <a href="agenda_medica.php"><img src="assets/img/icon_agenda_menu.png" class="iconMenu" /> Agenda Médica</a>
                     </li>
+                    <li>
+                        <a href="agendar_consulta.php"><img src="assets/img/icon_calendar_menu.png" class="iconMenu" /> Agendar Consulta</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -157,6 +160,9 @@ $email = $_SESSION['email'];
                                             <div class="form-group">
                                                 <label>Nome Completo</label>
                                                 <input class="form-control" id="Paciente_nome" name="Paciente_nome" placeholder="" value='<?php echo $nomePaciente ?>' required />
+                                            </div>
+                                            <div class="form-group hide">
+                                                <input type="email" class="form-control" placeholder="" name="id_paciente" value='<?php echo $id ?>' readonly />
                                             </div>
                                             <div class="form-group hide">
                                                 <input type="email" class="form-control" placeholder="" name="Paciente_email_atual" value='<?php echo $emailPaciente ?>' readonly />

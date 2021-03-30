@@ -133,15 +133,15 @@ body {
     padding: 40px 100px;
 }
 
-#validar_email_form, #agenda_form, #agendamento_form {
+#validar_email_form, #agenda_form, #agendamento_form, #agenda_form_atualizar {
     margin-top: 40px;
 }
 
-#paciente_cadastro_form div, #medico_cadastro_form div, #validar_email_form div, #agenda_form div, #agendamento_form div, #consulta_insert_form div, #setting_form div {
+#paciente_cadastro_form div, #medico_cadastro_form div, #validar_email_form div, #agenda_form_atualizar div, #agenda_form div, #agendamento_form div, #consulta_insert_form div, #setting_form div {
     margin-bottom: 25px;
 }
 
-#paciente_cadastro_form input, #medico_cadastro_form input, #validar_email_form input, #agendamento_form input, #agenda_form input, #consulta_insert_form input, #consulta_insert_form select, #setting_form input {
+#paciente_cadastro_form input, #medico_cadastro_form input, #validar_email_form input, #agenda_form_atualizar input, #agendamento_form input, #agenda_form input, #consulta_insert_form input, #consulta_insert_form select, #setting_form input {
     padding: 24px;
     font-size: 17px;
     border: none;
@@ -177,11 +177,11 @@ body {
     margin-top: -10px;
 }
 
-#paciente_cadastro_form label, #medico_cadastro_form label, #validar_email_form label, #agenda_form label, #agendamento_form label, #consulta_insert_form label, #setting_form label {
+#paciente_cadastro_form label, #medico_cadastro_form label, #validar_email_form label, #agenda_form label, #agenda_form_atualizar label, #agendamento_form label, #consulta_insert_form label, #setting_form label {
     font-size: 16px;
 }
 
-#paciente_cadastro_form input:hover, #medico_cadastro_form input:hover, #agendamento_form input:hover, #validar_email_form input:hover, #agenda_form input:hover, #consulta_insert_form input:hover, #consulta_insert_form select:hover, #consulta_insert_form textarea:hover, #setting_form input:hover {
+#paciente_cadastro_form input:hover, #medico_cadastro_form input:hover, #agendamento_form input:hover, #validar_email_form input:hover, #agenda_form_atualizar input:hover, #agenda_form input:hover, #consulta_insert_form input:hover, #consulta_insert_form select:hover, #consulta_insert_form textarea:hover, #setting_form input:hover {
     border-bottom-color: #000;
 }
 
@@ -192,6 +192,10 @@ body {
 .painel_agenda_medica, .painel_agendamento {
     margin-top: 25px;
 }
+
+.painel_agendamento_atualizar {
+    margin-top: 5px;
+} 
 
 .painel_agenda_medica_atualizar {
     margin-top: 5px;
@@ -222,7 +226,7 @@ body {
     margin-right: 45px;
 }
 
-.btn-cadastrar, .btn-add-agenda, .btn-agendar-consulta {
+.btn-cadastrar, .btn-add-agenda, .btn-agendar-consulta, .btn-atualizar-agenda {
     width: 100%;
     transition: 0.6s;
     font-size: 18px;
@@ -269,6 +273,11 @@ body {
 
 .img-agenda-ativos {
     width: 250px;
+    margin-bottom: -30px;
+}
+
+.img-agendamento-ativos {
+    width: 170px;
     margin-bottom: -30px;
 }
 

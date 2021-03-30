@@ -93,6 +93,7 @@ $email = $_SESSION['email'];
                                 $nome_medico = $info['nome_medico'];
                                 $capacidade = $info['capacidade'];
                                 $data = $info['data'];
+                                $nPacientes = $info['nPacientes'];
                             }
                         }
 
@@ -133,6 +134,9 @@ $email = $_SESSION['email'];
                     <li>
                         <a href="agenda_medica.php"><img src="assets/img/icon_agenda_menu.png" class="iconMenu" /> Agenda Médica</a>
                     </li>
+                    <li>
+                        <a href="agendar_consulta.php"><img src="assets/img/icon_calendar_menu.png" class="iconMenu" /> Agendar Consulta</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -151,7 +155,7 @@ $email = $_SESSION['email'];
                         <div class="panel panel-default painel_agenda_medica_atualizar">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form method="POST" action="atualizar_agendaBD.php" id="agenda_form">
+                                    <form method="POST" action="atualizar_agendaBD.php" id="agenda_form_atualizar">
                                         <div class="form-row">
                                             <div class="form-group hide">
                                                 <input type="text" class="form-control" placeholder="" name="id_agenda" value='<?php echo  $id ?>' readonly />
@@ -162,11 +166,14 @@ $email = $_SESSION['email'];
                                             </div>
                                             <div class="col-4">
                                                 <label>Data</label>
-                                                <input type="date" class="form-control data_agenda" placeholder="" value="<?php echo $data ?>" name="data_agenda_atualizar" required />
+                                                <input type="date" class="form-control data_agenda_atualizar" placeholder="" value="<?php echo $data ?>" name="data_agenda_atualizar" required />
                                             </div>
                                             <div class="col-2">
                                                 <label>Capacidade</label>
-                                                <input type="number" class="form-control capacidade_agenda" value="<?php echo $capacidade ?>" placeholder="" min=0 name="capacidade_agenda_atualizar" required />
+                                                <input type="number" class="form-control capacidade_agenda_atualizar" value="<?php echo $capacidade ?>" placeholder="" min=0 value=0 name="capacidade_agenda_atualizar" required />
+                                            </div>
+                                            <div class="form-group hide">
+                                            <input type="number" class="form-control nPacientes_agenda_atualizar" value="<?php echo $nPacientes ?>" name="nPacientes"  />
                                             </div>
                                             <div class="col-2">
                                                 <label class="hide_label">Email</label>
@@ -181,8 +188,7 @@ $email = $_SESSION['email'];
                 </div>
             </div>
             <!-- End Form Elements -->
-        </div>
-        <footer>
+            <footer>
             <p class="text-center">
                 Developed by <a href="https://github.com/AnneLivia" target="u_black">Anne Livia</a><br />
                 © All Rights Reserved.
@@ -191,6 +197,8 @@ $email = $_SESSION['email'];
                 </script>
             </p>
         </footer>
+        </div>
+        
     </div>
 
     </div>

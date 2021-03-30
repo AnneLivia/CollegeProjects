@@ -103,6 +103,9 @@ $email = $_SESSION['email'];
                     <li>
                         <a href="agenda_medica.php"><img src="assets/img/icon_agenda_menu.png" class="iconMenu" /> Agenda Médica</a>
                     </li>
+                    <li>
+                        <a href="agendar_consulta.php"><img src="assets/img/icon_calendar_menu.png" class="iconMenu" /> Agendar Consulta</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -111,7 +114,7 @@ $email = $_SESSION['email'];
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <img class="img-agenda-ativos center-block" src="assets/img/agenda_info.png" />
+                        <img class="img-agendamento-ativos center-block" src="assets/img/agendamento_info.png" />
                         <h2 class="title_ativos-agendamento">Agendamento de consulta</h2>
                     </div>
                 </div>
@@ -252,10 +255,11 @@ $email = $_SESSION['email'];
                                                             while ($info = mysqli_fetch_array($select)) {
                                                                 $nomeMedico = $info['nome_medico'];
                                                                 $dataAtendimento = $info['data'];
+                                                                $vagasDisponiveis = $info['capacidade'] - $info['nPacientes'];
                                                                 $id = $info['id'];
                                                                 $ii++;
                                                                 if ($info['nPacientes'] < $info['capacidade']) {
-                                                                    echo "<option value='$id'>$nomeMedico - $dataAtendimento </option>";
+                                                                    echo "<option value='$id'>$nomeMedico - $dataAtendimento - vagas: $vagasDisponiveis </option>";
                                                                 }
                                                             }
                                                         }
@@ -276,10 +280,9 @@ $email = $_SESSION['email'];
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- End Form Elements -->
-        </div>
-        <footer>
+            </div>  
+            
+            <footer>
             <p class="text-center">
                 Developed by <a href="https://github.com/AnneLivia" target="u_black">Anne Livia</a><br />
                 © All Rights Reserved.
@@ -288,8 +291,9 @@ $email = $_SESSION['email'];
                 </script>
             </p>
         </footer>
-    </div>
-
+            <!-- End Form Elements -->
+        </div>
+      
     </div>
 
 

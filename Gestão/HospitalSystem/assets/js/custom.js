@@ -128,6 +128,17 @@ $(".table_ativos").on('click', '.delete_agenda', function () {
     }
 });
 
+$(".table_ativos").on('click', '.delete_agendamento', function () {
+    if (confirm("Tem certeza que deseja remover esse agendamento?")) {
+        var id = $(this).closest('tr').attr('id');
+        $(this).closest('tr').remove();
+        window.location.href = "delete_bdagendamento.php?id=" + id;
+    } else {
+        window.location.href = "agendar_consulta.php";
+    }
+});
+
+
 
 document.querySelector("#Logout").addEventListener('click', e => {
     e.preventDefault();
@@ -155,6 +166,40 @@ document.querySelector('.btn-add-agenda').addEventListener('click', e => {
             alert("Capacidade não pode ser um valor negativo.");
         } else {
             document.querySelector('#agenda_form').submit();
+        }
+    }
+
+});
+
+document.querySelector('.btn-atualizar-agenda').addEventListener('click', e => {
+    e.preventDefault();
+
+    let nPacientes = document.querySelector(".nPacientes_agenda_atualizar");
+    let capacidade = document.querySelector(".capacidade_agenda_atualizar");
+    let date = document.querySelector(".data_agenda_atualizar");
+
+    
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+    // só deve permitir datas atuais
+    // se o valor escolhido for antes de hoje, não permitir
+    if (date.value < today) {
+        alert("Escolha uma data válida.");
+    } else {
+        if (capacidade.value < 0) {
+            alert("Capacidade não pode ser um valor negativo.");
+        } else {
+            if (capacidade.value < nPacientes.value) {
+                alert("Já existem pacientes agendados para a consulta selecionada. " +
+                    "Portanto, a capacidade não pode ser um valor menor do que a capacidade de " +
+                    "pacientes agendados. O total de pacientes agendados é: " + nPacientes.value);
+            } else {
+                document.querySelector('#agenda_form_atualizar').submit();
+            }
         }
     }
 

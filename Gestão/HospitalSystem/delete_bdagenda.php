@@ -16,7 +16,14 @@
         $query = "DELETE FROM agenda WHERE id = '$id'";
         $delete = mysqli_query($conexao, $query);
         if($delete) {
-            echo "<script>alert('Dados do atendimento foi removido da agenda com sucesso')</script>";
+            // se deletado, remover todos os dados referentes a essa agenda na tabela agendamento.
+            $query = "DELETE FROM agendamento WHERE id_agenda = '$id'";
+            $delete = mysqli_query($conexao, $query);
+            if($delete) {
+                echo "<script>alert('Dados da agenda selecionada foram removidos com sucesso.')</script>";
+            } else {
+                echo "<script>alert('Erro ao remover dados da tabela agendamento.')</script>";
+            }
         } 
     }
     header("refresh:0.5;url=agenda_medica.php");

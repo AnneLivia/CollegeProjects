@@ -52,8 +52,10 @@ $query = "UPDATE medicos SET
         especialidade = '$especialidade' WHERE id = '$medicoID'";
 $insert = mysqli_query($conexao, $query);
 
+$deucerto = true;
+
 if (!$insert) {
-    echo "<script>alert('Erro na atualização da tabela medicos')</script>";
+    echo "<script>alert('Erro na atualização da tabela médicos')</script>";
 } else {
     // se o usuario remover o medico, o dado continuara salvo no banco de dados porque o que importa é deixar
     // os dados la mesmo que o medico saia do hospital
@@ -65,41 +67,39 @@ if (!$insert) {
         $insert = mysqli_query($conexao, $query);
         if (!$insert) {
             echo "<script>alert('Erro na atualização da tabela consultas')</script>";
-        } else {
-            // fazer a mesma atualização para a tabela de agenda se houver
-            if (mysqli_query($conexao, "SELECT * FROM agenda")) {
-                $query = "UPDATE agenda SET 
-                        nome_medico = '$nome'
-                        WHERE id_medico = '$medicoID'";
-                $insert = mysqli_query($conexao, $query);
-                if (!$insert) {
-                    echo "<script>alert('Erro na atualização da tabela agenda')</script>";
-                } else {
-                    echo "<script>alert('Dados do médico(a) $nome foi atualizado com sucesso')</script>";
-                }
-            } else {
-                echo "<script>alert('Dados do médico(a) $nome foi atualizado com sucesso')</script>";
-            }
+            $deucerto = false;
+        } 
+    }
+
+    
+    // fazer a mesma atualização para a tabela de agenda se houver
+    if (mysqli_query($conexao, "SELECT * FROM agenda")) {
+        $query = "UPDATE agenda SET 
+                nome_medico = '$nome'
+                WHERE id_medico = '$medicoID'";
+        $insert = mysqli_query($conexao, $query);
+        if (!$insert) {
+            echo "<script>alert('Erro na atualização da tabela agenda')</script>"; 
+            $deucerto = false;
         }
-    } else {
-        // fazer a mesma atualização para a tabela de agenda se houver
-        if (mysqli_query($conexao, "SELECT * FROM agenda")) {
-            $query = "UPDATE agenda SET 
-                    nome_medico = '$nome'
-                    WHERE id_medico = '$medicoID'";
-            $insert = mysqli_query($conexao, $query);
-            if (!$insert) {
-                echo "<script>alert('Erro na atualização da tabela agenda')</script>";
-            } else {
-                echo "<script>alert('Dados do médico(a) $nome foi atualizado com sucesso')</script>";
-            }
-        } else {
-            echo "<script>alert('Dados do médico(a) $nome foi atualizado com sucesso')</script>";
+    }
+
+    // fazer a mesma atualização para a tabela de agendamento se houver
+    if (mysqli_query($conexao, "SELECT * FROM agendamento")) {
+        $query = "UPDATE agendamento SET 
+                nome_medico = '$nome'
+                WHERE id_medico = '$medicoID'";
+        $insert = mysqli_query($conexao, $query);
+        if (!$insert) {
+            echo "<script>alert('Erro na atualização da tabela agendamento')</script>"; 
+            $deucerto = false;
         }
+    }
+
+    if($deucerto) {
+        echo "<script>alert('Dados do médico foi atualizado com sucesso.')</script>";
     }
 }
 
 header("refresh:0.5;url=medicos_ativos.php");
 mysqli_close($conexao);
-
-?>

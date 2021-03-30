@@ -30,6 +30,7 @@ if (!mysqli_query($conexao, "SELECT * FROM pacientes")) {
     }
 }
 
+$id_paciente = $_POST['id_paciente'];
 $email = $_POST['Paciente_email'];
 $nome = $_POST['Paciente_nome'];
 $cpf = $_POST['Paciente_cpf'];
@@ -39,8 +40,6 @@ $cep = $_POST['Paciente_cep'];
 $ncasa = $_POST['Paciente_ncasa'];
 $telefone = $_POST['Paciente_telefone'];
 $atualEmail = $_POST['Paciente_email_atual'];
-
-
 
 $query = "UPDATE Pacientes SET 
         nome = '$nome',
@@ -53,8 +52,10 @@ $query = "UPDATE Pacientes SET
         telefone = '$telefone' WHERE email = '$atualEmail'";
 $insert = mysqli_query($conexao, $query);
 
+$deuCerto = true;
+
 if (!$insert) {
-    echo "<script>alert('Erro na atualização')</script>";
+    echo "<script>alert('Erro na atualização da tabela pacientes')</script>";
 } else {
     // atualizar dado em consulta se houver
     if (mysqli_query($conexao, "SELECT * FROM consultas")) {
@@ -65,10 +66,23 @@ if (!$insert) {
         $insert = mysqli_query($conexao, $query);
         if (!$insert) {
             echo "<script>alert('Erro na atualização da tabela consulta.')</script>";
-        } else {
-            echo "<script>alert('Dados do paciente(a) $nome foi atualizado com sucesso')</script>";
-        }
-    } else {
+            $deuCerto = false;
+        } 
+    } 
+
+    // atualizar dado em agendamento se houver
+    if (mysqli_query($conexao, "SELECT * FROM agendamento")) {
+        $query = "UPDATE agendamento SET 
+                nome_paciente = '$nome'
+                WHERE id_paciente = '$id_paciente'";
+        $insert = mysqli_query($conexao, $query);
+        if (!$insert) {
+            echo "<script>alert('Erro na atualização da tabela agendamento.')</script>";
+            $deuCerto = false;
+        } 
+    } 
+
+    if($deuCerto) {
         echo "<script>alert('Dados do paciente(a) $nome foi atualizado com sucesso')</script>";
     }
 }
