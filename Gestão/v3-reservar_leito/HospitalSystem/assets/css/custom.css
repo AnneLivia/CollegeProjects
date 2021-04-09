@@ -1,0 +1,672 @@
+@font-face {
+    font-family: "Quicksand";
+    src: url("../fonts/Quicksand-Regular.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "Rajdhani";
+    src: url("../fonts/Rajdhani-Light.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "Alegreya";
+    src: url("../fonts/Alegreya-VariableFont_wght.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "Open Sans Condensed";
+    src: url("../fonts/open_sans_condensed/OpenSansCondensed-light.ttf");
+}
+
+@font-face {
+    font-family: "Frank Ruhl Libre";
+    src: url("../fonts/Frank_Ruhl_Libre/FrankRuhlLibre-Light.ttf");
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #f3f3f3;
+}
+
+.main-index-presentation h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 40px;
+}
+
+.main-index-presentation img {
+    margin: 0 5% 0 5%;
+    width: 90%;
+}
+
+.main-index-presentation h3 {
+    font-family: 'Alegreya', serif;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.main-index-presentation h4 {
+    font-family: 'Alegreya', serif;
+    font-size: 22px;
+}
+
+#graph_image {
+    width: 100%;
+}
+
+.painel-graph {
+    border: none;
+    margin-top: 20px;
+    margin-left: -30px;
+    margin-right: -30px;
+}
+
+#wrapper {
+    width: 100%;
+    margin-top: 50px;
+    background-color: #202020;
+}
+
+#page-wrapper {
+    padding: 15px 15px;
+    min-height: 600px;
+    background: #fdfdfd;
+}
+
+#page-inner {
+    width: 100%;
+    margin: 10px 1px 10px 1px;
+    background-color: #fff!important;
+    padding: 30px;
+    min-height: 1200px;
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.25), 0 6px 6px rgba(0, 0, 0, 0.22);
+}
+
+.table_ativos {
+    font-size: 15px;
+}
+
+.table .thead-dark th {
+    color: #fff;
+    background-color: #212529;
+    border-color: #32383e;
+}
+
+.table_ativos th, td, .table-index-pacienteativo th, td, .table-index-medicoativo th, td, .table-index-consultasativas th, td {
+    text-align: center;
+    word-break: break-word;
+    /*or you can use word-break:break-all*/
+    min-width: 90px;
+    transition: 1.2s;
+    /*set min-width as needed*/
+}
+
+.table-index-medicoativo td, .table-index-pacienteativo td, .table-index-consultasativas td {
+    font-weight: bold;
+}
+
+.table_ativos td, .table-index-pacienteativo th, .table-index-medicoativo th, .table-index-consultasativas th {
+    cursor: pointer;
+}
+
+.table-index-medicoativo, .table-index-pacienteativo, .table-index-consultasativas {
+    table-layout: fixed;
+}
+
+.title_session {
+    width: 35px;
+    margin-top: -4px;
+}
+
+#genderMaleIconCadastrar {
+    width: 16px;
+}
+
+#genderFemaleIconCadastrar {
+    width: 14px;
+}
+
+#optionsradio_label1, #optionsradio_label2 {
+    font-size: 15px;
+}
+
+#paciente_cadastro_form, #medico_cadastro_form, #consulta_insert_form, #consulta_insert_form, #setting_form {
+    padding: 40px 100px;
+}
+
+#validar_email_form, #agenda_form, #agendamento_form, #agenda_form_atualizar, #leito_form, #leito_reservar_form, #leito_reservar_form_atualizar {
+    margin-top: 40px;
+}
+
+#paciente_cadastro_form div, #medico_cadastro_form div, #validar_email_form div, #agenda_form_atualizar div, #leito_reservar_form div, #leito_reservar_form_atualizar div, #agenda_form div, #agendamento_form div, #leito_form div, #consulta_insert_form div, #setting_form div {
+    margin-bottom: 25px;
+}
+
+#paciente_cadastro_form input, #medico_cadastro_form input, #validar_email_form input, #agenda_form_atualizar input, #leito_reservar_form input, #leito_reservar_form_atualizar input, #agendamento_form input, #agenda_form input, #leito_form input, #consulta_insert_form input, #consulta_insert_form select, #setting_form input {
+    padding: 24px;
+    font-size: 17px;
+    border: none;
+    border-bottom: 2px solid rgb(199, 199, 199);
+    transition: 0.5s;
+}
+
+#consulta_insert_form textarea {
+    resize: vertical;
+    padding: 24px;
+    font-size: 17px;
+    border: none;
+    border-bottom: 2px solid rgb(199, 199, 199);
+}
+
+.select_options {
+    height: 72px;
+}
+
+.div_medico_select {
+    margin-top: 5px;
+}
+
+.radiosCadastro {
+    margin-top: -30px;
+}
+
+.radiosCadastroMed, .receitaatualizacao {
+    margin-top: -45px;
+}
+
+.receitaatualizacao {
+    margin-top: -10px;
+}
+
+#paciente_cadastro_form label, #medico_cadastro_form label, #validar_email_form label, #agenda_form label, #leito_reservar_form_atualizar label, #leito_form label, #leito_reservar_form label, #agenda_form_atualizar label, #agendamento_form label, #consulta_insert_form label, #setting_form label {
+    font-size: 16px;
+}
+
+#paciente_cadastro_form input:hover, #medico_cadastro_form input:hover, #agendamento_form input:hover, #leito_form input:hover, #leito_reservar_form_atualizar input:hover, #leito_reservar_form input:hover, #validar_email_form input:hover, #agenda_form_atualizar input:hover, #agenda_form input:hover, #consulta_insert_form input:hover, #consulta_insert_form select:hover, #consulta_insert_form textarea:hover, #setting_form input:hover {
+    border-bottom-color: #000;
+}
+
+.painel_paciente_medico, .painel_settings, .painel_email_consulta, .painel_consulta_insert {
+    margin-top: 35px;
+}
+
+.painel_agenda_medica, .painel_agendamento, .painel_leito {
+    margin-top: 25px;
+}
+
+.painel_agendamento_atualizar {
+    margin-top: 5px;
+} 
+
+.painel_agenda_medica_atualizar {
+    margin-top: 5px;
+}
+
+.btn-add2, .btn-remover, .btn-atualizar_settings_adm {
+    width: 88%;
+    transition: 0.6s;
+    font-size: 18px;
+    margin-top: 50px;
+    margin-left: 35px;
+    margin-right: 35px;
+    padding: 12px;
+    border-color: #fff;
+    font-weight: bold;
+}
+
+.btn-remover {
+    margin-top: 15px;
+}
+
+.btn-atualizar_settings_adm {
+    margin-top: 15px;
+}
+
+
+
+.btn-add1 {
+    width: 100%;
+    transition: 0.6s;
+    font-size: 18px;
+    border-color: #fff;
+    font-weight: bold;
+    padding: 12px;
+}
+
+.hide_label {
+    visibility: hidden;
+}
+
+.table_paciente, .table_medico, .table_consulta {
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+}
+
+.med_pat_title_table {
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: -10px;
+}
+
+.consulta-title {
+    margin-top: 5px;
+    margin-bottom: -5px;
+}
+
+.img-patient-ativos {
+    width: 100px;
+    margin-bottom: -30px;
+}
+
+.img-doctor-ativos {
+    width: 98px;
+    margin-bottom: -30px;
+}
+
+.img-appoint-ativos {
+    width: 150px;
+    margin-bottom: -30px;
+}
+
+.img-agenda-ativos, .img-leitos-ativos {
+    width: 250px;
+    margin-bottom: -30px;
+}
+
+.img-agendamento-ativos {
+    width: 170px;
+    margin-bottom: -30px;
+}
+
+.title_ativos {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.title_ativos-agenda, .title_ativos-agendamento, .title_ativos-leito {
+    margin-top: 40px;
+    margin-bottom: 18px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.select-style {
+    height: 50px;
+    border: none;
+    border-bottom: 2px solid rgb(199, 199, 199);
+    transition: 0.5s;
+}
+
+.select-style:hover {
+    border-bottom-color: #000;
+}
+
+.delete-style-onTable {
+    margin: 10px auto;
+    padding: 4px 15px;
+    border-radius: 500px;
+    transition: 0.6s;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.deletePaciente:hover, .deleteMedico:hover, .delete_consulta:hover, .delete_agenda:hover, .delete_agendamento:hover, .delete_leito:hover {
+    font-size: 20px;
+}
+
+footer {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+footer p {
+    font-size: 18px;
+}
+
+#setting_icon {
+    width: 25px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+#logout_icon {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    width: 25px;
+}
+
+#setting_item_nav, #logout_item_nav {
+    transition: 0.6s;
+}
+
+#setting_item_nav:hover, #logout_item_nav:hover {
+    background-color: rgb(146, 146, 146);
+}
+
+#userNome {
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 17px;
+    word-break: break-word;
+    font-weight: bold;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.user-image-back {
+    background-color: rgb(32 32 32);
+}
+
+.userImg {
+    width: 180px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.iconMenu {
+    width: 25px;
+    margin-top: -4px;
+    margin-left: -2px;
+    margin-right: 2px;
+}
+
+h5, .h5 {
+    font-size: 14px;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus {
+    color: #06F;
+}
+
+.arrow {
+    float: right;
+}
+
+.fa.arrow:before {
+    content: "\f104";
+}
+
+.active>a>.fa.arrow:before {
+    content: "\f107";
+}
+
+.nav-second-level li, .nav-third-level li {
+    border-bottom: none !important;
+}
+
+.nav-second-level li a {
+    padding-left: 37px;
+}
+
+.nav-third-level li a {
+    padding-left: 55px;
+}
+
+.sidebar-collapse, .sidebar-collapse .nav {
+    background: none;
+}
+
+.sidebar-collapse .nav {
+    padding: 0;
+}
+
+.sidebar-collapse .nav>li>a {
+    background: #202020;
+    text-shadow: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.7s;
+}
+
+.sidebar-collapse>.nav>li>a {
+    padding: 18px 15px;
+}
+
+.sidebar-collapse>.nav>li {
+    border-bottom: 1px solid #333333 !important;
+}
+
+.sidebar-collapse .nav>li>a:hover, .sidebar-collapse .nav>li>a:focus {
+    background: #444444;
+    color: #FFF;
+    outline: 0;
+}
+
+.nav-second-level>li:last-child>a:after, .nav-third-level>li:last-child>a:after {
+    height: 50%;
+}
+
+.nav-third-level>li>a:after, .nav-third-level>li>a:before {
+    left: 40px;
+}
+
+.navbar-side {
+    border: none;
+    background-color: #202020;
+}
+
+.navbar-inverse {
+    font-family: "Rajdhani", sans-serif;
+    background-color: #ffffff;
+    border-color: #f7f7f7;
+}
+
+.navbar-default {
+    border: 0px solid #DDDDDD;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: #f3f3f3;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: #fff;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: rgb(75, 72, 72);
+}
+
+.nav>li>a>i {
+    margin-right: 10px;
+}
+
+#iconHopNav {
+    margin-top: -6px;
+    margin-bottom: 4px;
+    margin-left: -8px;
+    margin-right: -7px;
+    width: 39px;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #000000;
+    font-size: 30px;
+}
+
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+    color: #000000;
+    font-size: 30px;
+}
+
+.navbar-brand {
+    margin-top: -2px;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: #000000;
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: #0e0e0e;
+}
+
+.adjust-nav {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.navbar-toggle {
+    transition: 0.5s;
+    background-color: #474747;
+}
+
+/*==========================================
+   GALLERY/ PORTFOLIO FILTER STYLES
+    =====================================================*/
+
+.portfolio-item {
+    box-shadow: 1px 5px 5px 5px rgba(153, 153, 153, 0.267);
+    margin: 7px;
+}
+
+.portfolio-item p {
+    padding: 12px;
+    color: #fff;
+    line-height: 25px;
+}
+
+.portfolio-item .overlay {
+    background-color: rgb(106, 116, 255);
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+/*==========================================
+   GALLERY/ PORTFOLIO FILTER STYLES
+    =====================================================*/
+
+ul#filters {
+    padding: 0px;
+}
+
+#filters {
+    margin: 3% 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+#filters li {
+    display: -webkit-inline-box;
+}
+
+#filters li span {
+    display: block;
+    padding: 5px 4px;
+    text-decoration: none;
+    color: #d51111;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/*==========================================
+   GALLERY/ TREINO FILTER STYLES
+    =====================================================*/
+
+.treino-item {
+    box-shadow: 1px 5px 5px 5px rgba(153, 153, 153, 0.267);
+    margin: 7px;
+}
+
+/*==============================================
+    DASHBOARD STYLES     
+    =============================================*/
+
+.bg-color-blue {
+    background-color: #9A86EB;
+    color: #fff;
+}
+
+.no-boder {
+    border: 1px solid #f3f3f3;
+}
+
+.back-footer-blue {
+    background-color: #7479E6;
+    border-top: 0px solid #fff;
+}
+
+.nav-tabs>li>a {
+    -webkit-border-radius: 0px 0px 0px 0px;
+    -moz-border-radius: 0px 0px 0px 0px;
+    border-radius: 0px 0px 0px 0px;
+}
+
+.panel-group .panel {
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+}
+
+.panel {
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+}
+
+.panel-heading {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    font-size: 20px;
+}
+
+.information_settings p {
+    font-size: 18px;
+    padding: 10px;
+}
+
+.information_settings {
+    margin: auto;
+}
+
+.btn-remover:hover {
+    background-color: #b41b16;
+}
+
+.btn {
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+}
+
+.progress {
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+}
+
+/*==============================================
+    MEDIA QUERIES     
+    =============================================*/
+
+@media(min-width:768px) {
+    #page-wrapper {
+        margin: 0 0 0 260px;
+        padding: 15px 30px;
+        min-height: 1200px;
+    }
+    .navbar-side {
+        z-index: 1;
+        position: absolute;
+        width: 260px;
+    }
+    .navbar {
+        border-radius: 0px;
+    }
+}
