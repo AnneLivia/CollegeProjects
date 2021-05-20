@@ -553,7 +553,7 @@ footer p {
     font-size: 18px;
 }
 
-#setting_icon {
+#setting_icon, #help_icon {
     width: 25px;
     padding-top: 1px;
     padding-bottom: 1px;
@@ -565,11 +565,11 @@ footer p {
     width: 25px;
 }
 
-#setting_item_nav, #logout_item_nav {
+#nav_top_style {
     transition: 0.6s;
 }
 
-#setting_item_nav:hover, #logout_item_nav:hover {
+#nav_top_style:hover {
     background-color: #a666f9;
 }
 

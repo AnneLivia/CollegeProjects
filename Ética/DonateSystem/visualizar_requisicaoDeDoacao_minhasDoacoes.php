@@ -55,7 +55,7 @@ if (mysqli_num_rows($select) != 0) {
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Donate System</title>
+    <title>Donate Food System</title>
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
@@ -114,24 +114,115 @@ if (mysqli_num_rows($select) != 0) {
                             }
                         }
 
+                        // pegar o id 
+                        $id = $_GET['id'];
+
+                        // pegar id da requisicao para ai sim obter os dados do solicitante
+                        $query = "SELECT * FROM desejo_doar WHERE id = $id";
+                        $select = mysqli_query($conexao, $query);
+
+                        $id_requisicao = "";
+
+                        $i = 1;
+                        
+                        if (mysqli_num_rows($select) != 0) {
+                            while ($info = mysqli_fetch_array($select)) {
+                                $id_requisicao = $info['id_requisicao'];
+                                $i++;
+                            }
+                        }
+
+                        // pegar email do solicitante para ai sim obter os dados do solicitante
+                        $query = "SELECT * FROM requisicoes_de_doacoes WHERE id = $id_requisicao";
+                        $select = mysqli_query($conexao, $query);
+
+                        $email_solicitante = "";
+
+                        $i = 1;
+                        
+                        if (mysqli_num_rows($select) != 0) {
+                            while ($info = mysqli_fetch_array($select)) {
+                                $email_solicitante = $info['email'];
+                                $i++;
+                            }
+                        }
+
+                        // obter os dados do usuario atual
                         $query = "SELECT nome FROM users WHERE email = '$email'";
                         $select = mysqli_query($conexao, $query);
                         if ($select) {
                             $nome = mysqli_fetch_array($select)['nome'];
                         }
 
-                        $query = "SELECT cpf FROM users WHERE email = '$email'";
+                        // obter os dados do solicitante
+                        $query = "SELECT nome FROM users WHERE email = '$email_solicitante'";
                         $select = mysqli_query($conexao, $query);
                         if ($select) {
-                            $cpf = mysqli_fetch_array($select)['cpf'];
+                            $nome_solicitante = mysqli_fetch_array($select)['nome'];
                         }
 
-                        $query = "SELECT telefone FROM users WHERE email = '$email'";
+
+                        // obter os dados do usuario atual
+                        $query = "SELECT telefone FROM users WHERE email = '$email_solicitante'";
                         $select = mysqli_query($conexao, $query);
                         if ($select) {
                             $telefone = mysqli_fetch_array($select)['telefone'];
                         }
-                        
+
+                        $getTodasConsultas = "SELECT * FROM endereco_user WHERE email = '$email_solicitante'";
+
+                        $endereco = "";
+                        $complemento = "";
+                        $cep = "";
+                        $bairro = "";
+                        $cidade = "";
+
+                        $select = mysqli_query($conexao, $getTodasConsultas);
+                        if (mysqli_num_rows($select) != 0) {
+                            while ($info = mysqli_fetch_array($select)) {
+                                $id_endereco = $info['id'];
+                                $endereco = $info['endereco'];
+                                $complemento = $info['complemento'];
+                                $cep = $info['cep'];
+                                $bairro = $info['bairro'];
+                                $cidade = $info['cidade'];
+                            }
+                        }
+
+                        $query = "SELECT * FROM requisicoes_de_doacoes WHERE id = $id_requisicao";
+                        $select = mysqli_query($conexao, $query);
+
+                        $dataLimiteEntrega = "";
+                        $tipoAlimento = "";
+                        $oque = "";
+                        $porque = "";
+
+                        $i = 1;
+                        $datetoday = date('Y-m-d');
+                        if (mysqli_num_rows($select) != 0) {
+                            while ($info = mysqli_fetch_array($select)) {
+                                $dataLimiteEntrega = $info['dataLimiteEntrega'];
+                                $tipoAlimento = $info['tipoAlimento'];
+                                $oque = $info['oqueReceber'];
+                                $porque = $info['porqueReceber'];
+                                $id = $info['id'];
+
+                                $i++;
+                            }
+                        }
+                        // transformar para um formato
+                        // y-m-d
+                        $auxDate = "";
+                        for ($i = 6; $i < 10; $i++)
+                            $auxDate .= $dataLimiteEntrega[$i];
+                        $auxDate .= '-';
+                        for ($i = 3; $i < 5; $i++)
+                            $auxDate .= $dataLimiteEntrega[$i];
+                        $auxDate .= '-';
+                        for ($i = 0; $i < 2; $i++)
+                            $auxDate .= $dataLimiteEntrega[$i];
+                        $dataLimiteEntrega = $auxDate;
+
                         ?>
 
                         <p id="userNome"><?php echo $nome; ?></p>
@@ -140,10 +231,10 @@ if (mysqli_num_rows($select) != 0) {
                         <a href="index.php"><img src="assets/img/home_menu.png" class="iconMenu" /> Inicio</a>
                     </li>
                     <li>
-                        <a href="desejo_doar.php"><img src="assets/img/icon_food_menu.png" class="iconMenu" /> Desejo doar </a>
+                        <a href="desejo_doar.php"><img src="assets/img/icon_food_menu.png" class="iconMenu" /> Desejo doar</a>
                     </li>
                     <li>
-                        <a href="desejo_receber.php"><img src="assets/img/food_receive_menu.png" class="iconMenu" /> Desejo receber </a>
+                        <a href="desejo_receber.php"><img src="assets/img/food_receive_menu.png" class="iconMenu" /> Desejo receber</a>
                     </li>
                     <li>
                         <a href="endereco_usuario.php"><img src="assets/img/location_menu.png" class="iconMenu" /> Endereço de recebimento </a>
@@ -163,58 +254,71 @@ if (mysqli_num_rows($select) != 0) {
                 <div class="row">
                     <div class="col-md-12">
                         <!-- Form Elements -->
-                        <div class="panel panel-default painel_settings">
+                        <div class="panel panel-default painel-css-1">
                             <div class="panel-heading">
-                                Informações do usuário
+                                Dados da requisição de doação 
                             </div>
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-md-12 information_settings">
-                                        <form method="POST" action="atualizar_settingBD.php" id="form-style" class="settings_update_form">
+                                    <div class="col-md-12">
+                                        <form method="POST" action="#" class="visualizar-dados-requisicao-de-doacao" id="form-style2">
                                             <div class="form-group">
                                                 <label>Nome Completo</label>
-                                                <input class="form-control" name="nome_users" id="nome_completo_user_settings" placeholder="" value='<?php echo $nome ?>' />
+                                                <input class="form-control" value='<?php echo $nome_solicitante; ?>' readonly />
                                             </div>
-                                            <div class="form-row">
-                                                <div class="col-6">
-                                                    <label>CPF</label>
-                                                    <input type="text" name="cpf_users" class="form-control" placeholder="" readonly value='<?php echo $cpf ?>' />
-                                                </div>
-                                                <div class="col-6">
-                                                    <label>Gênero</label>
-                                                    <input type="text" name="genero_users" class="form-control" readonly value='<?php echo $genero ?>' />
-                                                </div>
-
-                                            </div>
-
                                             <div class="form-row">
                                                 <div class="col">
                                                     <label>Email</label>
-                                                    <input type="email" name="email_users" class="form-control email_users" placeholder="" value='<?php echo $email ?>' />
+                                                    <input type="email" class="form-control" value='<?php echo $email_solicitante; ?>' readonly />
                                                 </div>
                                                 <div class="col">
                                                     <label>Telefone</label>
-                                                    <input type="text" name="telefone_users" class="form-control telefone_users" required placeholder='<?php echo $telefone ?>' />
-                                                    <p class="help-block">Formato: (091) 90000-0000</p>
+                                                    <input type="text" class="form-control" value='<?php echo $telefone; ?>' readonly />
+                                                </div>
+                                            </div>
+                                            <div class="form-row upALittle">
+                                                <div class="col">
+                                                    <label>CEP </label>
+                                                    <input type="text"  class="form-control cep_user" value='<?php echo $cep ?>' readonly />
+                                                </div>
+                                                <div class="col">
+                                                    <label>Endereço </label>
+                                                    <input type="text" class="form-control complemento_user" value='<?php echo $endereco ?>' readonly />
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col">
-                                                    <label>Deseja redefinir a senha? </label>
-                                                    <input type="password" name="setting_senha_nova1" class="form-control setting_senha_nova1" placeholder="" />
+                                                    <label>Bairro </label>
+                                                    <input type="text" class="form-control " value='<?php echo $bairro ?>' readonly />
                                                 </div>
                                                 <div class="col">
-                                                    <label>Digite novamente a nova senha</label>
-                                                    <input type="password" name="setting_senha_nova2" class="form-control setting_senha_nova2" placeholder="" />
+                                                    <label>Cidade </label>
+                                                    <input type="text" class="form-control" value='<?php echo $cidade ?>' readonly />
+                                                </div>
+                                                <div class="col">
+                                                    <label>Complemento</label>
+                                                    <input type="text" class="form-control complemento_user" value='<?php echo $complemento ?>' readonly />
                                                 </div>
                                             </div>
-                                            <div class="col-12 center-block">
-                                                <button type="submit" class="btn btn-success btn-style btn-atualizar_settings_users rounded1">Atualizar cadastro</button>
-
-                                                <button class="btn-remover btn-style btn btn-danger rounded1">Remover Conta</button>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <label>Data limite para entrega</label>
+                                                    <input type="date" class="form-control" id="user_dataLimite_atualizar" name="user_dataLimite_atualizar" readonly value='<?php echo $dataLimiteEntrega; ?>' />
+                                                </div>
+                                                <div class="col">
+                                                    <label>Tipo de alimento</label>
+                                                    <input type="text" class="form-control" id="tipo_alimento" name="tipo_alimento" readonly value='<?php echo $tipoAlimento; ?>' />
+                                                </div>
+                                            </div>
+                                            <div class="form-group form-style-select2">
+                                                <label>Quais alimentos eu preciso?</label>
+                                                <textarea type="text" class="form-control" readonly required maxlength="1000"/><?php echo $oque; ?></textarea>
+                                            </div>
+                                            <div class="form-group form-style-select2">
+                                                <label>Por que eu preciso desta doação ?</label>
+                                                <textarea type="text" class="form-control" readonly required maxlength="1000"/><?php echo $porque; ?></textarea>
                                             </div>
                                         </form>
-
                                     </div>
                                 </div>
                             </div>
@@ -246,7 +350,6 @@ if (mysqli_num_rows($select) != 0) {
     <script src="assets/js/jquery.metisMenu.js"></script>
     <!-- CUSTOM SCRIPTS -->
     <script src="assets/js/custom.js"></script>
-    <script src="assets/js/settings.js"></script>
 </body>
 
 </html>

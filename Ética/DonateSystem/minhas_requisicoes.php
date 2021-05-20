@@ -80,8 +80,8 @@ if (mysqli_num_rows($select) != 0) {
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li id="setting_item_nav"><a href="settings.php"><img src="assets/img/setting_icon.png"/ id="setting_icon"></a></li>
-                        <li id="logout_item_nav"><a id="Logout" href="#"><img src="assets/img/logout_icon.png"/ id="logout_icon"></a></li>
+                        <li id="nav_top_style"><a href="settings.php"><img src="assets/img/setting_icon.png"/ id="setting_icon"></a></li>
+                        <li id="nav_top_style"><a id="Logout" href="#"><img src="assets/img/logout_icon.png"/ id="logout_icon"></a></li>
                     </ul>
                 </div>
             </div>
@@ -217,7 +217,19 @@ if (mysqli_num_rows($select) != 0) {
                                                             <button class='button-style-onTable deleteRequestDoacao btn btn-danger rounded1'><i class='far fa-trash-alt'></i></button>
                                                         </td>
                                                     </tr>";
-                                                } else {
+                                                } else if ($status == 'ENTREGUE') {
+                                                    echo "<tr class='$status' id='$id'>
+                                                        <td> $ii </td>
+                                                        <td>$oqueReceber</td>
+                                                        <td>$motivacao</td>
+                                                        <td>$dataLimite</td>
+                                                        <td>$status</td>
+                                                        <td>
+                                                            <button class='button-style-onTable atualizarRequestDoacao btn btn-success rounded1'><i class='fas fa-pencil-alt'></i></button>
+                                                            <button class='button-style-onTable deleteDoacaoEntregue btn btn-danger rounded1'><i class='far fa-trash-alt'></i></button>
+                                                        </td>
+                                                    </tr>";
+                                                }  else {
                                                     echo "<tr class='$status' id='$id'>
                                                         <td> $ii </td>
                                                         <td>$oqueReceber</td>

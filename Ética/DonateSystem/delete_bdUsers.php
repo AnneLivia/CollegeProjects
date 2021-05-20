@@ -18,8 +18,10 @@
 
         if($result) {
             // deletar as requisicoes e o endereco do usuario cadastrado no site
+            $result = mysqli_query($conexao, "DELETE FROM desejo_doar WHERE id_requisicao IN (SELECT id FROM requisicoes_de_doacoes WHERE email = '$email')");
             $result = mysqli_query($conexao, "DELETE FROM requisicoes_de_doacoes WHERE email = '$email'");
             $result = mysqli_query($conexao, "DELETE FROM endereco_user WHERE email = '$email'");
+            $result = mysqli_query($conexao, "DELETE FROM desejo_doar WHERE email_doador = '$email'");
             echo "<script>alert('Conta removida com sucesso!')</script>";
         } else {
             echo "<script>alert('Erro ao remover conta!')</script>";

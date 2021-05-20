@@ -72,15 +72,15 @@ $(".table-ativos-doacoes-solicitadas tr").click(function () {
         window.location.href = "visualizar_requisicaoDeDoacao_desejoDoar.php?id=" + id;
     }
 });
-/*
-// method Jquery para atualizar Paciente na tabela
+
+// method Jquery para visualizar dados de uma requisicao a partir da tela de minhas doacoes.
 $(".table-ativos-doacoes-atendidas tr").click(function () {
-    var id = $(this).closest('tr').attr('class');
+    var id = $(this).closest('tr').attr('id');
     if (id != undefined) {
         // visualizar itens em uma pagina. apenas visualizar.
-        window.location.href = "visualizar_requisicaoDeDoacao_desejoDoar.php?id=" + id;
+        window.location.href = "visualizar_requisicaoDeDoacao_minhasDoacoes.php?id=" + id;
     }
-});*/
+});
 
 
 // os ENTREGUES nao sao deletados que é para manter o controle do sistema
@@ -101,6 +101,17 @@ $(".table_ativos").on('click', '.deleteRequestDoacao', function () {
         alert("Não é possível cancelar a requisição de doação selecionada. O status do item é " + status);
         window.location.href = "minhas_requisicoes.php";
     }
+}); 
+
+$(".table_ativos").on('click', '.deleteDoacaoEntregue', function () {
+    var id = $(this).closest('tr').attr('id');
+    var status = $(this).closest('tr').attr('class');
+    if (confirm("Tem certeza que deseja remover os dados referentes a essa doação finalizada?")) {
+        $(this).closest('tr').remove();
+        window.location.href = "delete_bdRequisicaoDeDoacaoEntregue.php?id=" + id;
+    } else {
+        window.location.href = "minhas_requisicoes.php";
+    }
 });
 
 // method Jquery para cancelar doacao
@@ -117,7 +128,11 @@ $(".table_ativos").on('click', '.cancelarDoacao', function () {
             return false;
         }
     } else {
-        alert("Não é possível cancelar a doação selecionada. O status do item é " + status);
+        if (status == 'ENTREGUE' || status == 'FINALIZADO') {
+            alert("Somente o usuário que demandou o alimento pode remover o item selecionado. Isso serve para manter o controle dos dados do sistema. Desculpe o imprevisto.");
+        } else {
+            alert("Não é possível cancelar a doação selecionada. O status do item é " + status);
+        }
         window.location.href = "minhas_doacoes.php";
     }
 });
