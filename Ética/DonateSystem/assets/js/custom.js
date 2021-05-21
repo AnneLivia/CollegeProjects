@@ -163,6 +163,12 @@ $(".table_ativos").on('click', '.doarAlimento', function () {
     window.location.href = "create_bdDesejoDoar.php?id=" + id;
 });
 
+// metodo para abrir chat
+$(".table_ativos").on('click', '.abrirChat', function () {
+    var id = $(this).closest('tr').attr('id');
+    window.location.href = "chat.php?id=" + id;
+});
+
 document.querySelector("#Logout").addEventListener('click', e => {
     e.preventDefault();
     window.location.href = "login.php";

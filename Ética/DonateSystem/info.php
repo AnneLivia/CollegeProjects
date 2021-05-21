@@ -121,31 +121,6 @@ if (mysqli_num_rows($select) != 0) {
                             $nome = mysqli_fetch_array($select)['nome'];
                         }
 
-                        $getTodasConsultas = "SELECT * FROM requisicoes_de_doacoes WHERE email = '$email'";
-
-                        $status = array();
-
-                        $select = mysqli_query($conexao, $getTodasConsultas);
-                        if (mysqli_num_rows($select) != 0) {
-                            while ($info = mysqli_fetch_array($select)) {
-                                array_push($status, $info['status']);
-                            }
-                        }
-
-
-                        // pegar status das minhas doacoes, se alguem colocou para REJEITADO.
-
-                        $getTodasConsultas = "SELECT * FROM desejo_doar WHERE email_doador = '$email'";
-
-                        $status_desejodoar = array();
-
-                        $select = mysqli_query($conexao, $getTodasConsultas);
-                        if (mysqli_num_rows($select) != 0) {
-                            while ($info = mysqli_fetch_array($select)) {
-                                array_push($status_desejodoar, $info['status']);
-                            }
-                        }
-
                         ?>
 
 

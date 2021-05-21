@@ -26,6 +26,7 @@ if (mysqli_num_rows($select) != 0) {
         $dataLimiteEntrega = $info['dataLimiteEntrega'];
         $id = $info['id'];
         $status = $info['status'];
+
         // transformar para um formato de data comparavel
         // y-m-d
         $i++;
@@ -39,29 +40,29 @@ if (mysqli_num_rows($select) != 0) {
         for ($i = 0; $i < 2; $i++)
             $auxDate .= $dataLimiteEntrega[$i];
         $dataLimiteEntrega = $auxDate;
-        if ($dataLimiteEntrega < $datetoday AND $status = 'AGUARDANDO') {
+        if ($dataLimiteEntrega < $datetoday and $status = 'AGUARDANDO') {
             $query = "UPDATE requisicoes_de_doacoes SET status = 'INSPIRADO' WHERE id = '$id'";
             $update = mysqli_query($conexao, $query);
         }
     }
 }
 
-
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Donate System</title>
+    <title>Donate Food System</title>
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <!-- CUSTOM STYLES-->
     <link href="assets/css/custom.css" rel="stylesheet" />
+    <link href="assets/css/chat.css" rel="stylesheet" />
     <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
@@ -76,7 +77,7 @@ if (mysqli_num_rows($select) != 0) {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.php"><img src="assets/img/food-donation.png" id="iconHopNav" /> &nbsp;Donate Food System</a>
+                    <a class="navbar-brand" href="index.php"><img src="assets/img/food-donation.png" id="iconHopNav" /> &nbsp;DONATE FOOD SYSTEM</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -120,33 +121,37 @@ if (mysqli_num_rows($select) != 0) {
                         if ($select) {
                             $nome = mysqli_fetch_array($select)['nome'];
                         }
+                        
+                        $id_requisicao_doacao = $_GET['id'];
+                        // pegar nome da pessoa que quero doar, assim como genero
 
-                        $query = "SELECT cpf FROM users WHERE email = '$email'";
-                        $select = mysqli_query($conexao, $query);
-                        if ($select) {
-                            $cpf = mysqli_fetch_array($select)['cpf'];
-                        }
+                        $getTodasConsultas = "SELECT email FROM requisicoes_de_doacoes WHERE id = '$id_requisicao_doacao'";
 
+                        $email_solicitante = "";
 
-                        $getTodasConsultas = "SELECT * FROM endereco_user WHERE email = '$email'";
-
-                        $endereco = "";
-                        $complemento = "";
-                        $cep = "";
-                        $bairro = "";
-                        $cidade = "";
                         $select = mysqli_query($conexao, $getTodasConsultas);
                         if (mysqli_num_rows($select) != 0) {
                             while ($info = mysqli_fetch_array($select)) {
-                                $endereco = $info['endereco'];
-                                $complemento = $info['complemento'];
-                                $cep = $info['cep'];
-                                $bairro = $info['bairro'];
-                                $cidade = $info['cidade'];
+                                $email_solicitante = $info['email'];
+                            }
+                        }
+
+
+                        $getTodasConsultas = "SELECT * FROM users WHERE email = '$email_solicitante'";
+
+                        $nome_solicitante = "";
+                        $genero_solicitante = "";
+
+                        $select = mysqli_query($conexao, $getTodasConsultas);
+                        if (mysqli_num_rows($select) != 0) {
+                            while ($info = mysqli_fetch_array($select)) {
+                                $nome_solicitante = $info['nome'];
+                                $genero_solicitante = $info['genero'];
                             }
                         }
 
                         ?>
+
 
                         <p id="userNome"><?php echo $nome; ?></p>
                     </li>
@@ -176,64 +181,74 @@ if (mysqli_num_rows($select) != 0) {
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <!-- Form Elements -->
-                        <div class="panel panel-default painel_settings">
-                            <div class="panel-heading">
-                                Endereço para o recebimento de doações
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <form method="POST" action="create_bdEnderecoUser.php" id="form-style" class="settings_update_form">
-                                            <div class="form-group">
-                                                <label>Nome Completo</label>
-                                                <input class="form-control" name="nome_users" id="nome_completo_user_settings" readonly placeholder="" value='<?php echo $nome ?>' />
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col">
-                                                    <label>Email</label>
-                                                    <input type="email" name="email_users" class="form-control email_users" readonly placeholder="" value='<?php echo $email ?>' />
+                        <img class="img-design-ativos center-block" src="assets/img/chat.png" />
+                        <h3 class="title_ativos">Converse com o(a) solicitante da doação </h3>
+                    </div>
+                </div>
+                <hr /><br /><br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel">
+                            <!--Widget body-->
+                            <div id="demo-chat-body" class="collapse in">
+                                <div class="nano has-scrollbar" style="height:380px">
+                                    <div class="nano-content pad-all" tabindex="0" style="right: -17px;">
+                                        <ul class="list-unstyled media-block">
+                                            <li class="mar-btm">
+                                                <div class="media-left">
+                                                    <img src="<?php if ($genero_solicitante == 'feminino') {echo 'assets/img/female.png';} else {echo 'assets/img/male.png';} ?>" class="img-circle img-sm" alt="Profile Picture">
                                                 </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col">
-                                                    <label>CEP </label>
-                                                    <input type="text" name="cep_user" class="form-control cep_user" placeholder="" value='<?php echo $cep ?>' required />
+                                                <div class="media-body pad-hor">
+                                                    <div class="speech">
+                                                        <p href="#" class="media-heading"><?php echo $nome_solicitante;?></p>
+                                                        <p>Hello Lucy, how can I help you today ?</p>
+                                                        <p class="speech-time">
+                                                            <i class="fa fa-clock-o fa-fw"></i>09:23AM
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                                <div class="col">
-                                                    <label>Endereço </label>
-                                                    <input type="text" name="endereco_user" class="form-control complemento_user" placeholder="" value='<?php echo $endereco ?>' required />
+                                            </li>
+                                            <li class="mar-btm">
+                                                <div class="media-right">
+                                                <img src="<?php if ($genero == 'feminino') {echo 'assets/img/female.png';} else {echo 'assets/img/male.png';} ?>" class="img-circle img-sm" alt="Profile Picture">
                                                 </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col">
-                                                    <label>Bairro </label>
-                                                    <input type="text" name="bairro_user" class="form-control bairro_user" placeholder="" value='<?php echo $bairro ?>' required />
+                                                <div class="media-body pad-hor speech-right">
+                                                    <div class="speech">
+                                                        <p href="#" class="media-heading"><?php echo $nome;?></p>
+                                                        <p>Hi, I want to buy a new shoes.</p>
+                                                        <p class="speech-time">
+                                                            <i class="fa fa-clock-o fa-fw"></i> 09:23AM
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                                <div class="col">
-                                                    <label>Cidade </label>
-                                                    <input type="text" name="cidade_user" class="form-control cidade_user" placeholder="" value='<?php echo $cidade ?>' required />
-                                                </div>
-                                                <div class="col">
-                                                    <label>Complemento</label>
-                                                    <input type="text" name="complemento_user" class="form-control complemento_user" placeholder="" value='<?php echo $complemento ?>' required />
-                                                </div>
-                                            </div>
-                                            <div class="col-12 center-block">
-                                                <button type="submit" class="btn btn-success btn-style btn-inserir-endereco rounded1">Confirmar Endereço</button>
-                                            </div>
-                                        </form>
-
+                                            </li>
+                                        </ul>
                                     </div>
+                                    <div class="nano-pane">
+                                        <div class="nano-slider" style="height: 141px; transform: translate(0px, 0px);"></div>
+                                    </div>
+                                </div>
+
+                                <!--Widget footer-->
+                                <div class="row final-chat">
+                                    <form method="POST" action="#" id="form-style-chat-3" class="">
+                                        <div class="form-row">
+                                            <div class="col-10">
+                                                <input class="form-control" name="chat-input" id="chat-input" autocomplete="off" placeholder="Digite aqui" />
+                                            </div>
+                                            <div class="col-2">
+                                                <button class="btn btn-style-chat btn-primary btn-block rounded1" type="submit">Enviar</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- End Form Elements -->
                 </div>
             </div>
             <footer>
-                <p class="text-center">
+                <p class="text-center footer">
                     Developed by <a href="https://github.com/AnneLivia" target="u_black">Anne Livia</a><br />
                     © All Rights Reserved.
                     <script>
@@ -243,7 +258,6 @@ if (mysqli_num_rows($select) != 0) {
             </footer>
         </div>
     </div>
-
     <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
@@ -254,7 +268,6 @@ if (mysqli_num_rows($select) != 0) {
     <script src="assets/js/jquery.metisMenu.js"></script>
     <!-- CUSTOM SCRIPTS -->
     <script src="assets/js/custom.js"></script>
-    <script src="assets/js/settings.js"></script>
 </body>
 
 </html>
