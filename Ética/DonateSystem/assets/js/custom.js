@@ -39,19 +39,13 @@
 
 
 // method Jquery 
-$(".table-index-medicoativo thead").click(function () {
-    window.location.href = "medicos_ativos.php";
-});
-
-// method Jquery 
-$(".table-index-pacienteativo thead").click(function () {
+$(".table-index-requisicoes-doacoes thead").click(function () {
     window.location.href = "desejo_doar.php";
 });
 
-
 // method Jquery 
-$(".table-index-consultasativas thead").click(function () {
-    window.location.href = "consulta.php";
+$(".table-index-doadores thead").click(function () {
+    window.location.href = "desejo_doar.php";
 });
 
 
@@ -125,7 +119,7 @@ $(".table_ativos").on('click', '.cancelarDoacao', function () {
             $(this).closest('tr').remove();
             window.location.href = "delete_bdDesejo_doar.php?id=" + id;
         } else {
-            return false;
+            window.location.href = "minhas_doacoes.php";
         }
     } else {
         if (status == 'ENTREGUE' || status == 'FINALIZADO') {

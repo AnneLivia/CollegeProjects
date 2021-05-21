@@ -51,40 +51,33 @@ if (mysqli_num_rows($search_element) == 0) {
     // requisicao de alimento não existe mais
     echo "<script>alert('Requisição inexistente. Provavelmente a pessoa que estava requisitando a doação, cancelou o pedido.')</script>";
 } else {
-    // verificar se já não existe doacao acionada ou aprovoda, se houver, não permitir a doacao, so para garantir um por vez
-    $search_element = mysqli_query($conexao, "SELECT * FROM desejo_doar WHERE email_doador = '$email' AND (status = 'APROVADO' OR status = 'AGUARDANDO')");
+    // verificar se alguem já não demonstrou interesse em doar primeiro
+    $search_element = mysqli_query($conexao, "SELECT * FROM desejo_doar WHERE id_requisicao = '$id' AND status = 'AGUARDANDO'");
     if (mysqli_num_rows($search_element) != 0) {
         // requisicao de alimento não existe mais
-        echo "<script>alert('Só é permitida uma doação de alimentos por vez. Existe alguma solicitação com o status de APROVADO ou AGUARDANDO.')</script>";
+        echo "<script>alert('Olá, alguém já demonstrou interesse em doar para o solicitante selecionado. Agradecemos imensamente pelo interesse em doar.')</script>";
     } else {
-        // verificar se alguem já não demonstrou interesse em doar primeiro
-        $search_element = mysqli_query($conexao, "SELECT * FROM desejo_doar WHERE id_requisicao = '$id' AND status = 'AGUARDANDO'");
-        if (mysqli_num_rows($search_element) != 0) {
-            // requisicao de alimento não existe mais
-            echo "<script>alert('Olá, alguém já demonstrou interesse em doar para o solicitante selecionado. Agradecemos imensamente pelo interesse em doar.')</script>";
-        } else {
-            // VERIFICAR SE O DOADOR RECENTE JA NAO TENTOU DOAR E FOI REJEITADO
-            $search_element = mysqli_query($conexao, "SELECT * FROM desejo_doar WHERE email_doador = '$email' AND id_requisicao = '$id' AND (status = 'REJEITADO' OR status = 'FINALIZADO')");
-            if (mysqli_num_rows($search_element) == 0) {
-                $query = "INSERT INTO desejo_doar 
+        // VERIFICAR SE O DOADOR RECENTE JA NAO TENTOU DOAR E FOI REJEITADO
+        $search_element = mysqli_query($conexao, "SELECT * FROM desejo_doar WHERE email_doador = '$email' AND id_requisicao = '$id' AND (status = 'REJEITADO' OR status = 'FINALIZADO')");
+        if (mysqli_num_rows($search_element) == 0) {
+            $query = "INSERT INTO desejo_doar 
         (id_requisicao, email_doador, status, data_solicitacao) VALUES 
         ('$id', '$email', 'AGUARDANDO', '$today')";
 
+            $insert = mysqli_query($conexao, $query);
+            if (!$insert) {
+                echo "<script>alert('Erro ao acionar doação para a requisição selecionada. Tente novamente!')</script>";
+            } else {
+                echo "<script>alert('Você demonstrou interesse em doar o(s) alimento(s) da requisição selecionada. Aguarde a aprovação do requerente.')</script>";
+                // alterar status do requisicoes_de_doacoes para acionado.
+                $query = "UPDATE requisicoes_de_doacoes SET status = 'ACIONADO' WHERE id = '$id'";
                 $insert = mysqli_query($conexao, $query);
                 if (!$insert) {
-                    echo "<script>alert('Erro ao acionar doação para a requisição selecionada. Tente novamente!')</script>";
-                } else {
-                    echo "<script>alert('Você demonstrou interesse em doar o(s) alimento(s) da requisição selecionada. Aguarde a aprovação do requerente.')</script>";
-                    // alterar status do requisicoes_de_doacoes para acionado.
-                    $query = "UPDATE requisicoes_de_doacoes SET status = 'ACIONADO' WHERE id = '$id'";
-                    $insert = mysqli_query($conexao, $query);
-                    if (!$insert) {
-                        echo "<script>alert('Erro ao atualizar o status na tabela de requisições de doação.')</script>";
-                    }
+                    echo "<script>alert('Erro ao atualizar o status na tabela de requisições de doação.')</script>";
                 }
-            } else {
-                echo "<script>alert('Infelizmente você não poderá doar os alimentos requisitados neste item. Sua doação foi anteriormente rejeitada pelo solicitante.')</script>";
             }
+        } else {
+            echo "<script>alert('Infelizmente você não poderá doar os alimentos requisitados neste item. Sua doação foi anteriormente rejeitada pelo solicitante.')</script>";
         }
     }
 }

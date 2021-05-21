@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 if (!isset($_SESSION['email'])) {
     header("location: login.php");
@@ -176,88 +176,97 @@ if (mysqli_num_rows($select) != 0) {
         <div id="page-wrapper">
             <div id="page-inner">
                 <div class="row">
-                    <div class="col-md-12 notification-tab <?php if (!in_array('ACIONADO', $status)) {
-                                                                echo 'hide';
-                                                            } ?> ">
-                        <!-- Warning -->
-                        <div class="g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-20--md g-mb-30">
-                            <div class="noty_bar noty_type__warning noty_theme__unify--v1 noty_close_with_click noty_close_with_button g-mb-25">
-                                <div class="noty_body">
-                                    <div class="g-mr-20">
-                                        <div class="noty_body__icon">
-                                            <i class="hs-admin-bolt"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        Olá, temos uma boa notícia para você. Uma pessoa demonstrou interesse em doar o(s) alimento(s) que
-                                        você solicitou. Acesse o item na página "Minhas Requisições" para aprovar ou rejeitar a proposta de doação.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Warning -->
-                    </div>
-                    <div class="col-md-12 notification-tab <?php if (!in_array('REJEITADO', $status_desejodoar)) {
-                                                                echo 'hide';
-                                                            } ?> ">
-                        <!-- error -->
-                        <div class="g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-20--md g-mb-30">
-                            <div class="noty_bar noty_type__error noty_theme__unify--v1 g-mb-25">
-                                <div class="noty_body">
-                                    <div class="g-mr-20">
-                                        <div class="noty_body__icon">
-                                            <i class="hs-admin-alert"></i>
-                                        </div>
-                                    </div>
-                                    <div class="text-notification-error">
-                                        Olá, infelizmente uma das pessoas para a qual você desejaria doar o(s) alimento(s) rejeitou a sua solicitação.
-                                        Acesse o item que foi rejeitado e confirme para retirar a notificação do painel inicial.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 notification-tab <?php if (!in_array('APROVADO', $status_desejodoar)) {
-                                                                echo 'hide';
-                                                            } ?> ">
-                        <!-- sucess -->
-                        <div class="g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-20--md g-mb-30">
-                            <div class="noty_bar noty_type__success noty_theme__unify--v1 g-mb-25">
-                                <div class="noty_body">
-                                    <div class="g-mr-20">
-                                        <div class="noty_body__icon">
-                                            <i class="hs-admin-alert"></i>
-                                        </div>
-                                    </div>
-                                    <div class="text-notification-error">
-                                        Olá, temos uma excelente notícia. Uma das pessoas para a qual você demonstrou interesse em doar
-                                        alimento(s) aprovou a sua solicitação. Acesse o respectivo item na página "Minhas doações" e indique quando
-                                        você tiver realizado a entrega, para que esta notificação possa ser retirada do painel inicial.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="col-md-12 main-index-presentation">
-                        <h2 class="text-center"> SISTEMA PARA DOAÇÃO DE ALIMENTOS </h2>
-                        <img class="center-block" src="assets/img/index_logo.jpg" />
-                        <p class="index-p text-center">
-                            Este sistema permite a conexão entre o doador de alimentos e a pessoa que necessita dessas doações.
-                            O ato de doar alimentos permite contribuir positiva e efetivamente para a transformação da sociedade.
-                            Ao considerar as necessidades e limitações do próximo e ajudá-lo, podemos nos tornar mais igualitários e justos.
-                            <br />
-                            Neste sistema você terá a liberdade de realizar doações e também de requisitar doações, desse modo será possível praticar a
-                            solidariedade mútua.
-                        </p>
+                        <h3 class="text-center"> INFORMAÇÕES GERAIS PARA DOAÇÃO ADEQUADA DOS ALIMENTOS </h3>
+                        <img class="center-block" id="info_donation_img" src="assets/img/info_donation.jpg" />
                         <br />
-                        <p class="index-p text-center">
-                            Sistema desenvolvido pela <a href="https://www.github.com/annelivia" target="u_black">Anne Livia. </a>
-                            <br />
-                            © Todos os direitos reservados.
-                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="title-index center"><img src="assets/img/food-donation_general.png" class="title_session" /> &nbsp; BENEFÍCIOS DE DOAR ALIMENTOS </h4>
+                    </div>
+                    <div class="col-md-12">
                         <br />
+                        <p class="info-p text-justify">
+                            <strong>Doar para os necessitados não beneficia apenas o receptor, mas também o doador, melhorando o bem-estar físico, psicológico e emocional.</strong>
+                            <br /><br />
+                            <strong>Perspectivas em que a doação é benéfica para os doadores</strong>
+                            <br /><br />
+                            <strong>Educação:</strong>
+                            <br /><br />
+                            Para muitos doadores, doar é uma oportunidade para conhecer as questões que envolvem essa necessidade específica. A maioria das pessoas escolhe aprender sobre os problemas, antes de doar, para obter uma perspectiva mais ampla.
+                            Doar para os necessitados fornece novas informações e revela um ponto de vista diferente sobre diferentes questões sociais, como a falta de moradia, a fome ou a pobreza.
+                            <br /><br />
+                            <strong>Comunidade:</strong>
+                            <br /><br />
+                            Doar para os necessitados é uma ótima maneira de melhorar as condições em seu bairro ou comunidade. Doar alimentos para pessoas ou organizações dignas ajuda a combater a pobreza, a fome e, ao mesmo tempo, pode melhorar a harmonia, a amizade e a confiança entre os residentes.
+                            Verificou-se que as doações de caridade promovem maiores níveis de prosperidade e aumentam a felicidade, a cooperação, a boa vontade e comunidades fortes.
+                            <br /><br />
+                            <strong>Saúde:</strong>
+                            <br /><br />
+                            Foi observado que a generosidade libera endorfinas que geram sentimentos de calma, paz, gratidão e satisfação que ajudam a aliviar a tensão e o estresse.
+                            Assim, as pessoas que ajudam os necessitados obtêm os benefícios em termos de um sistema imunológico mais forte, menor freqüência cardíaca, maior energia, menor dor e menor pressão arterial.
+                            <br /><br />
+                            Você está interessado em doar alimentos? Você gostaria de obter os benefícios da doação?
+                            Se você é uma pessoa física, pessoa Jurídica ou uma organização, faça parte do nosso sistema e contribuia com o fornecimento de alimentos de qualidade aos necessitados.
+                            Junte-se a nós e venha contribuir para acabar com a fome da sociedade.
+                            <br /><br />
+                        </p>
+                    </div>
+                    <div class="col-md-12">
+                        <h4 class="title-index center"><img src="assets/img/food-donation_general.png" class="title_session" /> &nbsp; O QUE DOAR ? </h4>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="title-info">Alimentos não-perecíveis</h4>
+                        <p class="text-justify info-p">
+                            São todos aqueles que vêm embalados de fábrica e têm longa duração. São alimentos ideais para arrecadação, pois podem ficar à temperatura ambiente sem estragar e exigem menos cuidados para armazenamento (diferente de frutas e congelados, por exemplo).
+                            <br /><br />
+                            Além de arroz, feijão, açúcar e farinha de trigo, outras opções de não perecíveis que você pode doar são:
+                            leite em pó;
+                            legumes enlatados como milho e ervilha;
+                            gelatina em pó;
+                            mistura para bolo;
+                            biscoitos;
+                            milho de pipoca;
+                            fubá;
+                            achocolatado em pó;
+                            óleo de cozinha;
+                            leite em caixa longa vida; e etc.
+                            <br /><br />
+                            Antes de entregar qualquer um dos alimentos acima para doação, verifique a data de validade do produto e, também, se as embalagens estão íntegras, sem furos ou amassados, para que eles não deteriorem até chegar a seu destino final.
+                            <br /><br />
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="title-info">Alimentos perecíveis</h4>
+                        <p class="text-justify info-p">
+                            Há instituições de arrecadação de alimentos que aceitam alimentos perecíveis como frutas, legumes e congelados. Nesses casos, quem vai doar precisa tomar os seguintes cuidados:
+                            <br /><br />
+                            Frutas e legumes: podem ser doados verdes e maduros, mas nunca estragados. Precisam ser doados refrigerados (converse com a ONG que deseja ajudar, para ter orientações sobre como transportar os alimentos ou se eles retiram em sua casa).
+                            <br /><br />
+                            Congelados: precisam estar na validade, com a embalagem íntegra e, claro... congelados! Neste caso, também é preciso combinar com a ONG que vai receber, para que o alimento não estrague antes de chegar ao seu destinatário.
+                            <br /><br />
+                        </p>
+                    </div>
+                    <div class="col-md-12">
+                        <h4 class="title-index center"><img src="assets/img/food-donation_general.png" class="title_session" /> &nbsp; O QUE NÃO PODE DOAR ? </h4>
+                    </div>
+                    <div class="col-md-12">
+                        <h4 class="title-info"></h4>
+                        <p class="info-p text-center">
+                            Por maior que seja a boa vontade, há certos alimentos que podem representar um risco para quem vai consumir. Sobras de refeições prontas, por exemplo, podem estragar rapidamente e não são aconselháveis para doação de alimentos. O mesmo pode acontecer com alimentos fora do prazo de validade, ou que deveriam estar no freezer e já foram descongelados.
+                        </p>
+                    </div>
+                    <div class="col-md-12">
+                        <br /><br />
+                        <p class="info-p text-center">
+                            Dados extraídos <a href="https://www.sodexobeneficios.com.br/qualidade-de-vida/noticias/como-doar-alimentos.htm#ixzz6vWBhqWT6" target="_blank">
+                            desta fonte</a> e <a href="https://www.misrii.com/blog/benefits-of-food-donation/" target="u_blank">desta fonte</a>. 
+                            Para mais informações a respeito de doação de alimentos, leia a
+                            "<a href="https://stas.rs.gov.br/upload/arquivos/202010/16180603-cartilha-de-orientacoes-para-doacao-de-alimentos.pdf" target="_blank">CARTILHA DE ORIENTAÇÕES PARA DOAÇÃO DE ALIMENTOS</a>"
+                            que está de acordo com a LEI FEDERAL 14.016/2020.
+                        </p>
                     </div>
                 </div>
             </div>

@@ -28,7 +28,6 @@ body {
     background-color: #f3f3f3;
 }
 
-
 /* 
 parte da edicao da notificacao
 */
@@ -237,8 +236,17 @@ parte da edicao da notificacao
 }
 
 .main-index-presentation img {
-    margin: 0 5% 0 5%;
-    width: 90%;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.index-p  {
+    font-size: 19px;
+}
+
+#info_donation_img {
+    margin: 0 auto;
+    width: 40%;
 }
 
 .main-index-presentation h3 {
@@ -251,6 +259,7 @@ parte da edicao da notificacao
     font-family: 'Alegreya', serif;
     font-size: 22px;
 }
+
 
 #graph_image {
     width: 100%;
@@ -294,7 +303,7 @@ parte da edicao da notificacao
     border-color: #a666f9;
 }
 
-.table_ativos th, td, .table-index-pacienteativo th, td, .table-index-medicoativo th, td, .table-index-consultasativas th, td {
+.table_ativos th, td, .table-index-doadores th, td, .table-index-requisicoes-doacoes th, td {
     text-align: center;
     word-break: break-word;
     /*or you can use word-break:break-all*/
@@ -303,20 +312,29 @@ parte da edicao da notificacao
     /*set min-width as needed*/
 }
 
-.table-index-medicoativo td, .table-index-pacienteativo td, .table-index-consultasativas td {
+.table-index-requisicoes-doacoes td, .table-index-doadores td {
     font-weight: bold;
 }
 
-.table_ativos td, .table-index-pacienteativo th, .table-index-medicoativo th, .table-index-consultasativas th {
+.table_ativos td, .table-index-doadores th, .table-index-requisicoes-doacoes th {
     cursor: pointer;
 }
 
-.table-ativos-requisicoes-doacao, .table-ativos-doacoes-solicitadas, .table-ativos-doacoes-atendidas  {
+.table-ativos-requisicoes-doacao, .table-ativos-doacoes-solicitadas, .table-ativos-doacoes-atendidas, .table-index-doadores, .table-index-requisicoes-doacoes  {
     table-layout: fixed;
 }
 
 .title-index {
     margin-top: 20px;
+}
+
+.info-p {
+    font-size: 17px;
+}
+
+.title-info {
+    margin-top: 20px;
+    font-weight: bold;
 }
 
 .title_session {
@@ -553,7 +571,7 @@ footer p {
     font-size: 18px;
 }
 
-#setting_icon, #help_icon {
+#setting_icon, #info_icon {
     width: 25px;
     padding-top: 1px;
     padding-bottom: 1px;
