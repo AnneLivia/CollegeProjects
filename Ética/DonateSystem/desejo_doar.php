@@ -39,7 +39,7 @@ if (mysqli_num_rows($select) != 0) {
         for ($i = 0; $i < 2; $i++)
             $auxDate .= $dataLimiteEntrega[$i];
         $dataLimiteEntrega = $auxDate;
-        if ($dataLimiteEntrega < $datetoday AND $status = 'AGUARDANDO') {
+        if ($dataLimiteEntrega < $datetoday and $status = 'AGUARDANDO') {
             $query = "UPDATE requisicoes_de_doacoes SET status = 'INSPIRADO' WHERE id = '$id'";
             $update = mysqli_query($conexao, $query);
         }
@@ -243,17 +243,16 @@ if (mysqli_num_rows($select) != 0) {
                     </div>
                 </div>
             </div>
+            <footer>
+                <p class="text-center">
+                    Developed by <a href="https://github.com/AnneLivia" target="u_black">Anne Livia</a><br />
+                    © All Rights Reserved.
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>
+                </p>
+            </footer>
         </div>
-        <footer>
-            <p class="text-center">
-                Developed by <a href="https://github.com/AnneLivia" target="u_black">Anne Livia</a><br />
-                © All Rights Reserved.
-                <script>
-                    document.write(new Date().getFullYear())
-                </script>
-            </p>
-        </footer>
-    </div>
     </div>
     <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
