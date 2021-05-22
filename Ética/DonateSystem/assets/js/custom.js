@@ -226,3 +226,10 @@ $(".btn-proceder-aprovar-rejeitar").click(function () {
     }
 });
 
+$(".btn-acessar-mensagem").click(function () {
+    var button_value = $(this).val(); 
+    var dado = button_value.split(" "); // pegando id da requisicao e email
+    window.location.href = "chat_solicitante.php?id=" + dado[0] + "&email_doador="+dado[1];
+});
+
+

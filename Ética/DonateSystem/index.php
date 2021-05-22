@@ -40,9 +40,13 @@ if (mysqli_num_rows($select) != 0) {
         for ($i = 0; $i < 2; $i++)
             $auxDate .= $dataLimiteEntrega[$i];
         $dataLimiteEntrega = $auxDate;
-        if ($dataLimiteEntrega < $datetoday and $status = 'AGUARDANDO') {
+        if ($dataLimiteEntrega < $datetoday && $status == 'AGUARDANDO') {
             $query = "UPDATE requisicoes_de_doacoes SET status = 'INSPIRADO' WHERE id = '$id'";
             $update = mysqli_query($conexao, $query);
+
+            // deletar todas as mensagens do item requisitado se houver, ja qe o status mudou para inspirado
+            $query = "DELETE FROM chat WHERE id_requisicao = '$id'";
+            $delete = mysqli_query($conexao, $query);
         }
     }
 }
@@ -109,9 +113,9 @@ if (mysqli_num_rows($select) != 0) {
                         if ($select) {
                             $genero = mysqli_fetch_array($select)['genero'];
                             if ($genero == "feminino") {
-                                echo "<img src='assets/img/female.png' class='userImg img-responsive'/>";
+                                echo "<img src='assets/img/feminino.png' class='userImg img-responsive'/>";
                             } else {
-                                echo "<img src='assets/img/male.png' class='userImg img-responsive'/>";
+                                echo "<img src='assets/img/masculino.png' class='userImg img-responsive'/>";
                             }
                         }
 
@@ -145,6 +149,19 @@ if (mysqli_num_rows($select) != 0) {
                                 array_push($status_desejodoar, $info['status']);
                             }
                         }
+
+                         // verificar se existe alguma mensagem para algumas das minhas requisicoes
+
+                         $getTodasConsultas = "SELECT * FROM chat WHERE email_solicitante = '$email'";
+
+                         $chat_requisicao = false;
+ 
+                         $select = mysqli_query($conexao, $getTodasConsultas);
+                         if (mysqli_num_rows($select) != 0) {
+                             while ($info = mysqli_fetch_array($select)) {
+                                $chat_requisicao = true;
+                             }
+                         }
 
                         ?>
 
@@ -234,6 +251,28 @@ if (mysqli_num_rows($select) != 0) {
                                         Olá, temos uma excelente notícia. Uma das pessoas para a qual você demonstrou interesse em doar
                                         alimento(s) aprovou a sua solicitação. Acesse o respectivo item na página "Minhas doações" e indique quando
                                         você tiver realizado a entrega, para que esta notificação possa ser retirada do painel inicial.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 notification-tab <?php if (!$chat_requisicao) {
+                                                                echo 'hide';
+                                                            } ?> ">
+                        <!-- sucess -->
+                        <div class="g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-20--md g-mb-30">
+                            <div class="noty_bar noty_type__success noty_theme__unify--v1 g-mb-25">
+                                <div class="noty_body">
+                                    <div class="g-mr-20">
+                                        <div class="noty_body__icon">
+                                            <i class="hs-admin-alert"></i>
+                                        </div>
+                                    </div>
+                                    <div class="text-notification-error">
+                                        Olá, você possui mensagens de alguém que pretende doar para você. Acesse a página "Minhas Requisões" e verifique quais mensagens foram enviadas
+                                        para o item que está com o status AGUARDANDO.
+                                        Atenção, esse alerta sumirá assim que alguma pessoa proceder com a doação ou quando a requisição estiver indisponível para doação.
                                     </div>
                                 </div>
                             </div>

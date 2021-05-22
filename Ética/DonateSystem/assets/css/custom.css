@@ -901,6 +901,15 @@ ul#filters {
     background-color: #ffc085;
 }
 
+.btn-acessar-mensagem {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.title-chat-solicitante {
+    margin-bottom: 15px;
+}
+
 
 /*==============================================
     MEDIA QUERIES     

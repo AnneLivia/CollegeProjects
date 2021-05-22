@@ -103,8 +103,10 @@ if (!$select) {
                     document.getElementById('chat-area').innerHTML = req.responseText;
                 }
             }
-            req.open('GET', "update_chat.php?id_requisicao_doacao=<?php echo $_GET['id']; ?>&email_doador=<?php echo $email?>", true);
+            req.open('GET', "update_chat.php?id_requisicao_doacao=<?php echo $_GET['id']; ?>&email_doador=<?php echo $_GET['email_doador']?>", true);
             req.send();
+
+            
         }
 
         setInterval(function() {
@@ -112,6 +114,8 @@ if (!$select) {
             var elem = document.getElementById('scroller');
             elem.scrollTop = elem.scrollHeight;
         }, 1000);
+
+        
     </script>
 </head>
 
@@ -171,40 +175,19 @@ if (!$select) {
                         }
 
                         $id_requisicao_doacao = $_GET['id'];
-                        // pegar nome da pessoa que quero doar, assim como genero
+                        $email_doador = $_GET['email_doador'];
+                       
 
+                        $getTodasConsultas = "SELECT * FROM users WHERE email = '$email_doador'";
 
-                        $getTodasConsultas = "SELECT email FROM requisicoes_de_doacoes WHERE id = '$id_requisicao_doacao'";
-
-                        $email_solicitante = "";
-
-                        $select = mysqli_query($conexao, $getTodasConsultas);
-                        if (mysqli_num_rows($select) != 0) {
-                            while ($info = mysqli_fetch_array($select)) {
-                                $email_solicitante = $info['email'];
-                            }
-                        }
-
-
-                        $email_solicitante = "";
+                        $nome_doador = "";
+                        $genero_doador = "";
 
                         $select = mysqli_query($conexao, $getTodasConsultas);
                         if (mysqli_num_rows($select) != 0) {
                             while ($info = mysqli_fetch_array($select)) {
-                                $email_solicitante = $info['email'];
-                            }
-                        }
-
-                        $getTodasConsultas = "SELECT * FROM users WHERE email = '$email_solicitante'";
-
-                        $nome_solicitante = "";
-                        $genero_solicitante = "";
-
-                        $select = mysqli_query($conexao, $getTodasConsultas);
-                        if (mysqli_num_rows($select) != 0) {
-                            while ($info = mysqli_fetch_array($select)) {
-                                $nome_solicitante = $info['nome'];
-                                $genero_solicitante = $info['genero'];
+                                $nome_doador = $info['nome'];
+                                $genero_doador = $info['genero'];
                             }
                         }
 
@@ -240,7 +223,7 @@ if (!$select) {
                 <div class="row">
                     <div class="col-md-12">
                         <img class="img-design-ativos center-block" src="assets/img/chat.png" />
-                        <h3 class="title_ativos">Converse com <?php if ($genero_solicitante == 'masculino') {
+                        <h3 class="title_ativos">Converse com <?php if ($genero_doador == 'masculino') {
                                                                     echo 'o';
                                                                 } else {
                                                                     echo 'a';
@@ -254,7 +237,7 @@ if (!$select) {
                             <!--Widget body-->
                             <div id="demo-chat-body" class="collapse in">
                                 <div class="nano has-scrollbar" style="height:380px">
-                                    <div class="nano-content pad-all" id='scroller' tabindex="0" style="right: -17px;">
+                                    <div class="nano-content pad-all"  id='scroller' tabindex="0" style="right: -17px;">
                                         <ul class="list-unstyled media-block" id="chat-area">
                                             <!-- Os dados da mensagem irão vir aqui aqui -->
                                         </ul>
@@ -269,10 +252,10 @@ if (!$select) {
                                     <form method="POST" action="create_bdChat.php" id="form-style-chat-3" class="">
                                         <div class="form-row">
                                             <div class="hide">
-                                                <input class="form-control" name="email_user_doador" autocomplete="off" value=<?php echo $email; ?> />
+                                                <input class="form-control" name="email_user_doador" autocomplete="off" value=<?php echo $email_doador; ?> />
                                             </div>
                                             <div class="hide">
-                                                <input class="form-control" name="email_user_solicitante" autocomplete="off" value=<?php echo $email_solicitante; ?> />
+                                                <input class="form-control" name="email_user_solicitante" autocomplete="off" value=<?php echo $email; ?> />
                                             </div>
                                             <div class="hide">
                                                 <input class="form-control" name="hora_mensagem" autocomplete="off" value=<?php date_default_timezone_set('America/Sao_Paulo');

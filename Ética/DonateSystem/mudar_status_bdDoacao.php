@@ -37,6 +37,14 @@ if (mysqli_num_rows($search_element) == 0) {
         $semSucesso = true;
     }
 
+    // se rejeitar ou rejeitar, remover o chat com a pessoa atual
+    $query = "DELETE FROM chat WHERE id_requisicao = '$id_requisicao'";
+    $delete = mysqli_query($conexao, $query);
+
+    if (!$delete) {
+        echo "<script>alert('Erro ao remover mensagens enviadas.</script>";
+    }
+
     if ($semSucesso) {
         echo "<script>alert('Erro na atualização do status.</script>";
     } else {

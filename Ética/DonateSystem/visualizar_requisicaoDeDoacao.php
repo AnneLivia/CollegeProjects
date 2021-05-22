@@ -39,9 +39,13 @@ if (mysqli_num_rows($select) != 0) {
         for ($i = 0; $i < 2; $i++)
             $auxDate .= $dataLimiteEntrega[$i];
         $dataLimiteEntrega = $auxDate;
-        if ($dataLimiteEntrega < $datetoday AND $status = 'AGUARDANDO') {
+        if ($dataLimiteEntrega < $datetoday && $status == 'AGUARDANDO') {
             $query = "UPDATE requisicoes_de_doacoes SET status = 'INSPIRADO' WHERE id = '$id'";
             $update = mysqli_query($conexao, $query);
+
+            // deletar todas as mensagens do item requisitado se houver, ja qe o status mudou para inspirado
+            $query = "DELETE FROM chat WHERE id_requisicao = '$id'";
+            $delete = mysqli_query($conexao, $query);
         }
     }
 }
@@ -109,9 +113,9 @@ if (mysqli_num_rows($select) != 0) {
                         if ($select) {
                             $genero = mysqli_fetch_array($select)['genero'];
                             if ($genero == "feminino") {
-                                echo "<img src='assets/img/female.png' class='userImg img-responsive'/>";
+                                echo "<img src='assets/img/feminino.png' class='userImg img-responsive'/>";
                             } else {
-                                echo "<img src='assets/img/male.png' class='userImg img-responsive'/>";
+                                echo "<img src='assets/img/masculino.png' class='userImg img-responsive'/>";
                             }
                         }
 
@@ -210,6 +214,8 @@ if (mysqli_num_rows($select) != 0) {
                                 }
                             }
                         }
+
+                        
 
                         ?>
 
@@ -347,6 +353,43 @@ if (mysqli_num_rows($select) != 0) {
                                                 </div>
                                             </div>
                                         </form>
+                                    </div>
+                                    <div class="col-md-12">
+                                    
+                                        <?php
+                                            // pegar o dado do chat
+                                            $email_chat_doador = null;
+                                            $nome_chat_doador = null;
+
+                                            // primeiro verificar se tem mensagem
+                                            $query = "SELECT * FROM chat WHERE id_requisicao = $id";
+                                            $select = mysqli_query($conexao, $query);
+                                            if (mysqli_num_rows($select) != 0) {
+                                                echo '<div class="col-md-12">
+                                                    <img class="img-design-ativos center-block" src="assets/img/message.png" />
+                                                    <h3 class="title_ativos title-chat-solicitante">&nbsp;&nbsp;Olá, você possui mensagens!</h3>
+                                                </div>';
+                                                $query = "SELECT DISTINCT users.email, users.nome FROM users 
+                                                    INNER JOIN chat ON id_requisicao = $id AND chat.email_doador = users.email";
+                                                $select = mysqli_query($conexao, $query);
+                                                if (mysqli_num_rows($select) != 0) {
+                                                    while ($info = mysqli_fetch_array($select)) {
+                                                        $email_chat_doador  = $info['email'];
+                                                        $nome_chat_doador = $info['nome'];
+
+                                                        echo "
+                                                        <div class='form-row div-chat-buttons'>
+                                                            <div class='col-3'></div>
+                                                            <div class='col-6'>
+                                                                <button class='btn btn-warning btn-style btn-acessar-mensagem rounded1' value='$id $email_chat_doador'>$nome_chat_doador</button>
+                                                            </div>
+                                                            <div class='col-3'></div>
+                                                        </div>";
+                                                    }
+                                                }
+                                            }
+                                            
+                                        ?>
                                     </div>
                                 </div>
                             </div>

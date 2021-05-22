@@ -40,9 +40,13 @@ if (mysqli_num_rows($select) != 0) {
         for ($i = 0; $i < 2; $i++)
             $auxDate .= $dataLimiteEntrega[$i];
         $dataLimiteEntrega = $auxDate;
-        if ($dataLimiteEntrega < $datetoday and $status = 'AGUARDANDO') {
+        if ($dataLimiteEntrega < $datetoday && $status == 'AGUARDANDO') {
             $query = "UPDATE requisicoes_de_doacoes SET status = 'INSPIRADO' WHERE id = '$id'";
             $update = mysqli_query($conexao, $query);
+
+            // deletar todas as mensagens do item requisitado se houver, ja qe o status mudou para inspirado
+            $query = "DELETE FROM chat WHERE id_requisicao = '$id'";
+            $delete = mysqli_query($conexao, $query);
         }
     }
 }
@@ -109,9 +113,9 @@ if (mysqli_num_rows($select) != 0) {
                         if ($select) {
                             $genero = mysqli_fetch_array($select)['genero'];
                             if ($genero == "feminino") {
-                                echo "<img src='assets/img/female.png' class='userImg img-responsive'/>";
+                                echo "<img src='assets/img/feminino.png' class='userImg img-responsive'/>";
                             } else {
-                                echo "<img src='assets/img/male.png' class='userImg img-responsive'/>";
+                                echo "<img src='assets/img/masculino.png' class='userImg img-responsive'/>";
                             }
                         }
 
