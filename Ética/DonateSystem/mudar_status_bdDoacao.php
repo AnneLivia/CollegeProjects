@@ -12,6 +12,18 @@ $id_doacao = $_POST['id_doacao'];
 $id_requisicao = $_POST['id_requisicao'];
 $veredito_doacao = $_POST['veredito_doacao'];
 
+$email_doador = "";
+
+$query = "SELECT email_doador FROM desejo_doar WHERE id = '$id_doacao'";
+$select = mysqli_query($conexao, $query);
+
+if (mysqli_num_rows($select) != 0) {
+    while ($info = mysqli_fetch_array($select)) {
+        $email_doador  = $info['email_doador'];
+    }
+}
+
+
 // verificar se o doador nao cancelou a doacao, vai que ele cancele um pouco antes da pessoa aprova e ela nem saiba
 $search_element = mysqli_query($conexao, "SELECT * FROM desejo_doar WHERE id = '$id_doacao'");
 if (mysqli_num_rows($search_element) == 0) {
@@ -37,8 +49,8 @@ if (mysqli_num_rows($search_element) == 0) {
         $semSucesso = true;
     }
 
-    // se rejeitar ou rejeitar, remover o chat com a pessoa atual
-    $query = "DELETE FROM chat WHERE id_requisicao = '$id_requisicao'";
+    // se rejeitar ou aprovar, remover o chat com a pessoa atual
+    $query = "DELETE FROM chat WHERE id_requisicao = '$id_requisicao' AND email_doador = '$email_doador'";
     $delete = mysqli_query($conexao, $query);
 
     if (!$delete) {

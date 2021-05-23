@@ -6,6 +6,7 @@ if (!isset($_SESSION['email'])) {
 
 $email = $_SESSION['email'];
 
+
 // verificar todas as datas limites de entrega das requisicoes de doacao, se houver algum em que a data
 // limite é antes do hoje, setar status para inspirado.
 $conexao = mysqli_connect('localhost', 'root', '') or die("Erro de conexao com o servidor" . mysqli_connect_error());
@@ -14,6 +15,19 @@ $bd = mysqli_select_db($conexao, "donate_system");
 
 if (empty($bd)) {
     die("Banco de dados não encontrado");
+}
+
+$id_req = $_GET['id'];
+// nao permitir abrir chat se o usuario tiver tido a sua solicitacao de doacao rejeitada
+$query = "SELECT status FROM desejo_doar WHERE id_requisicao = '$id_req' AND email_doador = '$email'";
+$select = mysqli_query($conexao, $query);
+if (mysqli_num_rows($select) != 0) {
+    while ($info = mysqli_fetch_array($select)) {
+        if ($info['status'] == 'REJEITADO' || $info['status'] == 'FINALIZADO') {
+            echo "<script>alert('Não é possível conversar com o(a) solicitante dessa requisição. Você manifestou o desejo de doar o(s) alimento(s) solicitado(s), porém o(a) requerente da doação rejeitou sua proposta.')</script>";
+            header("refresh: 0.2; url = desejo_doar.php");
+        }
+    }
 }
 
 $query = "SELECT * FROM requisicoes_de_doacoes";
@@ -50,6 +64,7 @@ if (mysqli_num_rows($select) != 0) {
         }
     }
 }
+
 
 // criar bd de chat so para evitar erros caso nao exista nenhuma mensagem
 $query = "SELECT * FROM chat";
@@ -183,6 +198,10 @@ if (!$select) {
                             while ($info = mysqli_fetch_array($select)) {
                                 $email_solicitante = $info['email'];
                             }
+                        } else {
+                            // retorna para página de desejo doar, se nao existe email de solicitante é porque a pessoa removeu a requisicao
+                            echo "<script>alert('Não é possível conversar com o(a) solicitante dessa requisição. Provavelmente o(a) solicitante cancelou a requisição do(s) alimento(s).')</script>";
+                            header("refresh: 0.2; url = desejo_doar.php");
                         }
 
 

@@ -22,6 +22,7 @@
             $result = mysqli_query($conexao, "DELETE FROM requisicoes_de_doacoes WHERE email = '$email'");
             $result = mysqli_query($conexao, "DELETE FROM endereco_user WHERE email = '$email'");
             $result = mysqli_query($conexao, "DELETE FROM desejo_doar WHERE email_doador = '$email'");
+            $result = mysqli_query($conexao, "DELETE FROM chat WHERE email_doador = '$email' OR email_solicitante = '$email'");
             echo "<script>alert('Conta removida com sucesso!')</script>";
         } else {
             echo "<script>alert('Erro ao remover conta!')</script>";

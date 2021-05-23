@@ -100,7 +100,7 @@ $(".table_ativos").on('click', '.deleteRequestDoacao', function () {
 $(".table_ativos").on('click', '.deleteDoacaoEntregue', function () {
     var id = $(this).closest('tr').attr('id');
     var status = $(this).closest('tr').attr('class');
-    if (confirm("Tem certeza que deseja remover os dados referentes a essa doação finalizada?")) {
+    if (confirm("Tem certeza que deseja remover os dados referentes a essa doação já finalizada?")) {
         $(this).closest('tr').remove();
         window.location.href = "delete_bdRequisicaoDeDoacaoEntregue.php?id=" + id;
     } else {

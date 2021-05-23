@@ -361,8 +361,12 @@ if (mysqli_num_rows($select) != 0) {
                                             $email_chat_doador = null;
                                             $nome_chat_doador = null;
 
-                                            // primeiro verificar se tem mensagem
-                                            $query = "SELECT * FROM chat WHERE id_requisicao = $id";
+                                            // primeiro verificar se tem mensagem, so aparece aqueles que estiverem com status aguardando
+                                            $query = "SELECT * FROM chat 
+                                            INNER JOIN requisicoes_de_doacoes ON 
+                                            chat.id_requisicao = requisicoes_de_doacoes.id AND 
+                                            requisicoes_de_doacoes.status = 'AGUARDANDO'
+                                            WHERE chat.id_requisicao = $id";
                                             $select = mysqli_query($conexao, $query);
                                             if (mysqli_num_rows($select) != 0) {
                                                 echo '<div class="col-md-12">

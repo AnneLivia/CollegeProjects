@@ -262,7 +262,7 @@ if (mysqli_num_rows($select) != 0) {
                                                             } ?> ">
                         <!-- sucess -->
                         <div class="g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-20--md g-mb-30">
-                            <div class="noty_bar noty_type__success noty_theme__unify--v1 g-mb-25">
+                            <div class="noty_bar noty_type__info noty_theme__unify--v1 g-mb-25">
                                 <div class="noty_body">
                                     <div class="g-mr-20">
                                         <div class="noty_body__icon">

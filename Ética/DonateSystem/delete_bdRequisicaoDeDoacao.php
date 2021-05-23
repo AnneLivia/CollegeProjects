@@ -20,11 +20,17 @@
             // deletar do desejo doar também
             $query = "DELETE FROM desejo_doar WHERE id_requisicao = '$id'";
             $delete = mysqli_query($conexao, $query);
-            if($delete) {
-                echo "<script>alert('Requisição de doação foi removida com sucesso.')</script>";
-            } else {
+            if(!$delete) {
                 echo "<script>alert('Erro ao remover dados da tabela desejo doar.')</script>";
             }
+
+            // deletar chats existentes referente a essa doação
+            $query = "DELETE FROM chat WHERE id_requisicao = '$id'";
+            $delete = mysqli_query($conexao, $query);
+            if(!$delete) {
+                echo "<script>alert('Erro ao remover dados da tabela referente ao chat.')</script>";
+            }
+            echo "<script>alert('Requisição de doação foi removida com sucesso.')</script>";
         } else {
             echo "<script>alert('Erro ao remover dados da tabela de requisição de doação.')</script>";
         } 
