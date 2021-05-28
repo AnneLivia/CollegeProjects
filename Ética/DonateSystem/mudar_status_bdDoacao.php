@@ -54,7 +54,7 @@ if (mysqli_num_rows($search_element) == 0) {
     $delete = mysqli_query($conexao, $query);
 
     if (!$delete) {
-        echo "<script>alert('Erro ao remover mensagens enviadas.</script>";
+        echo "<script>alert('Erro ao remover mensagens enviadas.')</script>";
     }
 
     if ($semSucesso) {

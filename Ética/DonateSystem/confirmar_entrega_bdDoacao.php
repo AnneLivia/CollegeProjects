@@ -38,6 +38,14 @@ if (!$update) {
     $deucerto = false;
 }
 
+// se rejeitar ou aprovar, remover o chat com a pessoa atual
+$query = "DELETE FROM chat WHERE id_requisicao = '$id_requisicao'";
+$delete = mysqli_query($conexao, $query);
+
+if (!$delete) {
+    echo "<script>alert('Erro ao remover mensagens enviadas para o item selecionado').</script>";
+}
+
 if (!$deucerto) {
     echo "<script>alert('Erro a confirma entraga.')</script>";
 } else {
