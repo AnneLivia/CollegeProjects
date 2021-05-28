@@ -40,10 +40,10 @@ if (mysqli_num_rows($select) != 0) {
             $auxDate .= $dataLimiteEntrega[$i];
         $dataLimiteEntrega = $auxDate;
         if ($dataLimiteEntrega < $datetoday && $status == 'AGUARDANDO') {
-            $query = "UPDATE requisicoes_de_doacoes SET status = 'INSPIRADO' WHERE id = '$id'";
+            $query = "UPDATE requisicoes_de_doacoes SET status = 'EXPIRADO' WHERE id = '$id'";
             $update = mysqli_query($conexao, $query);
 
-            // deletar todas as mensagens do item requisitado se houver, ja qe o status mudou para inspirado
+            // deletar todas as mensagens do item requisitado se houver, ja qe o status mudou para expirado
             $query = "DELETE FROM chat WHERE id_requisicao = '$id'";
             $delete = mysqli_query($conexao, $query);
         }

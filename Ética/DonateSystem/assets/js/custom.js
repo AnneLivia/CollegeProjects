@@ -84,7 +84,7 @@ $(".table_ativos").on('click', '.deleteRequestDoacao', function () {
     var id = $(this).closest('tr').attr('id');
     var status = $(this).closest('tr').attr('class');
     // só pode remover se estiver aguardando ou inspirado, (acionado e atendido não podem ser removido, para manter o controle)
-    if (status == 'AGUARDANDO' || status == 'INSPIRADO') {
+    if (status == 'AGUARDANDO' || status == 'EXPIRADO') {
         if (confirm("Tem certeza que deseja cancelar a requisição desta doação?")) {
             $(this).closest('tr').remove();
             window.location.href = "delete_bdRequisicaoDeDoacao.php?id=" + id;
