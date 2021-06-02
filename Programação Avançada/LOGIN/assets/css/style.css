@@ -1,0 +1,138 @@
+/* Configuration of the full site*/
+* {
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* changing the color of the background*/ 
+body {
+    background-color: rgba(211, 211, 211, 0.315);
+}
+
+/* class to certer text */
+.content_center {
+    text-align: center;
+    max-width: 500px;
+    min-width: 350px;
+}
+
+/* Configuration of the main body*/
+#main {
+    width: 480px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 20px;
+    margin: 2% auto;
+    padding: 50px;
+    background-color: black;
+    box-shadow: 20px 20px 30px rgba(82, 82, 82, 0.6);
+}
+
+/* Configuration of the header*/
+#main header h1  {
+    font-size: 2.5em;
+    margin: 5px auto 10px;
+}
+
+header nav  {
+    border: 1px solid black;
+    background-color: black;
+    padding: 10px;
+}
+
+header nav a {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    transition: 1s;
+    font-size: 20px;
+    box-sizing: border-box;
+}
+
+header nav a:hover {
+    background-color: white;
+    text-decoration: underline;
+    color: black;
+}
+
+header nav a:focus {
+    background-color: rgb(143, 143, 143);
+}
+
+/* Configuration of the section*/
+section {
+    margin: 20px auto;
+}
+
+section p{
+    font-weight: bold;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin: 10px 0;
+}
+
+
+section div img {
+    width: 130px;
+    height: 130px;
+    border: 5px dotted white;
+    border-radius: 350px;
+}
+
+/* Configuration of the form*/
+.logform {
+    padding: 10px;
+}
+
+.logform input, .logform button {
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: black;
+    transition: 0.5s;
+    outline: none;
+}
+
+.logform input {
+    border-bottom: 4px solid rgb(153, 153, 153);
+    margin: 5px -49%;
+    background-origin: padding-box;
+}
+
+.logform button {
+    background-color: #dbdbdbdb;
+    text-transform: uppercase;
+    margin: 4px -4%;
+    background-origin: padding-box;
+    transition: 0.5s;
+}
+
+.logform input:hover {
+    background-color: rgb(66, 66, 66);
+    color: white;
+}
+
+.logform input:focus {
+    border-bottom: 4px solid rgb(33, 8, 255);
+}
+
+.logform button:hover {
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
+
+.logform button:active {
+    background-color: #575757;
+}
+
+/* Configuration of the footer*/
+footer {
+    font-size: 0.7em;
+}

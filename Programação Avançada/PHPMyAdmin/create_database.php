@@ -61,6 +61,6 @@
             }
         }
     }
-
+    // sempre fechar a conexao para também poder abrir a conexão em outra página
     mysqli_close($conexao);
 ?>
