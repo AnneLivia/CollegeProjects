@@ -133,15 +133,15 @@ body {
     padding: 40px 100px;
 }
 
-#validar_email_form, #agenda_form, #agendamento_form, #agenda_form_atualizar {
+#validar_email_form, #agenda_form, #agendamento_form, #agenda_form_atualizar, #leito_form, #leito_reservar_form, #leito_reservar_form_atualizar {
     margin-top: 40px;
 }
 
-#paciente_cadastro_form div, #medico_cadastro_form div, #validar_email_form div, #agenda_form_atualizar div, #agenda_form div, #agendamento_form div, #consulta_insert_form div, #setting_form div {
+#paciente_cadastro_form div, #medico_cadastro_form div, #validar_email_form div, #agenda_form_atualizar div, #leito_reservar_form div, #leito_reservar_form_atualizar div, #agenda_form div, #agendamento_form div, #leito_form div, #consulta_insert_form div, #setting_form div {
     margin-bottom: 25px;
 }
 
-#paciente_cadastro_form input, #medico_cadastro_form input, #validar_email_form input, #agenda_form_atualizar input, #agendamento_form input, #agenda_form input, #consulta_insert_form input, #consulta_insert_form select, #setting_form input {
+#paciente_cadastro_form input, #medico_cadastro_form input, #validar_email_form input, #agenda_form_atualizar input, #leito_reservar_form input, #leito_reservar_form_atualizar input, #agendamento_form input, #agenda_form input, #leito_form input, #consulta_insert_form input, #consulta_insert_form select, #setting_form input {
     padding: 24px;
     font-size: 17px;
     border: none;
@@ -177,11 +177,11 @@ body {
     margin-top: -10px;
 }
 
-#paciente_cadastro_form label, #medico_cadastro_form label, #validar_email_form label, #agenda_form label, #agenda_form_atualizar label, #agendamento_form label, #consulta_insert_form label, #setting_form label {
+#paciente_cadastro_form label, #medico_cadastro_form label, #validar_email_form label, #agenda_form label, #leito_reservar_form_atualizar label, #leito_form label, #leito_reservar_form label, #agenda_form_atualizar label, #agendamento_form label, #consulta_insert_form label, #setting_form label {
     font-size: 16px;
 }
 
-#paciente_cadastro_form input:hover, #medico_cadastro_form input:hover, #agendamento_form input:hover, #validar_email_form input:hover, #agenda_form_atualizar input:hover, #agenda_form input:hover, #consulta_insert_form input:hover, #consulta_insert_form select:hover, #consulta_insert_form textarea:hover, #setting_form input:hover {
+#paciente_cadastro_form input:hover, #medico_cadastro_form input:hover, #agendamento_form input:hover, #leito_form input:hover, #leito_reservar_form_atualizar input:hover, #leito_reservar_form input:hover, #validar_email_form input:hover, #agenda_form_atualizar input:hover, #agenda_form input:hover, #consulta_insert_form input:hover, #consulta_insert_form select:hover, #consulta_insert_form textarea:hover, #setting_form input:hover {
     border-bottom-color: #000;
 }
 
@@ -189,7 +189,7 @@ body {
     margin-top: 35px;
 }
 
-.painel_agenda_medica, .painel_agendamento {
+.painel_agenda_medica, .painel_agendamento, .painel_leito {
     margin-top: 25px;
 }
 
@@ -201,7 +201,7 @@ body {
     margin-top: 5px;
 }
 
-.btn-cadastrar-paciente, .btn-cadastrar-medico, .btn-addConsulta, .btn-inserir-nova-consulta, .btn-remover, .btn-atualizar_settings_adm, .btn-atualizar-paciente, .btn-atualizar-medico, .btn-atualizar-consulta {
+.btn-add2, .btn-remover, .btn-atualizar_settings_adm {
     width: 88%;
     transition: 0.6s;
     font-size: 18px;
@@ -221,12 +221,9 @@ body {
     margin-top: 15px;
 }
 
-.btn-addConsulta {
-    margin-left: 50px;
-    margin-right: 45px;
-}
 
-.btn-cadastrar, .btn-add-agenda, .btn-agendar-consulta, .btn-atualizar-agenda {
+
+.btn-add1 {
     width: 100%;
     transition: 0.6s;
     font-size: 18px;
@@ -266,12 +263,12 @@ body {
     margin-bottom: -30px;
 }
 
-.img-appoint-ativos {
+.img-appoint-ativos, .img-leitos-reservar-ativos  {
     width: 150px;
     margin-bottom: -30px;
 }
 
-.img-agenda-ativos {
+.img-agenda-ativos, .img-leitos-ativos {
     width: 250px;
     margin-bottom: -30px;
 }
@@ -288,25 +285,25 @@ body {
     font-size: 25px;
 }
 
-.title_ativos-agenda, .title_ativos-agendamento {
+.title_ativos-agenda, .title_ativos-agendamento, .title_ativos-leito {
     margin-top: 40px;
     margin-bottom: 18px;
     text-align: center;
     font-size: 25px;
 }
 
-.select-agenda, .select-agendar-consulta {
+.select-style {
     height: 50px;
     border: none;
     border-bottom: 2px solid rgb(199, 199, 199);
     transition: 0.5s;
 }
 
-.select-agenda:hover, .select-agendar-consulta:hover {
+.select-style:hover {
     border-bottom-color: #000;
 }
 
-.deletePaciente, .deleteMedico, .delete_consulta, .delete_agenda, .delete_agendamento {
+.delete-style-onTable {
     margin: 10px auto;
     padding: 4px 15px;
     border-radius: 500px;
@@ -315,7 +312,7 @@ body {
     font-weight: bold;
 }
 
-.deletePaciente:hover, .deleteMedico:hover, .delete_consulta:hover, .delete_agenda:hover, .delete_agendamento:hover {
+.deletePaciente:hover, .deleteMedico:hover, .delete_consulta:hover, .delete_agenda:hover, .delete_agendamento:hover, .delete_leito:hover {
     font-size: 20px;
 }
 

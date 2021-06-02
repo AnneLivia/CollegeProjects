@@ -82,6 +82,18 @@ if (!$insert) {
         } 
     } 
 
+    // atualizar dado em agendamento se houver
+    if (mysqli_query($conexao, "SELECT * FROM reserva_de_leitos")) {
+        $query = "UPDATE reserva_de_leitos SET 
+                nome_paciente = '$nome'
+                WHERE id_paciente = '$id_paciente'";
+        $insert = mysqli_query($conexao, $query);
+        if (!$insert) {
+            echo "<script>alert('Erro na atualização da tabela reserva_de_leitos.')</script>";
+            $deuCerto = false;
+        } 
+    } 
+
     if($deuCerto) {
         echo "<script>alert('Dados do paciente(a) $nome foi atualizado com sucesso')</script>";
     }

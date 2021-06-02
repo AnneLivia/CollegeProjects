@@ -1,16 +1,16 @@
 <?php
     
-    $email = $_POST['uEmail'];
+    $email = addslashes($_POST['uEmail']);
 
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "<script>alert('Endereço de email inválido')</script>";
         header("refresh: 0.5; url = login.php");
     } else {
 
-        $password = $_POST['uSenha'];
-        $cpf = $_POST['uCpf'];
-        $genero = $_POST['adm_genero'];
-        $nome = $_POST['uNomeCompleto'];
+        $password = addslashes($_POST['uSenha']);
+        $cpf = addslashes($_POST['uCpf']);
+        $genero = addslashes($_POST['adm_genero']);
+        $nome = addslashes($_POST['uNomeCompleto']);
 
         $conexao = mysqli_connect('localhost', 'root', '') or die('Erro de conexão'.mysqli_connect_error());
 

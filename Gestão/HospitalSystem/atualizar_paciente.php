@@ -83,9 +83,9 @@ $email = $_SESSION['email'];
                         }
 
 
-
+                        $nao = true; // verificar se usuario existe
                         // dados do paciente aqui
-                        $id = $_GET['id'];
+                        $id = addslashes($_GET['id']);
                         $query = "SELECT * FROM pacientes WHERE id = '$id'";
                         $select = mysqli_query($conexao, $query);
                         while ($info = mysqli_fetch_array($select)) {
@@ -97,6 +97,11 @@ $email = $_SESSION['email'];
                             $cep = $info['cep'];
                             $ncasa = $info['ncasa'];
                             $telefone = $info['telefone'];
+                            $nao = false;
+                        }
+
+                        if ($nao) {
+                            header("location: pacientes_ativos.php");
                         }
 
                         // mudar o mes e o dia de lugar para ficar no formato d/m/a no form
@@ -139,6 +144,12 @@ $email = $_SESSION['email'];
                     </li>
                     <li>
                         <a href="agendar_consulta.php"><img src="assets/img/icon_calendar_menu.png" class="iconMenu" /> Agendar Consulta</a>
+                    </li>
+                    <li>
+                        <a href="cadastrar_leito.php"><img src="assets/img/hospital_bed_menu.png" class="iconMenu" /> Cadastrar Leito</a>
+                    </li>
+                    <li>
+                        <a href="reservar_leito.php"><img src="assets/img/hospital-bed-book_menu.png" class="iconMenu" /> Reservar Leito</a>
                     </li>
                 </ul>
             </div>
@@ -227,7 +238,9 @@ $email = $_SESSION['email'];
                                                     <label>Número da casa</label>
                                                     <input type="text" class="form-control" placeholder="" name="Paciente_ncasa" value='<?php echo $ncasa ?>' required />
                                                 </div>
-                                                <button type="submit" class="btn btn-success btn-atualizar-paciente rounded1">Atualizar</button>
+                                                <div class="col-12 center-block">
+                                                    <button type="submit" class="btn btn-success btn-add2 btn-atualizar-paciente rounded1">Atualizar</button>
+                                                </div>
                                             </div>
                                         </form>
                                     </div>

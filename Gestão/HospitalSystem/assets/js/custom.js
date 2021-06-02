@@ -81,9 +81,20 @@ $(".table-ativos-agenda tr").click(function () {
 });
 
 // method Jquery para atualizar Paciente na tabela
+$(".table-ativos-leitos tr").click(function () {
+    var id = $(this).closest('tr').attr('id');
+    window.location.href = "atualizar_leito.php?id=" + id;
+});
+
+// method Jquery para atualizar Paciente na tabela
 $(".table-ativos-agendamento tr").click(function () {
     var id = $(this).closest('tr').attr('id');
     window.location.href = "atualizar_agendamento.php?id=" + id;
+});
+
+$(".table-ativos-reservar_leitos tr").click(function () {
+    var id = $(this).closest('tr').attr('id');
+    window.location.href = "atualizar_reservarleito.php?id=" + id;
 });
 
 // method Jquery para remover Paciente de tabela
@@ -106,6 +117,28 @@ $(".table_ativos").on('click', '.deleteMedico', function () {
         window.location.href = "medicos_ativos.php";
     }
 });
+
+$(".table_ativos").on('click', '.delete_reserva_de_leito', function () {
+    if (confirm("Tem certeza que deseja remover a reserva deste paciente?")) {
+        var id = $(this).closest('tr').attr('id');
+        $(this).closest('tr').remove();
+        window.location.href = "delete_breservarleito.php?id=" + id;
+    } else {
+        window.location.href = "reservar_leito.php";
+    }
+});
+
+
+$(".table_ativos").on('click', '.delete_leito', function () {
+    if (confirm("Tem certeza que deseja remover o leito cadastrado ?")) {
+        var id = $(this).closest('tr').attr('id');
+        $(this).closest('tr').remove();
+        window.location.href = "delete_bdleito.php?id=" + id;
+    } else {
+        window.location.href = "cadastrar_leito.php";
+    }
+});
+
 
 
 $(".table_ativos").on('click', '.delete_consulta', function () {
@@ -145,8 +178,8 @@ document.querySelector("#Logout").addEventListener('click', e => {
     window.location.href = "login.php";
 });
 
-document.querySelector('.btn-add-agenda').addEventListener('click', e => {
-    e.preventDefault();
+$("#btn-add-agenda").click(function(){
+    
     let date = document.querySelector(".data_agenda");
     let capacidade = document.querySelector(".capacidade_agenda");
 
@@ -161,24 +194,24 @@ document.querySelector('.btn-add-agenda').addEventListener('click', e => {
     // se o valor escolhido for antes de hoje, não permitir
     if (date.value < today) {
         alert("Escolha uma data válida.");
+        return false;
     } else {
         if (capacidade.value < 0) {
             alert("Capacidade não pode ser um valor negativo.");
+            return false;
         } else {
             document.querySelector('#agenda_form').submit();
         }
     }
-
 });
 
-document.querySelector('.btn-atualizar-agenda').addEventListener('click', e => {
-    e.preventDefault();
+$("#btn-atualizar-agenda").click(function(){
 
     let nPacientes = document.querySelector(".nPacientes_agenda_atualizar");
     let capacidade = document.querySelector(".capacidade_agenda_atualizar");
     let date = document.querySelector(".data_agenda_atualizar");
 
-    
+
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -189,18 +222,99 @@ document.querySelector('.btn-atualizar-agenda').addEventListener('click', e => {
     // se o valor escolhido for antes de hoje, não permitir
     if (date.value < today) {
         alert("Escolha uma data válida.");
+        return false;
     } else {
         if (capacidade.value < 0) {
             alert("Capacidade não pode ser um valor negativo.");
+            return false;
         } else {
             if (capacidade.value < nPacientes.value) {
                 alert("Já existem pacientes agendados para a consulta selecionada. " +
                     "Portanto, a capacidade não pode ser um valor menor do que a capacidade de " +
                     "pacientes agendados. O total de pacientes agendados é: " + nPacientes.value);
+                return false;
             } else {
                 document.querySelector('#agenda_form_atualizar').submit();
             }
         }
     }
-
 });
+
+$('#btn_cadastrar_leito').click(function(){
+    let numero = document.querySelector(".quantidade_cama_leito");
+    if (numero.value < 0) {
+        alert("Quantidade de leitos não pode ser um valor negativo.");
+        return false;
+    } else {
+        document.querySelector('#leito_form').submit();
+    }
+});
+
+$('#btn-atualizar-leito').click(function(){
+    let numero = document.querySelector(".quantidade_cama_leito_atualizar");
+    let pacientesn = document.querySelector(".npacientes_atualizar_leitos");
+    let status = document.querySelector(".select-status-leito").selectedOptions[0].value;
+    if (numero.value < 0) {
+        alert("Quantidade de leitos não pode ser um valor negativo.");
+        return false;
+    } else if (numero.value < pacientesn.value) {
+        alert("A quantidade de pacientes ocupando o tipo de leito informado é superior a quantidade de leitos"
+        + " indicada. Número de pacientes é: " + pacientesn.value);
+        return false;
+    } else if ((status === 'Bloqueado' || status === 'Planejado'  || status === 'Inativo' || status === 'Desativado') && pacientesn.value > 0) {
+        alert(pacientesn.value + " estão internados no tipo de leito especificado, logo não é possível alterar o status" +
+        " do leito para bloqueado, desativado, planejado ou inativo.");
+        return false;
+    } else {
+        document.querySelector('#leito_form').submit();
+    }
+});
+
+
+
+$("#btn-reservar-leito").click(function(){
+    
+    let date = document.querySelector(".data_reserva_de_leito");
+
+
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+    // só deve permitir datas atuais
+    // se o valor escolhido for antes de hoje, não permitir
+    if (date.value < today) {
+        alert("Escolha uma data válida.");
+        return false;
+    } else {
+        document.querySelector('#leito_reservar_form').submit();
+    }
+});
+
+$("#btn-reservar-leito-atualizar").click(function(){
+    
+    let date = document.querySelector(".dataEntrada_reserva_de_leito");
+    let dateSaida = document.querySelector(".dataSaida_reserva_de_leito");
+    
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+    // só deve permitir datas atuais
+    // se o valor escolhido for antes de hoje, não permitir
+    
+    if (date.value < today) {
+        alert("Escolha uma data válida.");
+        return false;
+    } else if (dateSaida.value && dateSaida.value < date.value) { 
+        alert("Data de saída inválida.");
+        return false;
+    } else {
+        document.querySelector('#leito_reservar_form_atualizar').submit();
+    }
+});
+

@@ -1,15 +1,26 @@
 <?php
     session_start();
+    // a primeira forma de evitar sql injection seria impedir a inserção de ' como fechamento de consulta sql
+    // se inserir o ' "aspas simples", como \', isso vai para a string e não fechamento da consulta
+    // o comando que coloca a barra antes do ' é addslashes
+    /* 
+        Returns a string with backslashes added before characters that need to be escaped. These characters are:
 
-    $email = $_POST['uEmail'];
-
+        single quote (')
+        double quote (")
+        backslash (\)
+        NUL (the NUL byte)
+    */
+    
+    $email = addslashes($_POST['uEmail']);
+    
     // verificar se o endereço digitado é valido
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "<script>alert('Endereço de email inválido')</script>";
         header("refresh: 0.5; url = login.php");
     } else {
 
-        $password = $_POST['uSenha'];
+        $password = addslashes($_POST['uSenha']);
 
         $conexao = mysqli_connect('localhost', 'root', '') or die('Erro de conexão'.mysqli_connect_error());
 

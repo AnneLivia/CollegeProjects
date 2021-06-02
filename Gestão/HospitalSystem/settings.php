@@ -112,6 +112,12 @@ $email = $_SESSION['email'];
                     <li>
                         <a href="agendar_consulta.php"><img src="assets/img/icon_calendar_menu.png" class="iconMenu" /> Agendar Consulta</a>
                     </li>
+                    <li>
+                        <a href="cadastrar_leito.php"><img src="assets/img/hospital_bed_menu.png" class="iconMenu" /> Cadastrar Leito</a>
+                    </li>
+                    <li>
+                        <a href="reservar_leito.php"><img src="assets/img/hospital-bed-book_menu.png" class="iconMenu" /> Reservar Leito</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -170,9 +176,11 @@ $email = $_SESSION['email'];
                                                     <input type="password" name="setting_senha_nova2" class="form-control setting_senha_nova2" placeholder="" />
                                                 </div>
                                             </div>
-                                            <button type="submit" class="btn btn-success btn-atualizar_settings_adm rounded1">Atualizar cadastro</button>
-                                            <button class="btn-remover btn btn-danger rounded1">Remover Conta</button>
+                                            <div class="col-12 center-block">
+                                                <button type="submit" class="btn btn-success btn-atualizar_settings_adm rounded1">Atualizar cadastro</button>
 
+                                                <button class="btn-remover btn btn-danger rounded1">Remover Conta</button>
+                                            </div>
                                         </form>
 
                                     </div>

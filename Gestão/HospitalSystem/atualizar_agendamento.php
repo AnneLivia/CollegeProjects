@@ -122,6 +122,12 @@ $email = $_SESSION['email'];
                     <li>
                         <a href="agendar_consulta.php"><img src="assets/img/icon_calendar_menu.png" class="iconMenu" /> Agendar Consulta</a>
                     </li>
+                    <li>
+                        <a href="cadastrar_leito.php"><img src="assets/img/hospital_bed_menu.png" class="iconMenu" /> Cadastrar Leito</a>
+                    </li>
+                    <li>
+                        <a href="reservar_leito.php"><img src="assets/img/hospital-bed-book_menu.png" class="iconMenu" /> Reservar Leito</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -151,7 +157,7 @@ $email = $_SESSION['email'];
                                             </div>
                                             <div class="col-5">
                                                 <label>Médicos e datas disponíveis</label><br />
-                                                <select class="form-control select-agendar-consulta" name="Agenda_id" required>
+                                                <select class="form-control select-style select-agendar-consulta" name="Agenda_id" required>
                                                     <option value=""> Selecione a opção de atendimento desejada</option>
                                                     <?php
 
@@ -197,7 +203,7 @@ $email = $_SESSION['email'];
                                             </div>
                                             <div class="col-2">
                                                 <label class="hide_label">Email</label>
-                                                <button type="submit" class="btn-agendar-consulta btn btn-success rounded1">Agendar</button>
+                                                <button type="submit" id="btn-agendar-consulta" class="btn-add1 btn btn-success rounded1">Agendar</button>
                                             </div>
                                         </div>
                                     </form>

@@ -106,6 +106,12 @@ $email = $_SESSION['email'];
                     <li>
                         <a href="agendar_consulta.php"><img src="assets/img/icon_calendar_menu.png" class="iconMenu" /> Agendar Consulta</a>
                     </li>
+                    <li>
+                        <a href="cadastrar_leito.php"><img src="assets/img/hospital_bed_menu.png" class="iconMenu" /> Cadastrar Leito</a>
+                    </li>
+                    <li>
+                        <a href="reservar_leito.php"><img src="assets/img/hospital-bed-book_menu.png" class="iconMenu" /> Reservar Leito</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -170,7 +176,7 @@ $email = $_SESSION['email'];
                                                         <td>$name</td>
                                                         <td>$data</td>
                                                         <td>$capacidade</td>
-                                                        <td><button class='delete_agenda btn btn-danger rounded1'>X</button></td>
+                                                        <td><button class='delete-style-onTable delete_agenda btn btn-danger rounded1'>X</button></td>
                                                     </tr>";
                                                         }
                                                         $i++;
@@ -191,7 +197,7 @@ $email = $_SESSION['email'];
                                         <div class="form-row">
                                             <div class="col-4">
                                                 <label>Médico</label><br />
-                                                <select class="form-control select-agenda" name="Medico_id_agenda" required>
+                                                <select class="form-control select-agenda select-style" name="Medico_id_agenda" required>
                                                     <option value=""> Selecione o nome do médico </option>
                                                     <?php
 
@@ -233,11 +239,11 @@ $email = $_SESSION['email'];
                                             </div>
                                             <div class="col-2">
                                                 <label>Capacidade</label>
-                                                <input type="number" class="form-control capacidade_agenda" placeholder="0" value=0 name="capacidade_agenda" required />
+                                                <input type="number" class="form-control capacidade_agenda" placeholder="0" value=0 min='0' name="capacidade_agenda" required />
                                             </div>
                                             <div class="col-2">
                                                 <label class="hide_label">Email</label>
-                                                <button type="submit" class="btn-add-agenda btn btn-success rounded1">Adicionar</button>
+                                                <button type="submit" id="btn-add-agenda" class="btn-add1 btn btn-success rounded1">Adicionar</button>
                                             </div>
                                         </div>
                                     </form>

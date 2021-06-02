@@ -113,6 +113,12 @@ $email_Paciente = $_SESSION['email_Paciente'];
                     <li>
                         <a href="agendar_consulta.php"><img src="assets/img/icon_calendar_menu.png" class="iconMenu" /> Agendar Consulta</a>
                     </li>
+                    <li>
+                        <a href="cadastrar_leito.php"><img src="assets/img/hospital_bed_menu.png" class="iconMenu" /> Cadastrar Leito</a>
+                    </li>
+                    <li>
+                        <a href="reservar_leito.php"><img src="assets/img/hospital-bed-book_menu.png" class="iconMenu" /> Reservar Leito</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -196,7 +202,9 @@ $email_Paciente = $_SESSION['email_Paciente'];
                                                 <label>Diagnóstico</label>
                                                 <textarea type="text" class="form-control" placeholder="" name="Paciente_diagnostico" required maxlength="500" /></textarea>
                                             </div>
-                                            <button type="submit" class="btn-inserir-nova-consulta btn btn-success rounded1">Inserir nova consulta</button>
+                                            <div class="col-12 center-block">
+                                                <button type="submit" class="btn-add2 btn-inserir-nova-consulta btn btn-success rounded1">Inserir nova consulta</button>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>

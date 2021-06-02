@@ -106,6 +106,12 @@ $email = $_SESSION['email'];
                     <li>
                         <a href="agendar_consulta.php"><img src="assets/img/icon_calendar_menu.png" class="iconMenu" /> Agendar Consulta</a>
                     </li>
+                    <li>
+                        <a href="cadastrar_leito.php"><img src="assets/img/hospital_bed_menu.png" class="iconMenu" /> Cadastrar Leito</a>
+                    </li>
+                    <li>
+                        <a href="reservar_leito.php"><img src="assets/img/hospital-bed-book_menu.png" class="iconMenu" /> Reservar Leito</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -170,7 +176,9 @@ $email = $_SESSION['email'];
                                                     <label>Número da casa</label>
                                                     <input type="text" class="form-control" placeholder="" name="Paciente_ncasa" required />
                                                 </div>
-                                                <button type="submit" class="btn btn-success btn-cadastrar-paciente rounded1">Cadastrar</button>
+                                                <div class="col-12 center-block">
+                                                    <button type="submit" class="btn btn-success btn-add2 btn-cadastrar-paciente rounded1">Cadastrar</button>
+                                                </div>
                                             </div>
                                         </form>
                                     </div>

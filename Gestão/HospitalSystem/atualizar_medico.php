@@ -82,9 +82,9 @@ $email = $_SESSION['email'];
                             $nome = mysqli_fetch_array($select)['nomeCompleto'];
                         }
 
-
+                        $nao = true; // verificar se usuario existe
                         // dados do medico aqui
-                        $id = $_GET['id'];
+                        $id = addslashes($_GET['id']);
                         $query = "SELECT * FROM medicos WHERE id = '$id'";
                         $select = mysqli_query($conexao, $query);
                         while ($info = mysqli_fetch_array($select)) {
@@ -96,6 +96,11 @@ $email = $_SESSION['email'];
                             $ncasa = $info['ncasa'];
                             $telefone = $info['telefone'];
                             $especialidade = $info['especialidade'];
+                            $nao = false;
+                        }
+
+                        if ($nao) {
+                            header("location: medicos_ativos.php");
                         }
 
                         // mudar o mes e o dia de lugar para ficar no formato d/m/a no form
@@ -139,6 +144,12 @@ $email = $_SESSION['email'];
                     </li>
                     <li>
                         <a href="agendar_consulta.php"><img src="assets/img/icon_calendar_menu.png" class="iconMenu" /> Agendar Consulta</a>
+                    </li>
+                    <li>
+                        <a href="cadastrar_leito.php"><img src="assets/img/hospital_bed_menu.png" class="iconMenu" /> Cadastrar Leito</a>
+                    </li>
+                    <li>
+                        <a href="reservar_leito.php"><img src="assets/img/hospital-bed-book_menu.png" class="iconMenu" /> Reservar Leito</a>
                     </li>
                 </ul>
             </div>
@@ -226,8 +237,9 @@ $email = $_SESSION['email'];
                                                 <input class="form-control" id="Medico_treinamento" name="Medico_especialidade" placeholder="" value='<?php echo $especialidade ?>' required />
                                                 <p class="help-block">Ex: cardiologia, endocrinologia</p>
                                             </div>
-
-                                            <button type="submit" class="btn btn-success btn-atualizar-medico rounded1">Atualizar</button>
+                                            <div class="col-12 center-block">
+                                                <button type="submit" class="btn btn-add2 btn-success btn-atualizar-medico rounded1">Atualizar</button>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
