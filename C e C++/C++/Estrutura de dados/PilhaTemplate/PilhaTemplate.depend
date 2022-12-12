@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1489257419 source:c:\users\annel\downloads\programação\c++\pilhatemplate\main.cpp
+	<iostream>
+	"Pilha.h"
+
+1489257324 c:\users\annel\downloads\programação\c++\pilhatemplate\pilha.h
+
+1489258848 source:c:\users\annel\downloads\programação\c++\pilhatemplate\pilha.cpp
+

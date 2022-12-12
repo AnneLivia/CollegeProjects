@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1516665396 source:c:\users\annel\downloads\programming\c++\iterator\main.cpp
+	<iostream>
+	<cstdlib>
+	<vector>
+

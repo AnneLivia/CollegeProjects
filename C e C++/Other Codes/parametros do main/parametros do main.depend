@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1473736536 source:c:\users\annel\downloads\linguagem c\parametros do main\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+

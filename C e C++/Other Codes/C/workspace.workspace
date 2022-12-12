@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Workspace">
+		<Project filename="instruções/instruções.cbp" />
+		<Project filename="valores formatados/valores formatados.cbp" />
+		<Project filename="operações matematicas/operações matematicas.cbp" />
+		<Project filename="leitura de teclado/leitura de teclado.cbp" />
+		<Project filename="calculadora/calculadora.cbp" />
+		<Project filename="escape sequence/escape sequence.cbp" />
+		<Project filename="resto da divisao/resto da divisao.cbp" />
+		<Project filename="if, else/if, else.cbp" />
+		<Project filename="notas escolares/notas escolares.cbp" />
+		<Project filename="operadores relacionais/operadores relacionais.cbp" />
+		<Project filename="exercicios/exercicios.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>

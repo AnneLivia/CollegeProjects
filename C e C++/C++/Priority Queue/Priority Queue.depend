@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1519761608 source:c:\users\annel\downloads\programming\c++\priority queue\main.cpp
+	<iostream>
+	<queue>
+

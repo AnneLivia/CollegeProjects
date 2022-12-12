@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1505830815 source:c:\users\annel\downloads\programming\c++\estudando c++ novamente\exercicio arquivo, lista de compras\main.cpp
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+

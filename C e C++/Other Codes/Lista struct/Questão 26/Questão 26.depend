@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1476243799 source:c:\users\annel\downloads\lista struct\questão 26\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

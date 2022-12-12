@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1472916406 source:c:\users\annel\downloads\linguagem c\ponteiros aula\main.c
+	<stdio.h>
+
+1472921375 source:c:\users\annel\downloads\linguagem c\fibonacci com função\main.c
+	<stdio.h>
+	<conio.h>
+

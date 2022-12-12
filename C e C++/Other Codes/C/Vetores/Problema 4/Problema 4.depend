@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1469567063 source:c:\users\annel\downloads\c\vetores\problema 4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+

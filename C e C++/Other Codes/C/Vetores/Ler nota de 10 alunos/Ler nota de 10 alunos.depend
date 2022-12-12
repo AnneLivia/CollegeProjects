@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1469481699 source:c:\users\annel\downloads\c\vetores\ler nota de 10 alunos\main.c
+	<stdio.h>
+	<stdlib.h>
+

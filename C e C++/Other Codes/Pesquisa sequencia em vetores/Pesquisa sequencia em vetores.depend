@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1468892532 source:c:\users\annel\downloads\linguagem c\pesquisa sequencia em vetores\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+

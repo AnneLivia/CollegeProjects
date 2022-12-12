@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1472146171 source:c:\users\annel\downloads\c\vetores e matrizes\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

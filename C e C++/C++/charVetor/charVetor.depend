@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1488219720 source:c:\users\annel\downloads\programação\c++\charvetor\main.cpp
+	<iostream>
+	"vetChar.h"
+
+1488219068 c:\users\annel\downloads\programação\c++\charvetor\vetchar.h
+
+1488219702 source:c:\users\annel\downloads\programação\c++\charvetor\vetchar.cpp
+	<string.h>
+

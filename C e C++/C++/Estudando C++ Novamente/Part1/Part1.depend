@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1504899720 source:c:\users\annel\downloads\programming\c++\estudando c++ novamente\part1\main.cpp
+	<iostream>
+	<stdio.h>
+	<string>
+
+1503930087 c:\users\annel\downloads\programming\c++\estudando c++ novamente\part1\my_math.h
+
+1503930505 source:c:\users\annel\downloads\programming\c++\estudando c++ novamente\part1\my_math.cpp
+

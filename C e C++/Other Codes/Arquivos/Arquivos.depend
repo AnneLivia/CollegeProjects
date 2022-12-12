@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1469136779 source:c:\users\annel\downloads\linguagem c\arquivos\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1469138289 source:c:\users\annel\downloads\linguagem c\arquivos\arquivos1.c
+	<stdio.h>
+	<stdlib.h>
+
+1469139893 source:c:\users\annel\downloads\linguagem c\arquivos\arquivos2.c
+	<stdio.h>
+	<stdlib.h>
+
+1469141857 source:c:\users\annel\downloads\linguagem c\arquivos\arquivos3.c
+	<stdio.h>
+	<stdlib.h>
+
+1469141834 source:c:\users\annel\downloads\linguagem c\arquivos\arquivo4.c
+	<stdio.h>
+	<stdlib.h>
+

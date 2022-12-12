@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1505843618 source:c:\users\annel\downloads\programming\c++\estudando c++ novamente\cool program on how to work with file c++\main.cpp
+	<iostream>
+	<stdlib.h>
+	<fstream>
+

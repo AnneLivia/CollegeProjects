@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1473530569 source:c:\users\annel\downloads\linguagem c\ponteiros genericos\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+

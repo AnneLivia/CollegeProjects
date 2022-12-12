@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1469064356 source:c:\users\annel\downloads\linguagem c\ponteiro\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+
+1469069775 source:c:\users\annel\downloads\linguagem c\ponteiro\ponteiros.c
+	<stdio.h>
+	<stdlib.h>
+
+1469074895 source:c:\users\annel\downloads\linguagem c\ponteiro\ponteiros1.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+
+1469076177 source:c:\users\annel\downloads\linguagem c\ponteiro\ponteiros2.c
+	<stdio.h>
+	<stdlib.h>
+
+1469120813 source:c:\users\annel\downloads\linguagem c\ponteiro\ponteiros3.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+
+1469127418 source:c:\users\annel\downloads\linguagem c\ponteiro\listas.c
+	<stdio.h>
+	<stdlib.h>
+
+1469131170 source:c:\users\annel\downloads\linguagem c\ponteiro\ponteiros4.c
+	<stdio.h>
+	<stdlib.h>
+
+1469131397 source:c:\users\annel\downloads\linguagem c\ponteiro\ponteiros5.c
+	<stdio.h>
+	<stdlib.h>
+

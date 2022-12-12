@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1473188628 source:c:\users\annel\downloads\linguagem c\estudar programação básico\desenho\main.c
+	<stdio.h>
+	<conio.h>
+	<ctype.h>
+	<stdlib.h>
+	<windows.h>
+
+1473188913 source:c:\users\annel\downloads\linguagem c\desenho\main.c
+	<stdio.h>
+	<ctype.h>
+	<stdlib.h>
+	<windows.h>
+

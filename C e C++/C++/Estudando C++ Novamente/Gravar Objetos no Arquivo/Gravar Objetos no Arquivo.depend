@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1508177712 source:c:\users\annel\downloads\programming\c++\estudando c++ novamente\gravar objetos no arquivo\main.cpp
+	<iostream>
+	<fstream>
+	<stdlib.h>
+

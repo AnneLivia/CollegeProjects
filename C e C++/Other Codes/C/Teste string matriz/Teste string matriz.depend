@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1468123941 source:c:\users\annel\downloads\c\teste string matriz\main.c
+	<stdio.h>
+	<stdlib.h>
+

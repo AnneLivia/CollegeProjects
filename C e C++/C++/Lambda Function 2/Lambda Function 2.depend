@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1544563188 source:c:\users\annel\downloads\programming\programming languages\c++\lambda function 2\main.cpp
+	<iostream>
+	<vector>
+	<ctime>
+	<algorithm>
+

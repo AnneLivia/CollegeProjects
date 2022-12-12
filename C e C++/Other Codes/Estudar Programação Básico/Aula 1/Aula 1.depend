@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1473125706 source:c:\users\annel\downloads\linguagem c\estudar programação básico\aula 1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1468720463 source:c:\users\annel\downloads\c\calcular area, t,q ou r\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+
+1468720463 source:c:\users\annel\downloads\c\vetores\calcular area, t,q ou r\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+

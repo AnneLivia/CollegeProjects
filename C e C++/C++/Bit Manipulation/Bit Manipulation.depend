@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1519251622 source:c:\users\annel\downloads\programming\c++\bit manipulation\main.cpp
+	<iostream>
+	<bitset>
+

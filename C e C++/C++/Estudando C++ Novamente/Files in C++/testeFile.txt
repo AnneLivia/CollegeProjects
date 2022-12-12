@@ -1,0 +1,3 @@
+This is how I can write on my file, much better than C.
+I love it
+

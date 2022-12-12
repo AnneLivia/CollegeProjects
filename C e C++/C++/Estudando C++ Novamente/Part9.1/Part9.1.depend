@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1505754540 source:c:\users\annel\downloads\programming\c++\estudando c++ novamente\part9.1\main.cpp
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1487894315 source:c:\users\annel\downloads\programação\c++\pilha\main.cpp
+	<iostream>
+	<stack>
+

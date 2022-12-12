@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1474851657 source:c:\users\annel\downloads\lista struct\checksum\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1474851657 source:c:\users\annel\downloads\arquitetura de computadores - programação\checksum\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1474851657 source:c:\users\annel\downloads\programação\linguagem c\arquitetura de computadores - programação\checksum\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1506726809 source:c:\users\annel\downloads\programming\c++\estudando c++ novamente\namespace\main.cpp
+	<iostream>
+
+1506728764 source:c:\users\annel\downloads\programming\c++\estudando c++ novamente\namespace\cat.cpp
+	"Cat.h"
+
+1506728616 c:\users\annel\downloads\programming\c++\estudando c++ novamente\namespace\cat.h
+

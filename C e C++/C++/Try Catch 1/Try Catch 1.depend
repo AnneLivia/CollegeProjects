@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1545417188 source:c:\users\annel\desktop\c++ reviewing\try catch 1\main.cpp
+	<iostream>
+	<vector>
+	<exception>
+

@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1491083113 source:c:\users\annel\downloads\programação\linguagem c\lendostringcomgetchar\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+

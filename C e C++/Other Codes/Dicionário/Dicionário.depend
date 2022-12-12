@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1469853242 source:c:\users\annel\downloads\linguagem c\dicionário\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<string.h>
+	<ctype.h>
+

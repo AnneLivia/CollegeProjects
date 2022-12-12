@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1470246843 source:c:\users\annel\downloads\linguagem c\concatenar strings\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1470246843 source:c:\users\annel\downloads\programação\linguagem c\concatenar strings\main.c
+	<stdio.h>
+	<stdlib.h>
+

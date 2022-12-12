@@ -1,0 +1,4 @@
+Name: Livia
+Age: 20
+pp.x: 1
+pp.y: 2

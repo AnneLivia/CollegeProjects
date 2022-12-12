@@ -1,0 +1,1 @@
+Este aqui e um teste com arquivos utilizando o modo w+

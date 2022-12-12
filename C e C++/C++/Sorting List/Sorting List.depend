@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1517776851 source:c:\users\annel\downloads\programming\c++\sorting list\main.cpp
+	<iostream>
+	<list>
+	<functional>
+

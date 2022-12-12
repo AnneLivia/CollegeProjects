@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1506978713 source:c:\users\annel\downloads\programming\c++\estudando c++ novamente\classe deque\main.cpp
+	<iostream>
+	<deque>
+

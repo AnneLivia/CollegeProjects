@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1468463147 source:c:\users\annel\downloads\c\struct 1\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1468463147 source:c:\users\annel\downloads\c\vetores\struct 1\main.c
+	<stdio.h>
+	<stdlib.h>
+

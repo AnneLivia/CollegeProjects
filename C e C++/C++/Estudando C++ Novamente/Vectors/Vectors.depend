@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1506021560 source:c:\users\annel\downloads\programming\c++\estudando c++ novamente\vectors\main.cpp
+	<iostream>
+	<vector>
+	<stdlib.h>
+
