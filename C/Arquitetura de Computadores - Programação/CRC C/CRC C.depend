@@ -1,7 +1,0 @@
-# depslib dependency file v1.0
-1523205764 source:c:\users\annel\downloads\programming\college programs\c\arquitetura de computadores - programação\crc c\main.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<time.h>
-
